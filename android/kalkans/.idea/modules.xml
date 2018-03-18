@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Welcome\Documents\GitHub\kalkans\android\kalkans\app\app.iml" filepath="C:\Users\Welcome\Documents\GitHub\kalkans\android\kalkans\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/kalkans.iml" filepath="$PROJECT_DIR$/kalkans.iml" />
+      <module fileurl="file://C:\Users\Welcome\Documents\GitHub\kalkans\android\kalkans\kalkans.iml" filepath="C:\Users\Welcome\Documents\GitHub\kalkans\android\kalkans\kalkans.iml" />
     </modules>
   </component>
 </project>
