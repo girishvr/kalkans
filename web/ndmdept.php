@@ -3,7 +3,7 @@ require("connection.php");
 
 
 $sql = 'SELECT * 
-		FROM emergency where type in ("earthquake" ,"landslide","flood")';
+		FROM emergency where etype in ("earthquake" ,"landslide","flood")';
 		
 $query = mysqli_query($conn, $sql);
 
@@ -153,7 +153,7 @@ if (!$query) {
 					<td>'.$row[5].'</td>
 				
 					<td>'.$row[6].'</td>
-					<td><a href="profile.php"><button>View Profile</button></a></td>
+					<td><a href="details.php?id='.$row[5].'"><button>View Details</button></a></td>
 
 						
 				</tr>';

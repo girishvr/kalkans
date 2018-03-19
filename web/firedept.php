@@ -4,7 +4,7 @@ $conn = mysqli_connect($host, $username, $password, $db);
 
 
 $sql = 'SELECT * 
-		FROM emergency where type="fire" ';
+		FROM emergency where etype="fire" ';
 		
 $query = mysqli_query($conn, $sql);
 
@@ -154,7 +154,7 @@ if (!$query) {
 					<td>'.$row[5].'</td>
 				
 					<td>'.$row[6].'</td>
-					<td><a href="profile.php"><button>View Profile</button></a></td>
+					<td><a href="details.php?id='.$row[5].'"><button>View Details</button></a></td>
 
 						
 				</tr>';

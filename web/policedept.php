@@ -1,16 +1,12 @@
 <?php
 session_start();
 require("connection.php");
-$conn = mysqli_connect($host, $username, $password, $db);
-if (!$conn) {
-	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
-}
+
 
 $sql = 'SELECT * 
-		FROM emergency where type in ("fire" ,"accident" ,"woman safety" ,"terrorist" )' ;
+		FROM emergency where etype in ("fire" ,"accident" ,"woman safety" ,"terrorist" )' ;
 		
 $query = mysqli_query($conn, $sql);
-
 if (!$query) {
 	die ('SQL Error: ' . mysqli_error($conn));
 }
@@ -141,13 +137,13 @@ if (!$query) {
 		</thead>
 		<tbody>
 		<?php
-		$i 	= 0;
+		//$i 	= 0;
 		//$total 	= 0;
 		while ($row = mysqli_fetch_array($query))
 		{
 			//echo '<form method="POST">';
-			$i=$i+1;
-			$user=$row[0];
+			//$i=$i+1;
+			//$user=$row[0];
 			//$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
 			echo '<tr>
 					<td>'.$row[0].'</td>
@@ -157,23 +153,17 @@ if (!$query) {
 					<td>'.$row[4].'</td>
 					<td>'.$row[5].'</td>
 				
-					<td>'.$row[6].'</td>
-					<td><button name="view" onclick="view('.$user.')">View Profile</button></td>
-		
+					<td>'.$row[6].'</td>';
+					
+		echo '<td><a href="details.php?id='.$row[5].' "><button name="view" >VIEW DETAILS</button></a></td> 
 				</tr>';
 				
 				
 				}
 			?>
 			 
-		<script type="text/javascript" language="JavaScript">
-                  function view(a)
-            {
-                
-                window.location = 'control_panel2.html';
-$_SESSION["user"]="a";
-            }
-             </script>
+		
+                 
 				
 		
 		
