@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent = new Intent(MainActivity.this,SplashActivity.class);
+                Intent homeIntent = new Intent(SplashActivity.this,MainActivity.class);
                 startActivity(homeIntent);
                 finish();
             }
         }, SPLASH_tIME_OUT);
     }
-}
+}2
