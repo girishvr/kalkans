@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> 2954dc84eac70ea77b3faee5e5c4724a98143443
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@drawable/back6"
     tools:context="com.example.SignAupctivity"
     android:orientation="vertical" >
@@ -103,3 +108,10 @@
 </LinearLayout>
 
 
+=======
+    tools:context="com.bitjini.kalkans.SignAupctivity"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    >
+
+</RelativeLayout>
+>>>>>>> 2954dc84eac70ea77b3faee5e5c4724a98143443
