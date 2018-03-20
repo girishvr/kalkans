@@ -13,11 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-class Login extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity{
 
 //public static android.content.SharedPreferences SharedPreferences = null;
 
     private static final String PREFER_NAME = "Reg";
+    public static boolean oneTime=false;
 
     Button buttonLogin;
 
@@ -38,7 +39,7 @@ class Login extends AppCompatActivity{
 
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Login.this, SignAupctivity.class);
+                Intent intent=new Intent(LoginActivity.this, SignAupctivity.class);
                 startActivity(intent);
 
             }
@@ -92,6 +93,7 @@ class Login extends AppCompatActivity{
                     // Object uEmail = null;
                     if(username.equals(uName) && password.equals(uPassword)){
 
+                        oneTime = true;
                         session.createUserLoginSession(uName,uPassword);
 
                         // Starting MainActivity
@@ -101,6 +103,7 @@ class Login extends AppCompatActivity{
                         // Add new Flag to start new Activity
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
+
 
                         finish();
 
@@ -115,9 +118,7 @@ class Login extends AppCompatActivity{
                 }else{
 
                     // user didn't entered username or password
-                    Toast.makeText(getApplicationContext(),
-                            "Please enter username and password",
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Please enter username and password", Toast.LENGTH_LONG).show();
 
                 }
 
