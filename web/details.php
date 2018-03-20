@@ -114,6 +114,18 @@
         height: 400px;
         width: 100%;
        }
+	   .button{
+		       background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+	   }
     </style>
   </head>
   <body>
@@ -185,7 +197,8 @@ echo "<td style=\"font-size:20px;\">USERID : </br>NAME : </br>PHONE NO. : </br>G
 	  	 echo "<div class=\"data-table\">";
 	while ($row = mysqli_fetch_array($res)) {
 		echo "<td style=\"font-size:20px;\">".$row[0]."</br>".$row[1]."</br>".$row[2]."</br>".$row[6]."</br>".$row[7]."</br>".$row[8]."</br>".$row[9]."</br></td>";
-	
+		
+		echo"<td width='50%' style=\"font-size:20px;\"><button class='button' align='right' onclick='alertTeam()' ><h3>AlertTeam</h3></button>";
 	
 	}
    echo "</tr></table>";
