@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 
+//import com.example.hp.emergency.FloodActivity;
+
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -45,14 +47,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         Intent I;
         switch(v.getId()) {
-            case R.id.Flood_card : I = new Intent(this,Flood. class); startActivity(I);break;
-            case R.id.Accidents_card : I = new Intent(this,Accidents. class);startActivity(I); break;
-            case R.id.Medical_Emergency_card : I = new Intent(this,Medical_Emergency. class);startActivity(I); break;
-            case R.id.Land_Slides_card : I = new Intent(this,Land_Slides. class);startActivity(I); break;
-            case R.id.Earthquake_card: I = new Intent(this,Earthquake. class);startActivity(I); break;
-            case R.id.Theft_card : I = new Intent(this,Theft. class); startActivity(I);break;
-            case R.id.Terrorist_card : I = new Intent(this,Terrorist. class); startActivity(I);break;
-            case R.id.Women_Safety_card : I = new Intent(this,Women_Safety. class);startActivity(I); break;
+            case R.id.Flood_card : I = new Intent(this,FloodActivity. class); startActivity(I);break;
+            case R.id.Accidents_card : I = new Intent(this,AccidentsActivity. class);startActivity(I); break;
+            case R.id.Medical_Emergency_card : I = new Intent(this,MedicalEmergencyActicity. class);startActivity(I); break;
+            case R.id.Land_Slides_card : I = new Intent(this,LandSlidesActivity. class);startActivity(I); break;
+            case R.id.Earthquake_card: I = new Intent(this,EarthquakeActivity. class);startActivity(I); break;
+            case R.id.Theft_card : I = new Intent(this,TheftActivity. class); startActivity(I);break;
+            case R.id.Terrorist_card : I = new Intent(this,TerroristActivity. class); startActivity(I);break;
+            case R.id.Women_Safety_card : I = new Intent(this,WomenSafetyActivity. class);startActivity(I); break;
             default:break;
 
         }
