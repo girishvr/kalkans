@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
+    
 	
 	
 	
@@ -114,18 +114,26 @@
         height: 400px;
         width: 100%;
        }
-	   .button{
-		       background-color: #f44336;
+	   .button {
+    background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 7px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    cursor: pointer;
-	   }
+	height: 26dp
+	 transition: all 0.1s ease-in-out;
+}
+
+
+
+.button4 {border-radius: 9px;}
+button:hover {
+    background-color: red;
+}
     </style>
   </head>
   <body>
@@ -193,18 +201,29 @@ echo "<script>
 echo "<div align = \"center\">";
 	echo "<div class=\"data-table\">";
 echo "<table><tr>";
-echo "<td style=\"font-size:20px;\">USERID : </br>NAME : </br>PHONE NO. : </br>GENDER : </br>DOB : </br>LANGUAGE : </br>ADHAR NO. : </td>";
+
+echo "<td style=\"font-size:20px;\">   USERID : </br> NAME : </br>PHONE NO. : </br>GENDER : </br>DOB : </br>LANGUAGE : </br>ADHAR NO. : </td>";
 	  	 echo "<div class=\"data-table\">";
 	while ($row = mysqli_fetch_array($res)) {
 		echo "<td style=\"font-size:20px;\">".$row[0]."</br>".$row[1]."</br>".$row[2]."</br>".$row[6]."</br>".$row[7]."</br>".$row[8]."</br>".$row[9]."</br></td>";
 		
-		echo"<td width='50%' style=\"font-size:20px;\"><button class='button' align='right' onclick='alertTeam()' ><h3>AlertTeam</h3></button>";
+		echo"<td width='50%' style=\"font-size:20px;\"><button class='button button4' onclick='alertTeam()' ><h3>AlertTeam</h3></button></br></br><button class='button button4' onclick='Action()' ><h3>Action</h3></button></td>";
 	
 	}
    echo "</tr></table>";
    echo "</div>";
 
-echo "</div>";
+	echo "</div>";
+echo"<script type='text/javascript'>function Action(){
+if(confirm('SEND ACKNOWLEDGEMENT!!!')){
+	//send msg to the help seeker
+}
+
+else
+{
+	alert(\"Not acknowleged!!!\");
+}
+}</script>";
 	
 	
 	?>

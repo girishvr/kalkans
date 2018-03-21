@@ -1,50 +1,69 @@
-<!DOCTYPE html>
 <html>
-
-<head>
-<link rel="stylesheet" href="CSS.css">
-  <meta charset="UTF-8">
-
-  <title>Department Login </title>
-
-  <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
-
-    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
-<link rel="stylesheet" href="CSS.css">
+<head><title> DEPARTMENT LOGIN</title>
+<link rel="stylesheet" type="text/css" href="login.css">
 </head>
+<body>
 
-<body >
-</br>
-</br>
-</br>
-</br>
-</br>
-  <div class="login-card" size="50">
-    <h1><b>LOG-IN</b></h1><br></br>
-	
-	
-  <form action="check.php" method="post">
-  
-  <div  data-validate = " Enter valid username">
-    <input type="text" name="user" placeholder="Username"></div>
-    <input type="password" name="pass" placeholder="Password">
-    <input type="submit" name="login" class="login login-submit" value="LOGIN">
-  </form>
+<form action="check.php" method="POST">
+<div class="materialContainer">
 
-  
-  <!--
-  <div class="login-help">
-    <a href="#">Register</a> • <a href="#">Forgot Password</a>
-  </div>
+
+   <div class="box">
+
+      <div class="title">LOGIN</div>
+
+      <div class="input">
+         <!--<label for="name">Username</label>-->
+         Username<input type="text" placeholder="username" name="name" id="name">
+         <span class="spin"></span>
+      </div>
+
+      <div class="input">
+         <!--<label for="pass">Password</label>-->
+         Password<input type="password" placeholder="password"  name="pass" id="pass">
+         <span class="spin"></span>
+      </div>
+
+      <div class="button login">
+		
+         <button><span>LOGIN</span> <i class="fa fa-check"></i></button>
+      </div>
+
+      <!--<a href="" class="pass-forgot">Forgot your password?</a>-->
+
+   </div>
 </div>
+   <!--<div class="overbox">
+      <div class="material-button alt-2"><span class="shape"></span></div>
 
--->
+      <div class="title">REGISTER</div>
+
+      <div class="input">
+         <label for="regname">Username</label>
+         <input type="text" name="regname" id="regname">
+         <span class="spin"></span>
+      </div>
+
+      <div class="input">
+         <label for="regpass">Password</label>
+         <input type="password" name="regpass" id="regpass">
+         <span class="spin"></span>
+      </div>
+
+      <div class="input">
+         <label for="reregpass">Repeat Password</label>
+         <input type="password" name="reregpass" id="reregpass">
+         <span class="spin"></span>
+      </div>
+
+      <div class="button">
+         <button><span>NEXT</span></button>
+      </div>
 
 
-<!-- <div id="error"><img src="https://dl.dropboxusercontent.com/u/23299152/Delete-icon.png" /> Your caps-lock is on.</div> -->
+   </div>
 
-  <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
-
+</div>-->
+</form>
 </body>
-
 </html>

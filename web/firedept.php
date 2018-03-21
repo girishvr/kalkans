@@ -108,6 +108,26 @@ if (!$query) {
 		color:#111F11;
 		
 		}
+		.button{
+			border-radius: 9px;
+			 background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+	height: 26dp;
+	 transition: all 0.1s ease-in-out;
+		}
+		
+			button:hover {
+    background-color: #33FF90;
+	
+}
+		
 		
 		#update
 		{
@@ -122,7 +142,7 @@ if (!$query) {
 </head>
 <body>
 	<table class="data-table">
-		<caption class="title">The Alerts Info</caption>
+		<caption class="title">THE ALERTS INFORMATION</caption>
 		<thead>
 			<tr>
 				<th>EID</th>
@@ -131,7 +151,7 @@ if (!$query) {
 				<th>Longitude</th>
 				<th>Timestamp</th>
 				<th>UserId</th>
-				<th>Status</th>
+				<th>Text</th>
 				
 				<th>SHOW PROFILE</th>
 			</tr>
@@ -154,7 +174,7 @@ if (!$query) {
 					<td>'.$row[5].'</td>
 				
 					<td>'.$row[6].'</td>
-					<td><a href="details.php?id='.$row[5].'"><button>View Details</button></a></td>
+					<td><a href="details.php?id='.$row[5].'"><button class="button">View Details</button></a></td>
 
 						
 				</tr>';

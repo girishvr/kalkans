@@ -4,7 +4,7 @@ include'connection.php';
 session_start();
 $f=0;
 
-$uname=$_POST['user'];
+$uname=$_POST['name'];
 $pass=$_POST['pass'];
 
 if($uname=="medical" && $pass=="123")
@@ -24,7 +24,7 @@ header('location: ndmdept.php');
 else
 { 
 echo "Wrong password. Try again.";
-			header("Refresh: 5; URL=deptlogin.html");
+			header("Refresh: 5; URL=index.html");
 			exit();
 			
 }
