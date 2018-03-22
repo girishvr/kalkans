@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TheftCard = (CardView) findViewById(R.id.Theft_card);
         TerroristCard = (CardView) findViewById(R.id.Terrorist_card);
         WomenSafetyCard = (CardView) findViewById(R.id.Women_Safety_card);
-       // hello=(TextView)findViewById(R.id.hello);
 
-       //hello.setText(String.format("Hello %s!", getName()));
+        // hello=(TextView)findViewById(R.id.hello);
+        //hello.setText(String.format("Hello %s!", getName()));
 
 
         FloodCard.setOnClickListener(this);
