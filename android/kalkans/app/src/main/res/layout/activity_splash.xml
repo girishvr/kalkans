@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back6"
+    tools:context="com.bitjini.kalkans.SplashActivity">
+
+    <TextView
+        android:id="@+id/textView"
+=======
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,10 +22,17 @@
 
 
     <TextView
+>>>>>>> 2954dc84eac70ea77b3faee5e5c4724a98143443
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+<<<<<<< HEAD
+        android:layout_marginTop="197dp"
+        android:textSize="75sp"
+        android:text="HELPJINI" />
+</RelativeLayout>
+=======
         android:layout_marginTop="92dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="WELCOME TO HELPJINI"
@@ -31,3 +50,4 @@
 
 
 </LinearLayout>
+>>>>>>> 2954dc84eac70ea77b3faee5e5c4724a98143443
