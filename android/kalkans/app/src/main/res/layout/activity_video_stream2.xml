@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.bitjini.kalkans.VideoStream">
+
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:id="@+id/scrollView2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -15,21 +17,22 @@
 
             <VideoView
                 android:id="@+id/myVideo"
-                android:layout_width="600dp"
-                android:layout_height="600dp"
-                android:layout_centerInParent="true" />
-
-            <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="8"
-                android:lines="8"
-                android:ems="10"
-                android:textColor="#23283a"
-                android:inputType="textMultiLine"
-                android:text="Turn Around,Don't drown"/>
+                android:layout_height="300dp"
+                android:layout_centerInParent="true" />
 
 
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/scrollView2"
+        android:textColor="#07090e"
+        android:text="Be Alert!! Turn Around , Don't Drown Avoid Walking or driving through flood water!!" />
+
 </RelativeLayout>

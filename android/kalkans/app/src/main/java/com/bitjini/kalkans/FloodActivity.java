@@ -76,10 +76,10 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
             if (location != null)
                 onLocationChanged(location);
             else
-                Toast.makeText(getBaseContext(), "location cant be retrieved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location was not retrieved.", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(getBaseContext(), "No Provider Found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
         }
       /*  name = getIntent().getExtras().getString("name");
         phone = getIntent().getExtras().getString("txtPhone");
@@ -108,7 +108,7 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
 
         t1.setText("Latitude : "+location.getLatitude());
         t2.setText("Longitude : "+location.getLongitude());
-        Toast.makeText(getBaseContext(), "location sent", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location Sent.", Toast.LENGTH_SHORT).show();
 
 
         lat = Double.toString(location.getLatitude());
