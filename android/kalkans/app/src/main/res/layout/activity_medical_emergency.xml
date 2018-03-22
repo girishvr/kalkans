@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    tools:context="com.bitjini.kalkans.MedicalEmergencyActivity">
+
+    <Button
+        android:id="@+id/MedicalEmergency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="151dp"
+        android:background="#efaa06"
+        android:text="EMERGENCY"
+        android:textColor="#ffff"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="136dp" />
+
+    <Button
+        android:id="@+id/MedicalSafety"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/MedicalEmergency"
+        android:layout_below="@+id/MedicalEmergency"
+        android:layout_marginTop="125dp"
+        android:background="#efaa06"
+        android:text="SAFETY TIPS"
+        android:textColor="#ffff"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="299dp" />
+
+</RelativeLayout>

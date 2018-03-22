@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#be136e</color>
+    <color name="colorPrimary">#fa7e25</color>
     <color name="pink">#fe104d</color>
-    <color name="colorPrimaryDark">#FFA000</color>
+    <color name="colorPrimaryDark">#e6960f</color>
     <color name="backgroundcolor">#fcfcfc</color>
     <color name="lightgray">#ededed</color>
     <color name="deeppurple">#7c4dff</color>

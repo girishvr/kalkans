@@ -4,53 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/yellow"
     tools:context="com.bitjini.kalkans.LoginActivity">
 
-    <EditText
-        android:id="@+id/username"
+    <RelativeLayout
+        android:id="@+id/question"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="120dp"
+        android:background="#ffff"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/Password"
+            android:layout_marginTop="92dp"
+            android:background="@drawable/edittext_change"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:textColor="@color/darkblue"
+            android:textColorHint="@color/colorPrimaryDark" />
+
+
+        <EditText
+            android:id="@+id/Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp"
+            android:background="@drawable/edittext_change"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:textColor="@color/darkblue"
+            android:textColorHint="@color/colorPrimaryDark" />
+
+        <Button
+            android:id="@+id/login"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/SignUp"
+            android:layout_below="@+id/Password"
+            android:layout_marginTop="46dp"
+            android:background="@drawable/button_change"
+            android:hint="Login"
+            android:text="Login"
+            android:textColor="@color/darkblue" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="43dp"
+            android:text="Registered? If not then Sign Up!"
+            android:textColor="@color/darkblue"
+            tools:text="Registered? If not then Sign Up!" />
+
+        <Button
+            android:id="@+id/SignUp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/button_change"
+            android:text="SignUp"
+            android:textColor="@color/darkblue" />
+
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/Password"
+            android:layout_toStartOf="@+id/Password"
+            app:srcCompat="@drawable/lock" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/username"
+            android:layout_toStartOf="@+id/username"
+            app:srcCompat="@drawable/user" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="87dp"
-        android:ems="10"
-        android:hint="Username"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:inputType="textPersonName"
-        android:text="Username" />
+        android:layout_marginTop="61dp"
+        app:srcCompat="@drawable/login" />
 
-    <EditText
-        android:id="@+id/Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/username"
-        android:layout_below="@+id/username"
-        android:layout_marginTop="43dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPersonName"
-        android:text="Password"
-        android:textColorHint="@color/colorPrimaryDark"
-        tools:textColorHint="@color/colorPrimaryDark" />
-
-    <Button
-        android:id="@+id/login"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="89dp"
-        android:hint="Login"
-        android:text="Login" />
-
-    <Button
-        android:id="@+id/SignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/login"
-        android:layout_below="@+id/login"
-        android:layout_marginTop="36dp"
-        android:text="SignUp" />
 </RelativeLayout>
 

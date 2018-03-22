@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View arg0) {
 
+                putName();
                 // Get username, password from EditText
                 String username = txtUsername.getText().toString();
                 String password = txtPassword.getText().toString();
@@ -124,6 +125,13 @@ public class LoginActivity extends AppCompatActivity{
 
             }
         });
+    }
+
+    void putName()
+    {
+        SharedPreferences.Editor editor=getSharedPreferences(PREFER_NAME,MODE_PRIVATE).edit();
+        editor.putString("Name",txtUsername.getText().toString());
+        editor.apply();
     }
 
 }
