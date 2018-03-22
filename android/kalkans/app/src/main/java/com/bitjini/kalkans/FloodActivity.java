@@ -38,7 +38,6 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         eme = (Button) findViewById(R.id.button);
         saf = (Button) findViewById(R.id.button2);
         //t1 = (TextView) findViewById(R.id.textView);
-       // t2 = (TextView) findViewById(R.id.textView2);
         saf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
