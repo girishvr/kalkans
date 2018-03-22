@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
     tools:context="com.bitjini.kalkans.SafetytipsActivity">
 
     <android.support.design.widget.FloatingActionButton
@@ -11,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:src="@drawable/ic_my_icon"
         android:layout_margin="16dp" />
 
 </android.support.constraint.ConstraintLayout>
