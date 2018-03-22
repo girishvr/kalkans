@@ -1,4 +1,5 @@
 package com.bitjini.kalkans;
+
         import android.Manifest;
         import android.content.Context;
         import android.content.Intent;
@@ -38,7 +39,13 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         saf = (Button) findViewById(R.id.button2);
         t1 = (TextView) findViewById(R.id.textView);
         t2 = (TextView) findViewById(R.id.textView2);
-
+        saf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(FloodActivity.this,VideoStream.class);
+                startActivity(i);
+            }
+        });
 //        eme = new Button(this);
 
 
@@ -69,10 +76,10 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
             if (location != null)
                 onLocationChanged(location);
             else
-                Toast.makeText(getBaseContext(), "location cant be retrieved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location was not retrieved.", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(getBaseContext(), "No Provider Found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
         }
       /*  name = getIntent().getExtras().getString("name");
         phone = getIntent().getExtras().getString("txtPhone");
@@ -101,7 +108,7 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
 
         t1.setText("Latitude : "+location.getLatitude());
         t2.setText("Longitude : "+location.getLongitude());
-        Toast.makeText(getBaseContext(), "location sent", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location Sent.", Toast.LENGTH_SHORT).show();
 
 
         lat = Double.toString(location.getLatitude());

@@ -5,9 +5,6 @@ package com.bitjini.kalkans;
         import android.os.Handler;
         import android.support.v7.app.AppCompatActivity;
 
-/**
- * Created by AbhiAndroid
- */
 
 public class SplashActivity extends AppCompatActivity {
     Handler handler;
