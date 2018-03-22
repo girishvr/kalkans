@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'users.apps.UsersConfig',
     'calamitys.apps.CalamitysConfig',
+    'departments.apps.DepartmentsConfig',
+    'teams.apps.TeamsConfig',
     
 
 ]

@@ -1,6 +1,13 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from departments.models import department
+from departments.serializers import departmentSerializer
+from rest_framework import generics
 
-from django.shortcuts import render
 
-# Create your views here.
+class departmentList(generics.ListCreateAPIView):
+    queryset = department.objects.all()
+    serializer_class = departmentSerializer
+
+
+class departmentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = department.objects.all()
+    serializer_class = departmentSerializer

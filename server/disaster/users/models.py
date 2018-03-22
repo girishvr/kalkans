@@ -18,7 +18,7 @@ class user(models.Model):
     em_no    = models.IntegerField(max_length=10, unique=False, blank=True, default='')
     adhar    = models.CharField(max_length=30, unique=False, blank=True, default='')
     city     = models.CharField(max_length=100, unique=False, blank=False, default='')
-    gender   = models.CharField(max_length=100, unique=False, blank=False, default='',choices=GENDERS)
+    gender   = models.CharField(max_length=100, unique=False, blank=False, default='M',choices=GENDERS)
     DOB      = models.CharField(max_length=100, unique=False, blank=False, default='')
     language = models.CharField(max_length=100, unique=False, blank=False, default='')
     image    = models.CharField(max_length=100, unique=False, blank=True, default='')

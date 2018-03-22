@@ -4,7 +4,7 @@ from pygments.styles import get_all_styles
 
 
 
-class Calamity(models.Model):
+class calamity(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     eid = models.CharField(max_length=100, blank=True, default='')
     etype = models.CharField(max_length=100, blank=True, default='')
