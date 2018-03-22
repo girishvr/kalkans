@@ -109,7 +109,7 @@ if (!$query) {
 		
 		}
 		.button{
-			border-radius: 9px;
+			border-radius: 5px;
 			 background-color: #4CAF50;
     border: none;
     color: white;
