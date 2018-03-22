@@ -255,13 +255,13 @@ echo "<tr><td style=\"font-size:20px;\">   ADHAR NO : </td><td style=\"font-size
 	echo "</div>";
 	echo"<div class='btn-group' > 
 			<button style='float:left;'>Alert Team</button></br></br></br>
-			<button style='float:left;'>Action</button>
+			<button style='float:left;' onclick='Action()'>Action</button>
 		</div>";
 		
 	
 	
 echo"<script type='text/javascript'>function Action(){
-prompt('SEND ACKNOWLEDGEMENT!!!');
+prompt('Type your message!!!');
 	//send msg to the help seeker
 
 
