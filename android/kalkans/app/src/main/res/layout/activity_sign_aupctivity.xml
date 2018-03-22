@@ -1,117 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> 2954dc84eac70ea77b3faee5e5c4724a98143443
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    android:background="@drawable/back6"
+    android:background="@color/backgroundcolor"
     tools:context="com.example.SignAupctivity"
     android:orientation="vertical" >
+
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        >
+        android:layout_height="fill_parent">
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical">
-            <TextView
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignTop="@+id/Password"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="30dp"
+                android:layout_toStartOf="@+id/Password"
+                app:srcCompat="@drawable/register" />
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="50sp"
-                android:text="Register" />
-            <EditText
-                android:id="@+id/Name"
+                android:layout_marginTop="10dp"
+                android:hint="Enter name">
+
+
+                <EditText
+                    android:id="@+id/Name"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:hint="Enter name"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/colorPrimaryDark" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter name"
-                android:inputType="textPersonName" />
-            <EditText
-                android:id="@+id/Pass"
+                android:layout_marginTop="20dp"
+                android:hint="Enter Password">
+
+                <EditText
+                    android:id="@+id/Pass"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:ems="10"
+                    android:hint="Enter Password"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/colorPrimaryDark" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter Password"
-                android:inputType="textPersonName" />
-            <EditText
-                android:id="@+id/Email"
+                android:layout_marginTop="20dp"
+                android:hint="Enter Email">
+
+                <EditText
+                    android:id="@+id/Email"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:ems="10"
+                    android:hint="Enter email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter email"
-                android:inputType="textEmailAddress" />
-            <EditText
-                android:id="@+id/pno"
+                android:layout_marginTop="20dp"
+                android:hint="Enter Phone Number">
+
+                <EditText
+                    android:id="@+id/pno"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:ems="10"
+                    android:hint="PhoneNumber"
+                    android:inputType="phone"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="PhoneNumber"
-                android:inputType="phone" />
-            <EditText
-                android:id="@+id/eno"
+                android:layout_marginTop="20dp"
+                android:hint="Enter emergency number">
+
+                <EditText
+                    android:id="@+id/eno"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:ems="10"
+                    android:hint="Enter emergency number"
+                    android:inputType="phone"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter emergency number"
-                android:inputType="phone" />
-            <EditText
-                android:id="@+id/aadhar"
+                android:layout_marginTop="20dp"
+                android:hint="Enter aadhar number">
+
+                <EditText
+                    android:id="@+id/aadhar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:ems="10"
+                    android:hint="Enter  aadhar number"
+                    android:inputType="number"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter  aadhar number"
-                android:inputType="number" />
-            <EditText
-                android:id="@+id/city"
+                android:layout_marginTop="20dp"
+                android:hint="Enter city">
+
+                <EditText
+                    android:id="@+id/city"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:ems="10"
+                    android:hint="city"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="city"
-                android:inputType="textPersonName" />
-            <EditText
-                android:id="@+id/dob"
+                android:layout_marginTop="20dp"
+                android:hint="Enter Date of birth">
+
+                <EditText
+                    android:id="@+id/dob"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:ems="10"
+                    android:hint="Enter date of birth"
+                    android:inputType="date"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="enter date of birth"
-                android:inputType="date" />
-            <EditText
-                android:id="@+id/lang"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter language"
-                android:inputType="textPersonName" />
+                android:layout_marginTop="20dp"
+                android:hint="Enter Password">
+
+                <EditText
+                    android:id="@+id/lang"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:ems="10"
+                    android:hint="Enter language"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </android.support.design.widget.TextInputLayout>
+
+
             <Button
                 android:id="@+id/Buttonloadpicture"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="Buttonloadpicture" />
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/button_change"
+                android:elevation="@android:dimen/thumbnail_width"
+                android:text="Buttonloadpicture"
+                android:textColor="#ffff" />
+
             <ImageView
                 android:id="@+id/imgView"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
                 android:src="@android:drawable/btn_star" />
+
             <Button
                 android:id="@+id/register"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="login" />
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_change"
+                android:elegantTextHeight="true"
+                android:elevation="@dimen/activity_vertical_margin"
+                android:fadingEdge="horizontal|vertical"
+                android:text="Sign Up" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
 
 
-=======
-    tools:context="com.bitjini.kalkans.SignAupctivity"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    >
-
-</RelativeLayout>
->>>>>>> 2954dc84eac70ea77b3faee5e5c4724a98143443

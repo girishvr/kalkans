@@ -5,13 +5,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 
 public class SignAupctivity extends AppCompatActivity{
 
@@ -20,12 +20,14 @@ public class SignAupctivity extends AppCompatActivity{
     Button Register;
     EditText txtUsername, txtPassword, txtEmail,txtPhone,txtEphone,txtCity,txtDob;
     UserSession session;
+    private AwesomeValidation awesomeValidation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_aupctivity);
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
 
         txtUsername = (EditText) findViewById(R.id.Name);
         txtPassword = (EditText) findViewById(R.id.Pass);
@@ -35,6 +37,14 @@ public class SignAupctivity extends AppCompatActivity{
         txtCity = (EditText) findViewById(R.id.city);
         txtDob = (EditText) findViewById(R.id.dob);
         Register = (Button) findViewById(R.id.register);
+
+        awesomeValidation.addValidation(this, R.id.Name, "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
+        awesomeValidation.addValidation(this, R.id.Email, Patterns.EMAIL_ADDRESS, R.string.emailerror);
+        awesomeValidation.addValidation(this, R.id.Pass, "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.passworderror);
+        awesomeValidation.addValidation(this, R.id.pno, "^[2-9]{2}[0-9]{8}$", R.string.mobileerror);
+        awesomeValidation.addValidation(this, R.id.eno, "^[2-9]{2}[0-9]{8}$", R.string.mobileerror);
+        awesomeValidation.addValidation(this, R.id.city, "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
+
 
 // creating an shared Preference file for the information to be stored
 // first argument is the name of file and second is the mode, 0 is private mode
@@ -54,30 +64,6 @@ public class SignAupctivity extends AppCompatActivity{
                 String city = txtCity.getText().toString();
                 String dob = txtDob.getText().toString();
 
-                if(txtUsername.getText().length()<=0){
-                    Toast.makeText(SignAupctivity.this, "Enter name", Toast.LENGTH_SHORT).show();
-                }
-                else if( txtEmail.getText().length()<=0){
-                    Toast.makeText(SignAupctivity.this, "Enter email", Toast.LENGTH_SHORT).show();
-                }
-                else if( txtPassword.getText().length()<=0){
-                    Toast.makeText(SignAupctivity.this, "Enter password", Toast.LENGTH_SHORT).show();
-                }
-                else if(txtPhone.getText().length()<10) {
-                    Toast.makeText(SignAupctivity.this, "Enter Valid number", Toast.LENGTH_SHORT).show();
-                }
-                else if(txtEphone.getText().length()<10) {
-                    Toast.makeText(SignAupctivity.this, "Enter Valid number", Toast.LENGTH_SHORT).show();
-                }
-                else if(txtCity.getText().length()<=0) {
-                    Toast.makeText(SignAupctivity.this, "Enter city", Toast.LENGTH_SHORT).show();
-                }
-                else if(txtDob.getText().length()<=0) {
-                    Toast.makeText(SignAupctivity.this, "Enter date of birth", Toast.LENGTH_SHORT).show();
-                }
-
-                else{
-
                     // as now we have information in string. Lets stored them with the help of editor
                     editor.putString("Name", name);
                     editor.putString("Email",email);
@@ -86,14 +72,29 @@ public class SignAupctivity extends AppCompatActivity{
                     editor.putString("txtEphone",ephone);
                     editor.putString("txtCity",city);
                     editor.putString("txtDob",dob);
-                    editor.commit();}   // commit the values
+                    editor.commit(); // commit the values
+
+                if (v == Register) {
+                    submitForm();
+                }
 
                 // after saving the value open next activity
-                Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
-                startActivity(ob);
+               // Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
+                //startActivity(ob);
 
             }
         });
+
+    }
+    private void submitForm() {
+        //first validate the form then move ahead
+        //if this becomes true that means validation is successfull
+        if (awesomeValidation.validate()) {
+            Toast.makeText(this, "Registration Successfull", Toast.LENGTH_LONG).show();
+            Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
+            startActivity(ob);
+            //process the data further
+        }
     }
 
 }

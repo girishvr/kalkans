@@ -1,8 +1,14 @@
 package com.bitjini.kalkans;
 
-/**
- * Created by Hp on 3/20/2018.
- */
 
-class TerroristActivity {
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class TerroristActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_terrorist);
+    }
 }
