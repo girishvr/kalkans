@@ -39,7 +39,13 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         saf = (Button) findViewById(R.id.button2);
         t1 = (TextView) findViewById(R.id.textView);
         t2 = (TextView) findViewById(R.id.textView2);
-
+        saf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(FloodActivity.this,VideoStream.class);
+                startActivity(i);
+            }
+        });
 //        eme = new Button(this);
 
 
