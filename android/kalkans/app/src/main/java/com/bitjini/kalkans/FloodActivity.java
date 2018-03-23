@@ -45,8 +45,44 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         setContentView(R.layout.activity_flood);
         eme = (Button) findViewById(R.id.button);
         saf = (Button) findViewById(R.id.button2);
-        //t1 = (TextView) findViewById(R.id.textView);
-        //t2 = (TextView) findViewById(R.id.textView2);
+
+
+        t1 = (TextView) findViewById(R.id.textViewlat);
+        t2 = (TextView) findViewById(R.id.textViewlon);
+
+
+
+
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+
+        provider = locationManager.getBestProvider(criteria, false);
+
+        if (provider != null && !provider.equals("")) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+
+            Location location = locationManager.getLastKnownLocation(provider);
+            locationManager.requestLocationUpdates(provider, 1000, 1, this);
+
+            if (location != null)
+                onLocationChanged(location);
+            else
+                Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location was not retrieved.", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+
+
+
+
         saf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,8 +92,8 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         });
 //        eme = new Button(this);
 
-
         eme.setOnLongClickListener(new View.OnLongClickListener() {
+
             @Override
             public boolean onLongClick(View view) {
                 clicked();
