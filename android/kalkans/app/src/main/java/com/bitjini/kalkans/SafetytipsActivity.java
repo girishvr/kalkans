@@ -16,7 +16,5 @@ public class SafetytipsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_safetytips);
         Intent intent = new Intent(SafetytipsActivity.this, VideoStream.class);
         startActivity(intent);
-
-
     }
 }

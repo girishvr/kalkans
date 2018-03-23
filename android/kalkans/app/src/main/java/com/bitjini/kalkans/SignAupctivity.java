@@ -1,5 +1,6 @@
 package com.bitjini.kalkans;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -17,6 +18,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -42,32 +44,19 @@ import java.text.SimpleDateFormat;
 
 import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
 
-public class SignAupctivity extends AppCompatActivity{
+public class SignAupctivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     Editor editor;
     Button Register;
-    EditText txtUsername, txtPassword, txtEmail,txtPhone,txtEphone,txtCity,txtDob;
+    EditText txtUsername, txtPassword, txtEmail, txtPhone, txtEphone, txtCity, txtDob;
     UserSession session;
     ImageButton capture;
+    ImageView photo;
     String userChoosenTask;
     private AwesomeValidation awesomeValidation;
-    private static int SELECT_FILE=1;
-    private static int REQUEST_CAMERA=1;
-    private static int RESULT_LOAD_IMAGE=1;
-    private final int requestCode = 20;
-    final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1;
-    private Uri fileUri;
-    private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
-    private static final int CAMERA_CAPTURE_VIDEO_REQUEST_CODE = 200;
-    public static final int MEDIA_TYPE_IMAGE = 1;
-    public static final int MEDIA_TYPE_VIDEO = 2;
-
-
-    Uri imageUri                      = null;
-    static TextView imageDetails      = null;
-    public  static ImageView showImg  = null;
-    SignAupctivity CameraActivity = null;
+    private static int RESULT_LOAD_IMAGE = 1;
+    public static final int RequestPermissionCode = 1;
 
 
     @Override
@@ -76,6 +65,7 @@ public class SignAupctivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_aupctivity);
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+
 
         txtUsername = (EditText) findViewById(R.id.Name);
         txtPassword = (EditText) findViewById(R.id.Pass);
@@ -86,6 +76,9 @@ public class SignAupctivity extends AppCompatActivity{
         txtDob = (EditText) findViewById(R.id.dob);
         Register = (Button) findViewById(R.id.register);
         capture = (ImageButton) findViewById(R.id.capture);
+        photo = (ImageView) findViewById(R.id.photo);
+
+        EnableRuntimePermission();
 
         awesomeValidation.addValidation(this, R.id.Name, "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
         awesomeValidation.addValidation(this, R.id.Email, Patterns.EMAIL_ADDRESS, R.string.emailerror);
@@ -134,17 +127,11 @@ public class SignAupctivity extends AppCompatActivity{
                     submitForm();
                 }
 
-                // after saving the value open next activity
-                // Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
-                //startActivity(ob);
-
             }
         });
     }
 
     private void submitForm() {
-        //first validate the form then move ahead
-        //if this becomes true that means validation is successfull
         if (awesomeValidation.validate()) {
             Toast.makeText(this, "Registration Successfull", Toast.LENGTH_LONG).show();
             Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
@@ -154,8 +141,8 @@ public class SignAupctivity extends AppCompatActivity{
     }
 
     private void selectImage() {
-        final CharSequence[] items = { "Take Photo", "Choose from Library",
-                "Cancel" };
+        final CharSequence[] items = {"Take Photo", "Choose from Library",
+                "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(SignAupctivity.this);
         builder.setTitle("Add Photo!");
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -163,12 +150,12 @@ public class SignAupctivity extends AppCompatActivity{
             public void onClick(DialogInterface dialog, int item) {
                 boolean result = UtilSignupActivity.checkPermission(SignAupctivity.this);
                 if (items[item].equals("Take Photo")) {
-                    userChoosenTask="Take Photo";
-                    if(result)
+                    userChoosenTask = "Take Photo";
+                    if (result)
                         cameraIntent();
                 } else if (items[item].equals("Choose from Library")) {
-                    userChoosenTask="Choose from Library";
-                    if(result)
+                    userChoosenTask = "Choose from Library";
+                    if (result)
                         galleryIntent();
                 } else if (items[item].equals("Cancel")) {
                     dialog.dismiss();
@@ -180,129 +167,75 @@ public class SignAupctivity extends AppCompatActivity{
 
     private void cameraIntent() {
 
+        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, 7);
     }
-    private void galleryIntent()
-    {
+
+    private void galleryIntent() {
         Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-            ImageView photo = (ImageView) findViewById(R.id.photo);
-            photo.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            onSelectFromGalleryResult(data);
         }
+       else if (requestCode == 7 && resultCode == RESULT_OK) {
+            onCaptureImageResult(data);
+        }
+
     }
 
-       /* @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case UtilSignupActivity.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(userChoosenTask.equals("Take Photo"))
-                        cameraIntent();
-                    else if(userChoosenTask.equals("Choose from Library"))
-                        galleryIntent();
+    private void onCaptureImageResult(Intent data){
+        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+        photo.setImageBitmap(bitmap);
+
+    }
+
+
+    @SuppressWarnings("deprecation")
+    private void onSelectFromGalleryResult(Intent data) {
+        Uri selectedImageUri = data.getData();
+        photo.setImageURI(selectedImageUri);
+    }
+
+        public void EnableRuntimePermission(){
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(SignAupctivity.this,
+                    Manifest.permission.CAMERA))
+            {
+
+                Toast.makeText(SignAupctivity.this,"CAMERA permission allows us to Access CAMERA app", Toast.LENGTH_LONG).show();
+
+            } else {
+
+                ActivityCompat.requestPermissions(SignAupctivity.this,new String[]{
+                        Manifest.permission.CAMERA}, RequestPermissionCode);
+
+            }
+        }
+
+    @Override
+    public void onRequestPermissionsResult(int RC, String per[], int[] PResult) {
+
+        switch (RC) {
+
+            case RequestPermissionCode:
+
+                if (PResult.length > 0 && PResult[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    Toast.makeText(SignAupctivity.this,"Permission Granted, Now your application can access CAMERA.", Toast.LENGTH_LONG).show();
+
                 } else {
-                    //code for deny
+
+                    Toast.makeText(SignAupctivity.this,"Permission Canceled, Now your application cannot access CAMERA.", Toast.LENGTH_LONG).show();
+
                 }
                 break;
         }
     }
 
-   /* @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == SELECT_FILE)
-                onSelectFromGalleryResult(data);
-            else if (requestCode == REQUEST_CAMERA)
-                onCaptureImageResult(data);
-        }
     }
-
-    @SuppressWarnings("deprecation")
-    private void onSelectFromGalleryResult(Intent data) {
-        Bitmap bm=null;
-        if (data != null) {
-            try {
-                bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        ivImage.setImageBitmap(bm);
-    }
-
-    private void onSelectFromGalleryResult(Intent data) {
-        Bitmap bm=null;
-        if (data != null) {
-            try {
-                bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        ivImage.setImageBitmap(bm);
-    }
-
-    private void onCaptureImageResult(Intent data) {
-        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
-        File destination = new File(Environment.getExternalStorageDirectory(),
-                System.currentTimeMillis() + ".jpg");
-        FileOutputStream fo;
-        try {
-            destination.createNewFile();
-            fo = new FileOutputStream(destination);
-            fo.write(bytes.toByteArray());
-            fo.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        ivImage.setImageBitmap(thumbnail);
-    }
-
-    File destination = new File(Environment.getExternalStorageDirectory(),
-            System.currentTimeMillis() + ".jpg");
-
-    FileOutputStream fo;
-        try {
-        try {
-            destination.createNewFile();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        try {
-            fo = new FileOutputStream(destination);
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        }
-        fo.write(bytes.toByteArray());
-        try {
-            fo.close();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }*/
-
-}
 
 
