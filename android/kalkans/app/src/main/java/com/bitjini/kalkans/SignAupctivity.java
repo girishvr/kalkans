@@ -1,28 +1,17 @@
 package com.bitjini.kalkans;
-
-import android.app.Activity;
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.util.Patterns;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,19 +22,30 @@ import android.widget.Toast;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
-import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SignAupctivity extends AppCompatActivity{
-
+    String ServerURL = "http://techtron.esy.es/userdb.php" ;
     SharedPreferences sharedPreferences;
     Editor editor;
+    String TempName;
+    String TempEmail;
+    String TempPhone;
+    String TempCity;
+    String TempEphone;
+    String Templang;
     Button Register;
     EditText txtUsername, txtPassword, txtEmail,txtPhone,txtEphone,txtCity,txtDob;
     UserSession session;
@@ -131,6 +131,7 @@ public class SignAupctivity extends AppCompatActivity{
                 editor.commit(); // commit the values
 
                 if (v == Register) {
+
                     submitForm();
                 }
 
@@ -147,6 +148,9 @@ public class SignAupctivity extends AppCompatActivity{
         //if this becomes true that means validation is successfull
         if (awesomeValidation.validate()) {
             Toast.makeText(this, "Registration Successfull", Toast.LENGTH_LONG).show();
+            GetData();
+            InsertData(TempName, TempPhone,TempEmail,TempCity,TempEphone);
+
             Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
             startActivity(ob);
             //process the data further
@@ -203,6 +207,76 @@ public class SignAupctivity extends AppCompatActivity{
             photo.setImageBitmap(BitmapFactory.decodeFile(picturePath));
         }
     }
+    public void GetData(){
+        TempCity = txtCity.getText().toString();
+        TempName = txtUsername.getText().toString();
+        TempPhone = txtPhone.getText().toString();
+        TempCity = txtCity.getText().toString();
+        TempEphone = txtEphone.getText().toString();
+        Templang = txtPassword.getText().toString();
+        TempEmail = txtEmail.getText().toString();
+
+    }
+    public void InsertData(final String name, final String phone, final String email, final String ephone, final String city){
+
+        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                String NameHolder = name ;
+                String EmailHolder = email ;
+                String numberHolder = phone ;
+                String nnumberHolder = ephone ;
+                String nnameHolder = city ;
+
+
+
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+
+                nameValuePairs.add(new BasicNameValuePair("name", NameHolder));
+                nameValuePairs.add(new BasicNameValuePair("email", EmailHolder));
+                nameValuePairs.add(new BasicNameValuePair("phone", numberHolder));
+                nameValuePairs.add(new BasicNameValuePair("ephone", nnumberHolder));
+                nameValuePairs.add(new BasicNameValuePair("city", nnameHolder));
+
+
+
+                try {
+                    HttpClient httpClient = new DefaultHttpClient();
+
+                    HttpPost httpPost = new HttpPost(ServerURL);
+
+                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                    HttpResponse httpResponse = httpClient.execute(httpPost);
+
+                    HttpEntity httpEntity = httpResponse.getEntity();
+
+
+                } catch (ClientProtocolException e) {
+                } catch (IOException e) {
+                }
+                return "Data Inserted Successfully";
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                Toast.makeText(SignAupctivity.this,"data submitted Successfully", Toast.LENGTH_LONG).show();
+
+                super.onPostExecute(result);
+
+
+            }
+        }
+
+        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+
+        sendPostReqAsyncTask.execute(name, email, phone, ephone, city);
+    }
+
+}
+
 
        /* @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -303,6 +377,6 @@ public class SignAupctivity extends AppCompatActivity{
         e.printStackTrace();
     }*/
 
-}
+
 
 
