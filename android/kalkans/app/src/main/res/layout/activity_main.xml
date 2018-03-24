@@ -47,6 +47,7 @@
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
+                    android:shape="ring"
                     android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground">
 
@@ -61,7 +62,6 @@
                             android:layout_width="130dp"
                             android:layout_height="130dp"
                             android:background="@drawable/flood"
-
                             android:padding="10dp" />
 
                         <TextView

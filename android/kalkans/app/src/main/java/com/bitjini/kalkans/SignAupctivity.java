@@ -1,9 +1,11 @@
 package com.bitjini.kalkans;
 import android.Manifest;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +14,8 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,9 +23,11 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -41,8 +47,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class SignAupctivity extends AppCompatActivity{
     String ServerURL = "http://techtron.esy.es/userdb.php" ;
@@ -64,6 +73,9 @@ public class SignAupctivity extends AppCompatActivity{
     private static int RESULT_LOAD_IMAGE = 1;
     public static final int RequestPermissionCode = 1;
 
+    private DatePickerDialog fromDatePickerDialog;
+    private SimpleDateFormat dateFormatter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +96,7 @@ public class SignAupctivity extends AppCompatActivity{
         capture = (ImageButton) findViewById(R.id.capture);
         photo = (ImageView) findViewById(R.id.photo);
 
+
         EnableRuntimePermission();
 
         awesomeValidation.addValidation(this, R.id.Name, "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
@@ -96,6 +109,9 @@ public class SignAupctivity extends AppCompatActivity{
 
 // creating an shared Preference file for the information to be stored
 // first argument is the name of file and second is the mode, 0 is private mode
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        findViewsById();
+        setDateTimeField();
 
 
         capture.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +145,9 @@ public class SignAupctivity extends AppCompatActivity{
                 editor.putString("txtDob", dob);
                 editor.commit(); // commit the values
 
+
+
+
                 if (v == Register) {
 
                     submitForm();
@@ -137,6 +156,37 @@ public class SignAupctivity extends AppCompatActivity{
             }
         });
     }
+
+    private void findViewsById() {
+        txtDob= (EditText) findViewById(R.id.dob);
+        txtDob.setInputType(InputType.TYPE_NULL);
+    }
+
+    private void setDateTimeField() {
+
+
+            Calendar newCalendar = Calendar.getInstance();
+            fromDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    Calendar newDate = Calendar.getInstance();
+                    newDate.set(year, monthOfYear, dayOfMonth);
+                    txtDob.setText(dateFormatter.format(newDate.getTime()));
+                }
+
+            }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+        txtDob.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                if (view == txtDob) {
+                    fromDatePickerDialog.show();
+                }
+            }
+        });
+    }
+
+
 
     private void submitForm() {
         if (awesomeValidation.validate()) {
@@ -264,24 +314,6 @@ public class SignAupctivity extends AppCompatActivity{
     }
 
 
-
-       /*@Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case UtilSignupActivity.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(userChoosenTask.equals("Take Photo"))
-                        cameraIntent();
-                    else if(userChoosenTask.equals("Choose from Library"))
-                        galleryIntent();
-                } else {
-                    //code for deny
-                }
-                break;
-        }
-
-    }*/
-
     private void onCaptureImageResult(Intent data){
         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
         photo.setImageBitmap(bitmap);
@@ -310,6 +342,8 @@ public class SignAupctivity extends AppCompatActivity{
 
             }
         }
+
+
 
    @Override
     public void onRequestPermissionsResult(int RC, String per[], int[] PResult) {
