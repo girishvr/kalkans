@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
+        useLibrary 'org.apache.http.legacy'
         applicationId "com.example.hp.emergency"
         minSdkVersion 20
         targetSdkVersion 26

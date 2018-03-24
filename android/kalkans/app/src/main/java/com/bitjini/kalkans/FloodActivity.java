@@ -11,9 +11,16 @@ package com.bitjini.kalkans;
         import android.support.v4.app.ActivityCompat;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.view.Gravity;
+        import android.view.LayoutInflater;
+        import android.view.MotionEvent;
         import android.view.View;
+        import android.view.ViewGroup;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.LinearLayout;
+        import android.widget.PopupWindow;
+        import android.widget.RelativeLayout;
         import android.widget.TextView;
         import android.widget.Toast;
 
@@ -24,6 +31,7 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
     String lat, lon;
     TextView t1, t2;
     Button eme, saf;
+    boolean pop;
 
 
     String name, phone, email, ephone, dob, city;
@@ -37,7 +45,45 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         setContentView(R.layout.activity_flood);
         eme = (Button) findViewById(R.id.button);
         saf = (Button) findViewById(R.id.button2);
-        //t1 = (TextView) findViewById(R.id.textView);
+
+
+        t1 = (TextView) findViewById(R.id.textViewlat);
+        t2 = (TextView) findViewById(R.id.textViewlon);
+
+
+
+
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+
+        provider = locationManager.getBestProvider(criteria, false);
+
+        if (provider != null && !provider.equals("")) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+
+            Location location = locationManager.getLastKnownLocation(provider);
+            locationManager.requestLocationUpdates(provider, 1000, 1, this);
+
+            if (location != null)
+                onLocationChanged(location);
+            else
+                Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location was not retrieved.", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+
+
+
+
+
         saf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,11 +93,12 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         });
 //        eme = new Button(this);
 
+        eme.setOnLongClickListener(new View.OnLongClickListener() {
 
-        eme.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View view) {
                 clicked();
+                return false;
             }
         });
     }
@@ -72,12 +119,14 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
             Location location = locationManager.getLastKnownLocation(provider);
             locationManager.requestLocationUpdates(provider, 1000, 1, this);
 
-            if (location != null)
+            if (location != null) {
                 onLocationChanged(location);
+                boolean pop=true;
+            }
             else
                 Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location was not retrieved.", Toast.LENGTH_SHORT).show();
 
-        } else {
+        }else {
             Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
         }
       /*  name = getIntent().getExtras().getString("name");
@@ -100,6 +149,7 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
 
         // e.setText("");
     }
+
 
 
     @Override
