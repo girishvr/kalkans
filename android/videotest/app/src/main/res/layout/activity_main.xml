@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabMode="fixed"/>
+</android.support.design.widget.AppBarLayout>
+
+<android.support.v4.view.ViewPager
+    android:id="@+id/viewpager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="292dp"
+        android:layout_height="100dp"
+        android:layout_x="7dp"
+        android:layout_y="16dp"
+        android:text="" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="281dp"
+        android:layout_x="1dp"
+        android:layout_y="138dp"
+        android:id="@+id/frameLayout">
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <VideoView
+                android:id="@+id/svid"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+
+
+
+            <ImageView
+                android:id="@+id/simg"
+                android:layout_width="130dp"
+                android:layout_height="120dp"
+                android:src="@drawable/buttonvideo"
+                android:layout_centerInParent="true" />
+            <ImageView
+                android:id="@+id/playimg"
+                android:layout_width="100dp"
+                android:layout_height="87dp"
+                android:src="@drawable/playbutton"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:inputType="textPersonName"
+        android:textColor="#3F51B5"
+        android:text="     Safety Tips"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+
+
+</android.support.design.widget.CoordinatorLayout>
