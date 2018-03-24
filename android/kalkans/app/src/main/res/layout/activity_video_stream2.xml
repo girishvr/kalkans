@@ -1,38 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context="com.bitjini.kalkans.VideoStream">
 
-    <ScrollView
-        android:layout_width="400dp"
-        android:layout_height="300dp"
-        android:id="@+id/scrollView2">
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="292dp"
+        android:layout_height="100dp"
+        android:layout_x="7dp"
+        android:layout_y="16dp"
+        android:text="" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="281dp"
+        android:layout_x="1dp"
+        android:layout_y="138dp"
+        android:id="@+id/frameLayout">
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <VideoView
-                android:id="@+id/myVideo"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:id="@+id/svid"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+
+
+
+            <ImageView
+                android:id="@+id/simg"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/videobutton"
                 android:layout_centerInParent="true" />
+            <ImageView
+                android:id="@+id/playimg"
+                android:layout_width="100dp"
+                android:layout_height="87dp"
+                android:src="@drawable/playbutton"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+    </FrameLayout>
 
-
-        </LinearLayout>
-    </ScrollView>
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/scrollView2"
-        android:textColor="#07090e"
-        android:text="Be Alert!! Turn Around , Don't Drown Avoid Walking or driving through flood water!!" />
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:inputType="textPersonName"
+        android:textColor="#3F51B5"
+        android:text="     Safety Tips"
+        android:textSize="28dp" />
+
+
+
 
 </RelativeLayout>

@@ -41,7 +41,7 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         saf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(FloodActivity.this,VideoStream.class);
+                Intent i=new Intent(FloodActivity.this,SfaetyMeasures.class);
                 startActivity(i);
             }
         });
