@@ -25,7 +25,7 @@ public class VideoStream extends AppCompatActivity {
             vid=(VideoView) findViewById(R.id.svid);
             iv=(ImageView) findViewById(R.id.simg);
             ip = (ImageView) findViewById(R.id.playimg);
-            t=(TextView) findViewById(R.id.textView1);
+
             final ProgressDialog pd=new ProgressDialog(VideoStream.this);
 
             String link = "http://www.w3schools.com/html5/movie.mp4";

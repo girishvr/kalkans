@@ -7,6 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.app.ProgressDialog;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.TextView;
+import android.widget.VideoView;
 
 
 
@@ -18,6 +28,7 @@ import android.view.ViewGroup;
  * Use the {@link Tab1#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class Tab1 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +38,10 @@ public class Tab1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private VideoView vid;
+    private ImageView ip,iv;
+    private TextView t;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -51,6 +66,7 @@ public class Tab1 extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -106,4 +122,5 @@ public class Tab1 extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }

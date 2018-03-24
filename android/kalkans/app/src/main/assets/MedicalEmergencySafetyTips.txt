@@ -4,7 +4,20 @@ Provide first aid to the level you have been trained
  Do NOT attempt to move an injured person unless necessary to avoid further injury.
 
 If the person is bleeding:
-� Use rubber gloves (contained in the first aid kit) and apply pressure to the area.
-� If possible, elevate bleeding area above the level of the heart.
-� There is a First Aid and CPR guide located in all first aid kits. These guides give detailed steps in the event of a heart attack, CPR and infant CPR, choking, bleeding, poisoning and burns, as well as other injuries.
+ Use rubber gloves (contained in the first aid kit) and apply pressure to the area.
+ If possible, elevate bleeding area above the level of the heart.
+ There is a First Aid and CPR guide located in all first aid kits. These guides give detailed steps in the event of a heart attack, CPR and infant CPR, choking, bleeding, poisoning and burns, as well as other injuries.
 
+hindi
+
+
+
+मेडिकल आपात स्थिति
+शांत रहें और स्थिति का आकलन करें
+आपके द्वारा प्रशिक्षित स्तर के प्राथमिक सहायता प्रदान करें
+ आगे की चोट से बचने के लिए किसी घायल व्यक्ति को स्थानांतरित करने का प्रयास न करें।
+
+यदि व्यक्ति खून बह रहा है:
+ रबर के दस्ताने (प्राथमिक चिकित्सा किट में निहित) का प्रयोग करें और क्षेत्र पर दबाव डालें।
+ यदि संभव हो तो, हृदय के स्तर से ऊपर खून बह रहा क्षेत्र बढ़ाएं।
+ सभी प्राथमिक चिकित्सा किटों में स्थित एक प्राथमिक चिकित्सा और सीपीआर गाइड है इन गाइडों में दिल का दौरा, सीपीआर और शिशु सीपीआर, घुट, खून बह रहा, विषाक्तता और जलन, और साथ ही अन्य चोटों की स्थिति में विस्तृत कदम भी हैं।
