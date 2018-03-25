@@ -3,4 +3,5 @@ Django
 gunicorn
 psycopg2
 whitenoise
+pygments
 djangorestframework
