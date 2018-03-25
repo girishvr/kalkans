@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 
@@ -262,9 +263,49 @@ echo "<script>
          
 <script type='text/javascript'>
 	function Action(){
-	window.location="dilog/index.html";
-
-}
+	let defaultMessag = "Help is arriving soon."
+	swal({
+		  text: 'Acknowledge Message',
+		  content: "input",
+		  
+		  button: {
+			text: "Send!",
+			closeModal: false,
+		  },
+		})
+		.then(name => {
+		  if (!name) throw null;
+			return
+		 // return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
+		})
+		.then(results => {
+		  return results.json();
+		})
+		.then(json => {
+		  const movie = json.results[0];
+		 
+		  if (!movie) {
+			return swal("Acknowledge Message failed!");
+		  }
+		 
+		  const name = movie.trackName;
+		  const imageURL = movie.artworkUrl100;
+		 
+		  swal({
+			title: "Top result:",
+			text: name,
+			icon: imageURL,
+		  });
+		})
+		.catch(err => {
+		  if (err) {
+			swal("Oh noes!", "The AJAX request failed!", "error");
+		  } else {
+			swal.stopLoading();
+			swal.close();
+		  }
+		});
+	}
 </script>
 
 
