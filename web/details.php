@@ -1,168 +1,140 @@
-
-
-<!DOCTYPE html>
 <html>
-  <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+
+
+
+
+<style>
+
+
+.btn {
+
+
+  display: block;
+  margin: 30px auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  
+  background-color: #164AA7;
+  color: #ecf0f1;
+  
+  transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #4797BC;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.btn:before {
+  content: "";
+  
+  position: absolute;
+  top: 50%;
+ 
+  
+  display: block;
+  width: 0;
+  padding-top: 0;
     
+  border-radius: 100%;
+  
+  background-color: rgba(236, 240, 241, .3);
+  
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
 	
 	
 	
-	<style type="text/css">
-		body {
-			font-size: 15px;
-			color: #343d44;
-			font-family: "segoe-ui", "open-sans", tahoma, arial;
-			padding: 0;
-			margin: 0;
-		}
-		table {
-			margin: auto;
-			font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
-			font-size: 12px;
-		}
-
-		h1 {
-			margin: 25px auto 0;
-			text-align: center;
-			text-transform: uppercase;
-			font-size: 17px;
-		}
-
-		table td {
-			transition: all .5s;
-		}
-		
-		/* Table */
-		.data-table {
-			border-collapse: collapse;
-			font-size: 14px;
-			min-width: 537px;
-		}
-
-		.data-table th, 
-		.data-table td {
-			border: 1px solid #e1edff;
-			padding: 5px 24px;
-		}
-		.data-table caption {
-			margin: 7px;
-		}
-
-		/* Table Header */
-		.data-table thead th {
-			background-color: #508abb;
-			color: #FFFFFF;
-			border-color: #6ea1cc !important;
-			text-transform: uppercase;
-		}
-
-		/* Table Body */
-		.data-table tbody td {
-			color: #353535;
-		}
-		.data-table tbody td:first-child,
-		.data-table tbody td:nth-child(4),
-		.data-table tbody td:last-child {
-			text-align: right;
-		}
-
-		.data-table tbody tr:nth-child(odd) td {
-			background-color: #f4fbff;
-		}
-		/*.data-table tbody tr:hover td {
-			background-color: #ffffa2;
-			border-color: #ffff0f;
-		}*/
-
-		/* Table Footer */
-		.data-table tfoot th {
-			background-color: #e5f5ff;
-			text-align: right;
-		}
-		.data-table tfoot th:first-child {
-			text-align: left;
-		}
-		.data-table tbody td:empty
-		{
-			background-color: #ffcccc;
-		}
-		
-		
-		#yn 
-		{
-			width: 30px;
-			height: 30px;
-		}
-		
-		.title
-		{
-		font-size:50px;
-		color:#111F11;
-		
-		}
-		.button{
-			border-radius: 9px;
-			 background-color: #4CAF50;
-    border: none;
+	
+	
+	
+	
+	table {
+    width:100%;
+}
+table, th, td {
+    border: 0px solid white;
+    border-collapse: collapse;
+	font-family:"Times New Roman";
+	
+	
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+	text-align: center;
+	font-size:20px;
+	
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color: #fff;
+}
+table#t01 th {
+	
+    background-color: #164AA7;
     color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    <!--display: inline-block;-->
-    font-size: 10px;
-    margin: 4px 2px;
-	height: 26dp;
-	 transition: all 0.1s ease-in-out;
-		}
-		
-			button:hover {
-    background-color: #33FF90;
+}
 	
-}
-		
-		
-		#update
-		{
-		font-size:30px;
-		background-color: #111111;
-		color:white;
-		}
-		
-	.btn-group button {
-    background-color: #508abb; /* Green background */
-    /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    width: 10%; /* Set a width if needed */
-    display: block; /* Make the buttons appear below each other */
-	border-radius: 7px;
 	
-}
-
-.btn-group button:not(:last-child) {
-    border-bottom: none; /* Prevent double borders */
-}
-
-/* Add a background color on hover */
-.btn-group button:hover {
-    background-color: #87CEFA;
-}
-		
 	
-		
 
-		
-       #map {
+
+	
+
+
+#map {
         height: 400px;
         width: 100%;
+		align:center;
        }
+</style>
 
-    </style>
-  </head>
-  <body>
-    
-    <div id="map"></div>
+
+
+
+
+
+<body>
+<div class="w3-card-4">
+<div class="w3-container w3-theme w3-card">
+  <h1 style="font-size:30px;font-family:Times New Roman" align="center">WELCOME TO FIRE DEPARTMENT PORTAL!!</h1>
+<br></div>
+</div>
+
+
+<br><div id="map" ></div>
 	
 	
 	
@@ -190,9 +162,9 @@
 			<button style='float:right;'>Action</button>
 		</div>";*/
 	echo "<div class=\"data-table\">";
-	echo "<table ><thead>";
+	echo "<br><table align='center'><thead >";
 	while ($row = mysqli_fetch_assoc($res)) {
-	echo "<th colspan=2 style=\"font-size:20px;\">   EMERGENCY TYPE : ".$row['etype']."</th>";
+	//echo "<th  style=\"font-size:19px;\">   EMERGENCY TYPE : ".$row['etype']."</th>";
 	$mark1=$row['lattitude'];
 	$mark2=$row['longitude'];
 	
@@ -221,57 +193,87 @@ echo "<script>
    
     </script>
   
-
-    ";
-
-
-	$query2="select * from users where userId=".$rowid;
-		$res=mysqli_query($conn,$query2);
-	
-echo "<div align = \"center\">";
-	echo "<div class=\"data-table\">";
-echo "<table >";
-while ($row = mysqli_fetch_array($res)) {
-echo "<tr><td style=\"font-size:20px;\">   USERID : </td><td style=\"font-size:20px;\">".$row[0]."</td></tr>";
-echo "<tr><td style=\"font-size:20px;\">   NAME : </td><td style=\"font-size:20px;\">".$row[1]."</td> 
-			
-		</tr>";
-echo "<tr><td style=\"font-size:20px;\">   PHONE NO : </td><td style=\"font-size:20px;\">".$row[2]."</td></tr>" ;
-echo "<tr><td style=\"font-size:20px;\">   GRNDER : </td><td style=\"font-size:20px;\">".$row[6]."</td></tr>";
-echo "<tr><td style=\"font-size:20px;\">   DOB :</td><td style=\"font-size:20px;\">".$row[7]."</td></tr>";
-echo "<tr><td style=\"font-size:20px;\">   LANGUAGE :</td><td style=\"font-size:20px;\">".$row[8]."</td></tr>";
-echo "<tr><td style=\"font-size:20px;\">   ADHAR NO : </td><td style=\"font-size:20px;\">".$row[9]."</td></tr>";
-
-	
-		//echo "<td style=\"font-size:20px;\">".]."</br>".$row[1]."</br>".$row[2]."</br>".$row[6]."</br>".$row[7]."</br>".$row[8]."</br>".$row[9]."</br></td>";
-		
-//echo"<th><td width='50%' style=\"font-size:20px;\"><button class='button button4' onclick='alertTeam()' ><h3>AlertTeam</h3></button></br></br></th><button class='button button4' onclick='Action()' ><h3>Action</h3></button></td>";
-	
-	}
-   echo "</tr></table>";
-   
-   echo "</div>";
-
-	echo "</div>";
-	echo"<div class='btn-group' > 
-			<button style='float:left;'>Alert Team</button></br></br></br>
-			<button style='float:left;' onclick='Action()'>Action</button>
-		</div>";
-		
-	
-	
-echo"<script type='text/javascript'>function Action(){
-prompt('Type your message!!!');
-	//send msg to the help seeker
+  
+";
+?>
 
 
-
-}</script>";
-	
-	
-	?>
-
-	
-	
+<table width = "100%" border = "0">
+         
+         <tr valign = "top">
+            <td bgcolor = "#fff" width = "30%">
+               <img src='images/image.png' width="300" height="250"></img>
+            </td>
+				
+            <td bgcolor = "#fff" height = "200" width = "30%">
+<table id="t01">
+  <tr>
+    <th colspan='2' align="center">EMERGENCY TYPE FIRE</th>
+    <!--<th>Lastname</th> 
+    <th>Age</th>-->
+  </tr>
+  <tr>
+    <td>UserId :</td>
+    <td>Smith</td>
     
+  </tr>
+  <tr>
+    <td>Name :</td>
+    <td>Jackson</td>
+    
+  </tr>
+  <tr>
+    <td>DOB :</td>
+    <td>Doe</td>
+    
+  </tr>
+  <tr>
+    <td>Gender   :</td>
+    <td>Doe</td>
+    
+  </tr>
+  <tr>
+    <td>Language  :</td>
+    <td>Doe</td>
+    
+  </tr>
+  <tr>
+    <td>Adhar No. :</td>
+    <td>Doe</td>
+    
+  </tr>
+  
+  
+  
+</table>
 
+            </td>
+				
+            <td bgcolor = "#fff" width = "40%">
+             <div class="btn-group" > 
+			
+			<button class="btn" ><span>Alert Team</span></button>
+			<button class="btn" ><span>Acknowledge</span></button>
+			
+			
+		</div>
+            </td>
+         </tr>
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

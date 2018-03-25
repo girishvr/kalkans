@@ -1,10 +1,42 @@
 <?php
 session_start();
 require("connection.php");
+?>
 
+
+
+<!doctype html>
+<html lang="en">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+
+
+<body>
+
+
+
+<body>
+
+<div class="w3-card-4">
+<div class="w3-container w3-theme w3-card">
+  <h1 style="font-size:30px;font-family:Times New Roman">Welcome to Police Department Portal!!</h1>
+<br></div>
+</div>
+</html>
+
+
+
+
+
+
+
+<?php
 
 $sql = 'SELECT * 
 		FROM emergency where etype in ("fire" ,"accident" ,"woman safety" ,"terrorist" )' ;
+		
 		
 $query = mysqli_query($conn, $sql);
 if (!$query) {
@@ -21,38 +53,44 @@ if (!$query) {
 			font-family: "segoe-ui", "open-sans", tahoma, arial;
 			padding: 0;
 			margin: 0;
+			font-family: "Times New Roman", Times, serif;
 		}
 		table {
 			margin: auto;
-			font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
-			font-size: 12px;
+			font-family: "Times New Roman", Times, serif;
+			font-size: 20px;
 		}
 
 		h1 {
 			margin: 25px auto 0;
 			text-align: center;
 			text-transform: uppercase;
-			font-size: 17px;
+			font-size: 20px;
+			font-family: "Times New Roman", Times, serif;
 		}
 
 		table td {
 			transition: all .5s;
-		}
+			font-family: "Times New Roman", Times, serif;
+			}
 		
 		/* Table */
 		.data-table {
 			border-collapse: collapse;
-			font-size: 14px;
+			font-size: 20px;
 			min-width: 537px;
+			font-family: "Times New Roman", Times, serif;
 		}
 
 		.data-table th, 
 		.data-table td {
 			border: 1px solid #e1edff;
 			padding: 7px 17px;
+			font-family: "Times New Roman", Times, serif;
 		}
 		.data-table caption {
 			margin: 7px;
+			font-family: "Times New Roman", Times, serif;
 		}
 
 		/* Table Header */
@@ -61,6 +99,7 @@ if (!$query) {
 			color: #FFFFFF;
 			border-color: #6ea1cc !important;
 			text-transform: uppercase;
+			font-family: "Times New Roman", Times, serif;
 		}
 
 		/* Table Body */
@@ -71,6 +110,7 @@ if (!$query) {
 		.data-table tbody td:nth-child(4),
 		.data-table tbody td:last-child {
 			text-align: right;
+			font-family: "Times New Roman", Times, serif;
 		}
 
 		.data-table tbody tr:nth-child(odd) td {
@@ -88,6 +128,7 @@ if (!$query) {
 		}
 		.data-table tfoot th:first-child {
 			text-align: left;
+			font-family: "Times New Roman", Times, serif;
 		}
 		.data-table tbody td:empty
 		{
@@ -113,6 +154,7 @@ if (!$query) {
 		font-size:30px;
 		background-color: #111111;
 		color:white;
+		font-family: "Times New Roman", Times, serif;
 		}
 		
 
@@ -121,8 +163,8 @@ if (!$query) {
 </head>
 <body>
 	<table class="data-table">
-		<caption class="title">The Alerts Info</caption>
-		<thead>
+		<!--<caption class="title">The Alerts Info</caption>-->
+		</br></br></br><thead style="font-family:Times New Roman">
 			<tr>
 				<th>EID</th>
 				<th>Type</th>
@@ -130,12 +172,12 @@ if (!$query) {
 				<th>Longitude</th>
 				<th>Timestamp</th>
 				<th>UserId</th>
-				<th>Status</th>
+				
 				
 				<th>Action</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody style="font-family:Times New Roman">
 		<?php
 		//$i 	= 0;
 		//$total 	= 0;
@@ -145,13 +187,13 @@ if (!$query) {
 			//$i=$i+1;
 			//$user=$row[0];
 			//$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
-			echo '<tr>
+			echo '<tr style="font-family:Times New Roman">
 					<td>'.$row[0].'</td>
 					<td>'.$row[1].'</td>
 					<td>'.$row[2].'</td>
 					<td>'.$row[3].'</td>
 					<td>'.$row[4].'</td>
-					<td>'.$row[5].'</td>
+					
 				
 					<td>'.$row[6].'</td>';
 					

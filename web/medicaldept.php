@@ -1,6 +1,32 @@
 <?php
 require("connection.php");
+?>
 
+
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+
+
+
+<body>
+
+<div class="w3-card-4">
+<div class="w3-container w3-theme w3-card">
+  <h1 style="font-size:30px;font-family:Times New Roman">Welcome to Medical Department Portal!!</h1>
+<br></div>
+</div>
+</html>
+
+
+
+
+
+
+
+<?php
 
 $query = mysqli_query($conn, "SELECT * 
 		FROM emergency WHERE etype in ('flood','fire' )" );
@@ -16,21 +42,21 @@ if (!$query) {
 		body {
 			font-size: 15px;
 			color: #343d44;
-			font-family: "segoe-ui", "open-sans", tahoma, arial;
+			font-family: "Times New Roman";
 			padding: 0;
 			margin: 0;
 		}
 		table {
 			margin: auto;
-			font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
-			font-size: 12px;
+			font-family: "Times New Roman";
+			font-size: 20px;
 		}
 
 		h1 {
 			margin: 25px auto 0;
 			text-align: center;
 			text-transform: uppercase;
-			font-size: 17px;
+			font-size: 20px;
 		}
 
 		table td {
@@ -40,7 +66,7 @@ if (!$query) {
 		/* Table */
 		.data-table {
 			border-collapse: collapse;
-			font-size: 14px;
+			font-size: 20px;
 			min-width: 537px;
 		}
 
@@ -119,8 +145,8 @@ if (!$query) {
 </head>
 <body>
 	<table class="data-table">
-		<caption class="title">The Alerts Info</caption>
-		<thead>
+		<!--<caption class="title">The Alerts Info</caption>-->
+		</br></br></br><thead>
 			<tr>
 				<th>EID</th>
 				<th>Type</th>
@@ -128,7 +154,7 @@ if (!$query) {
 				<th>Longitude</th>
 				<th>Timestamp</th>
 				<th>UserId</th>
-				<th>Status</th>	
+				
 				<th>Show Profile</th>	
 			</tr>
 		</thead>
@@ -146,11 +172,10 @@ if (!$query) {
 					<td>'.$row[2].'</td>
 					<td>'.$row[3].'</td>
 					<td>'.$row[4].'</td>
-					<td>'.$row[5].'</td>
-				
+					
 				
 					<td>'.$row[6].'</td>
-					<td><a href="details.php?id='.$row[5].' ><button target="blank">VIEW DETAILS</button></a></td>
+					<td><a href="details.php?id='.$row[5].'" ><button target="blank">VIEW DETAILS</button></a></td>
 
 						
 				</tr>';

@@ -1,8 +1,41 @@
 <?php
 require("connection.php");
-$conn = mysqli_connect($host, $username, $password, $db);
+?>
 
 
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+
+
+
+
+
+
+
+
+<body>
+
+
+<div class="container-fluid">
+
+<div class="w3-card-4">
+<div class="w3-container w3-theme w3-card">
+  <h1 style="font-size:30px;font-family:Times New Roman" align="center">Welcome to Fire Department Portal!!</h1>
+<br></div>
+</div>
+</html>
+
+
+
+
+
+
+
+
+<?php	
 $sql = 'SELECT * 
 		FROM emergency where etype="fire" ';
 		
@@ -19,21 +52,21 @@ if (!$query) {
 		body {
 			font-size: 15px;
 			color: #343d44;
-			font-family: "segoe-ui", "open-sans", tahoma, arial;
+			font-family: "Times New Roman";
 			padding: 0;
 			margin: 0;
 		}
 		table {
 			margin: auto;
-			font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
-			font-size: 12px;
+			font-family: "Times New Roman";
+			font-size: 20px;
 		}
 
 		h1 {
 			margin: 25px auto 0;
 			text-align: center;
 			text-transform: uppercase;
-			font-size: 17px;
+			font-size: 10px;
 		}
 
 		table td {
@@ -43,14 +76,14 @@ if (!$query) {
 		/* Table */
 		.data-table {
 			border-collapse: collapse;
-			font-size: 14px;
+			font-size: 20px;
 			min-width: 537px;
 		}
 
 		.data-table th, 
 		.data-table td {
 			border: 1px solid #e1edff;
-			padding: 7px 17px;
+			padding: 10px 10px;
 		}
 		.data-table caption {
 			margin: 7px;
@@ -71,7 +104,7 @@ if (!$query) {
 		.data-table tbody td:first-child,
 		.data-table tbody td:nth-child(4),
 		.data-table tbody td:last-child {
-			text-align: right;
+			text-align: center;
 		}
 
 		.data-table tbody tr:nth-child(odd) td {
@@ -108,9 +141,7 @@ if (!$query) {
 		color:#111F11;
 		
 		}
-		.button{
-			border-radius: 5px;
-			 background-color: #4CAF50;
+		
     border: none;
     color: white;
     padding: 10px;
@@ -125,6 +156,7 @@ if (!$query) {
 		
 			button:hover {
     background-color: #33FF90;
+	
 	
 }
 		
@@ -142,8 +174,8 @@ if (!$query) {
 </head>
 <body>
 	<table class="data-table">
-		<caption class="title">THE ALERTS INFORMATION</caption>
-		<thead>
+		<!--<caption class="title">THE ALERTS INFORMATION</caption>-->
+		</br></br></br><thead>
 			<tr>
 				<th>EID</th>
 				<th>Type</th>
@@ -162,9 +194,9 @@ if (!$query) {
 		//$total 	= 0;
 		while ($row = mysqli_fetch_array($query))
 		{
-			//echo '<form method="POST">';
+			
 			$i=$i+1;
-			//$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
+			
 			echo '<tr>
 					<td>'.$row[0].'</td>
 					<td>'.$row[1].'</td>
@@ -174,7 +206,7 @@ if (!$query) {
 					<td>'.$row[5].'</td>
 				
 					<td>'.$row[6].'</td>
-					<td><a href="details.php?id='.$row[5].'"><button class="button">View Details</button></a></td>
+					<td><a href="details.php?id='.$row[5].'"><button >View Details</button></a></td>
 
 						
 				</tr>';
@@ -206,13 +238,7 @@ if (!$query) {
 		</tfoot>-->
 	</table>
 	
-<!--<script>
-function myFunction() {
-    window.location="profile.php";
-}
-</script>
--->
-	
-	
+
+</div>	
 </body>
 </html>
