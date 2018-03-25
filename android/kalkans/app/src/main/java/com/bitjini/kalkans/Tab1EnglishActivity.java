@@ -62,25 +62,25 @@ public class Tab1EnglishActivity extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        textview=(TextView) textview.findViewById(R.id.tips);
-        textview.setMovementMethod(new ScrollingMovementMethod());
-        String data="";
-        StringBuffer sbuffer=new StringBuffer();
-        InputStream is=this.getResources().openRawResource(R.raw.FloodSafetyTips);
-        BufferedReader reader=new BufferedReader(new InputStreamReader(is));
-
-        if(is !=null){
-            try{
-                while ((data=reader.readLine()) != null){
-                    sbuffer.append(data +"\n" +"\t");
-                }
-                textview.setText(sbuffer);
-                is.close();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
-        }
+//        textview=(TextView) textview.findViewById(R.id.tips);
+//        textview.setMovementMethod(new ScrollingMovementMethod());
+//        String data="";
+//        StringBuffer sbuffer=new StringBuffer();
+//        InputStream is=this.getResources().openRawResource(R.raw.FloodSafetyTips);
+//        BufferedReader reader=new BufferedReader(new InputStreamReader(is));
+//
+//        if(is !=null){
+//            try{
+//                while ((data=reader.readLine()) != null){
+//                    sbuffer.append(data +"\n" +"\t");
+//                }
+//                textview.setText(sbuffer);
+//                is.close();
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//
+//        }
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);

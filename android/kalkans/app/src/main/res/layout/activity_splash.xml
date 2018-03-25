@@ -25,5 +25,5 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo1" />
 </RelativeLayout>

@@ -21,11 +21,10 @@ public class SplashActivity extends AppCompatActivity {
         handler=new Handler();
         handler.postDelayed(new Runnable() {
           @Override
-            public void run() {
+           public void run() {
                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
                 if (settings.getBoolean("my_first_time", true)) {
-                    //the app is being launched for first time, kai tar kar
                     settings.edit().putBoolean("my_first_time", false).commit();
 
 
