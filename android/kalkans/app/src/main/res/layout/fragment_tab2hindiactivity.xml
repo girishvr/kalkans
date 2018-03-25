@@ -11,7 +11,9 @@
         android:text="Hindi"
 
         android:textSize="30dp"/>
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="281dp"
@@ -51,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="353dp"
-        android:text="gvhjvhg.gg"
+        android:text=""
         android:textSize="18dp"
         android:fontFamily="monospace"
         android:textColor="#152b38"/>
@@ -64,5 +66,5 @@
         android:text="                    Safety Tips"
         android:textColor="#152b38"
         android:textSize="25dp"/>
-
+</ScrollView>
 </FrameLayout>

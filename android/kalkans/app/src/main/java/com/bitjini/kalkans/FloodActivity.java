@@ -47,8 +47,8 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         saf = (Button) findViewById(R.id.button2);
 
 
-        t1 = (TextView) findViewById(R.id.textViewlat);
-        t2 = (TextView) findViewById(R.id.textViewlon);
+        //t1 = (TextView) findViewById(R.id.textViewlat);
+       // t2 = (TextView) findViewById(R.id.textViewlon);
 
 
 
@@ -75,14 +75,6 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         } else {
             Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
-
-
-
-
 
         saf.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,5 +1,6 @@
 package com.bitjini.kalkans;
 
+import android.graphics.Typeface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +32,7 @@ public class SfaetyMeasures extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
+private TextView tv;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -41,6 +42,14 @@ public class SfaetyMeasures extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sfaety_measures);
+
+        TextView t = new TextView(this);
+        Typeface Hindi = Typeface.createFromAsset(getAssets(), "fonts/font.txt");
+        t.setTypeface(Hindi);
+        t.setText("Hindi");
+
+        Typeface fontHindi = Typeface.createFromAsset(getAssets(), "fonts/font.txt");
+        tv.setTypeface(fontHindi);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
