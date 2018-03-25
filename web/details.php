@@ -262,7 +262,7 @@ echo "<script>
          
 <script type='text/javascript'>
 	function Action(){
-	window.location=\"dilog/index.html\";
+	window.location="dilog/index.html";
 
 }
 </script>
