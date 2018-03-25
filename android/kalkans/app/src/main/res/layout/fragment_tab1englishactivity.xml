@@ -46,28 +46,7 @@
         </RelativeLayout>
 
     </FrameLayout>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/contentsafety"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="353dp"
-        android:text=""
-        android:textSize="18dp"
-        android:fontFamily="monospace"
-        android:textColor="#152b38"/>
 
-    <TextView
-        android:layout_marginTop="300dp"
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="                    Safety Tips"
-        android:textColor="#152b38"
-        android:textSize="25dp"/>
-</ScrollView>
 
 </FrameLayout>
 

@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -32,20 +32,14 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SignAupctivity" />
-        <activity android:name=".FloodActivity" />
-        <activity android:name=".AccidentActivity" />
-        <activity android:name=".MedicalEmergencyActivity" />
-        <activity android:name=".LandSlidesActivity" />
-        <activity android:name=".TheftActivity" />
-        <activity android:name=".EarthquakeActivity" />
         <activity android:name=".WomenSafetyActivity" />
-        <activity android:name=".TerroristActivity" />
         <activity android:name=".icons_test" />
         <activity android:name=".VideoStream" />
         <activity
             android:name=".SfaetyMeasures"
             android:label="@string/title_activity_sfaety_measures"
             android:theme="@style/AppTheme" />
+        <activity android:name=".SendSosActivity"></activity>
     </application>
 
 </manifest>

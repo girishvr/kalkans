@@ -39,7 +39,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
     String res;
 
     Context ctx;
-    BackgroundTask(FloodActivity ctx)
+    BackgroundTask(SendSosActivity ctx)
     {
         this.ctx = ctx;
     }

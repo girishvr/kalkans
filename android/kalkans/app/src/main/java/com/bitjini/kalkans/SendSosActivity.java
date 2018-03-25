@@ -1,35 +1,38 @@
 package com.bitjini.kalkans;
 
-        import android.Manifest;
-        import android.app.Activity;
-        import android.content.Context;
-        import android.content.Intent;
-        import android.content.pm.PackageManager;
-        import android.location.Criteria;
-        import android.location.Location;
-        import android.location.LocationListener;
-        import android.location.LocationManager;
-        import android.net.ConnectivityManager;
-        import android.net.NetworkInfo;
-        import android.support.v4.app.ActivityCompat;
-        import android.support.v4.content.ContextCompat;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.telephony.SmsManager;
-        import android.view.Gravity;
-        import android.view.LayoutInflater;
-        import android.view.MotionEvent;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.LinearLayout;
-        import android.widget.PopupWindow;
-        import android.widget.RelativeLayout;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Region;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class FloodActivity extends AppCompatActivity implements LocationListener {
+public class SendSosActivity extends AppCompatActivity implements LocationListener {
 
     LocationManager locationManager;
     String provider;
@@ -39,6 +42,7 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
     String phoneNo;
     String message;
     Context ctx;
+    String MY_PREFS_NAME = "Name";
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
 
     String name, phone, email, ephone, dob, city;
@@ -46,19 +50,14 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flood);
+        setContentView(R.layout.activity_send_sos);
         eme = (Button) findViewById(R.id.button);
         saf = (Button) findViewById(R.id.button2);
 
-<<<<<<< HEAD
-
-        //t1 = (TextView) findViewById(R.id.textViewlat);
-       // t2 = (TextView) findViewById(R.id.textViewlon);
-=======
-        t1 = (TextView) findViewById(R.id.textViewlat);
-        t2 = (TextView) findViewById(R.id.textViewlon);
->>>>>>> 8c9a0a9a2441d274bf8f24e4f3a8fc8cff050f61
-
+//        t1 = (TextView) findViewById(R.id.textViewlat);
+//        t2 = (TextView) findViewById(R.id.textViewlon);
+//
+//
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
@@ -81,15 +80,10 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         } else {
             Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
         }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 8c9a0a9a2441d274bf8f24e4f3a8fc8cff050f61
         saf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(FloodActivity.this, SfaetyMeasures.class);
+                Intent i = new Intent(SendSosActivity.this, SfaetyMeasures.class);
 
                 startActivity(i);
             }
@@ -97,20 +91,20 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
 
 
 
-            eme.setOnLongClickListener(new View.OnLongClickListener() {
+        eme.setOnLongClickListener(new View.OnLongClickListener() {
 
-        @Override
-        public boolean onLongClick(View view) {
-            //clicked();
-            sending();
-            return false;
-        }
-    });
-}
+            @Override
+            public boolean onLongClick(View view) {
+                //clicked();
+                sending();
+                return false;
+            }
+        });
+    }
     public void sending()
     {
-        BackgroundTask backgroundTask = new BackgroundTask(FloodActivity.this);
-        if(isConnectingToInternet(FloodActivity.this))
+        BackgroundTask backgroundTask = new BackgroundTask(SendSosActivity.this);
+        if(isConnectingToInternet(SendSosActivity.this))
         {
             String method = "flood";
             Toast.makeText(getApplicationContext(),"internet is available",Toast.LENGTH_LONG).show();
@@ -150,12 +144,12 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         }
     }*/
 
-  public void send(View view){
+    public void send(View view){
         //msg = e.getText().toString().trim();
 
         String method = "flood";
-        BackgroundTask backgroundTask = new BackgroundTask(FloodActivity.this);
-        if (isConnectingToInternet(FloodActivity.this)) {
+        BackgroundTask backgroundTask = new BackgroundTask(SendSosActivity.this);
+        if (isConnectingToInternet(SendSosActivity.this)) {
             backgroundTask.execute(method, name, phone, email, lat, lon, ephone, dob, city);
         }
         else{
@@ -163,7 +157,7 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         }
     }
 
-   public static boolean isConnectingToInternet(Context context)
+    public static boolean isConnectingToInternet(Context context)
     {
         ConnectivityManager connectivity =
                 (ConnectivityManager) context.getSystemService(
@@ -184,8 +178,12 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
 
     public void sendSMSMessage()
     {
+        SharedPreferences sharedpreferences = getSharedPreferences("Reg",0);
+        String name = sharedpreferences.getString("Name","not found");
+        String phone = sharedpreferences.getString("txtPhone","not found");
+        String currentsos=sharedpreferences.getString("Curentsos","not found");
         phoneNo = "9108516990";
-        message = "done";
+        message = currentsos+" "+name+" "+phone+" "+lat+" " +lon;
 
         try {
             SmsManager sms = SmsManager.getDefault();
@@ -226,7 +224,7 @@ public class FloodActivity extends AppCompatActivity implements LocationListener
         lon = Double.toString(location.getLongitude());
 
         String method = "sendData";
-       // BackgroundTask backgroundTask = new BackgroundTask(this);
+        // BackgroundTask backgroundTask = new BackgroundTask(this);
 
         //backgroundTask.execute(method,name,phone,email,lat,lon);
 
