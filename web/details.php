@@ -260,13 +260,7 @@ echo "<tr><td style=\"font-size:20px;\">   ADHAR NO : </td><td style=\"font-size
 		
 	
 	
-echo"<script type='text/javascript'>function Action(){
-prompt('Type your message!!!');
-	//send msg to the help seeker
 
-
-
-}</script>";
 	
 	
 	?>
