@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'^', include('calamitys.urls')),
     url(r'^', include('departments.urls')),
     url(r'^', include('teams.urls')),
+    url(r'^', include('persona.urls')),
 ]

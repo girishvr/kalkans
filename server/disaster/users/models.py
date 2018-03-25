@@ -2,6 +2,8 @@ from django.db import models
 from pygments.lexers import get_all_lexers
 from pygments.styles import get_all_styles
 
+
+
 GENDERS = (
 	('M', 'Male'),
 	('F', 'Female'),
@@ -10,8 +12,7 @@ GENDERS = (
 class user(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
-
-    user_id  = models.CharField(max_length=10, unique=True, blank=False, default='')
+    user_id  = models.AutoField(primary_key = True)
     name     = models.CharField(max_length=40, unique=False, blank=False, default='')
     email    = models.CharField(max_length=40, unique=False, blank=False, default='')
     phone    = models.IntegerField(max_length=10, unique=False, blank=False, default='')
@@ -28,3 +29,11 @@ class user(models.Model):
 
     class Meta:
         ordering = ('created',)
+
+
+
+
+
+
+
+           

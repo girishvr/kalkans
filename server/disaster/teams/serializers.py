@@ -21,7 +21,7 @@ class teamSerializer(serializers.ModelSerializer):
         Update and return an existing `Snippet` instance, given the validated data.
         """
         instance.team_id = validated_data.get('team_id', instance.team_id)
-        instance.name = validated_data.get('name', instance.code)
+        instance.name = validated_data.get('name', instance.name)
         instance.dept_name = validated_data.get('dept_name', instance.dept_name)
         instance.phone = validated_data.get('phone', instance.phone)
        
