@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#fa7e25</color>
-    <color name="pink">#fe104d</color>
+    <color name="pink">#fe5f10</color>
     <color name="colorPrimaryDark">#e6960f</color>
     <color name="backgroundcolor">#fcfcfc</color>
     <color name="lightgray">#ededed</color>
     <color name="deeppurple">#7c4dff</color>
     <color name="yello">#ffb300</color>
     <color name="green">#00bfa5</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff8340</color>
     <color name="darkblue">#07090e</color>
     <color name="testcolorblue">#152b38</color>
     <color name="white">#fcfcfc</color>
