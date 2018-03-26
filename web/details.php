@@ -3,14 +3,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
+<link rel="stylesheet" href="css/style.css" type="text/css">
 
 
 <style>
-
-
 .btn {
 
 
@@ -41,7 +37,7 @@
 
 .btn span {
   display: block;
-  padding: 12px 24px;
+  padding: 5px 5px;
 }
 
 .btn:before {
@@ -85,7 +81,7 @@
 table, th, td {
     border: 0px solid white;
     border-collapse: collapse;
-	font-family:"Times New Roman";
+	font-family:"Roboto";
 	
 	
 }
@@ -120,7 +116,12 @@ table#t01 th {
         width: 100%;
 		align:center;
        }
+
 </style>
+
+
+
+
 
 
 
@@ -130,7 +131,7 @@ table#t01 th {
 <body>
 <div class="w3-card-4">
 <div class="w3-container w3-theme w3-card">
-  <h1 style="font-size:30px;font-family:Times New Roman" align="center">WELCOME TO FIRE DEPARTMENT PORTAL!!</h1>
+  <h1 style="font-size:30px;font-family:Roboto" align="center">WELCOME TO FIRE DEPARTMENT PORTAL!!</h1>
 <br></div>
 </div>
 
@@ -150,9 +151,7 @@ table#t01 th {
 	
 	
 	
-	//echo $rowdetail;
 	
-	//require("conn.php");
 	$query1="select * from emergency where userId=".$rowid;
 	$res=mysqli_query($conn,$query1);
 	
@@ -254,59 +253,18 @@ echo "<script>
              <div class="btn-group" > 
 			
 			<button class="btn" ><span>Alert Team</span></button>
-			<button class="btn" onclick="Action()" ><span>Acknowledge</span></button>
+			<button class="btn" ><span>Acknowledge</span></button>
 			
 			
 		</div>
             </td>
          </tr>
          
-<script type='text/javascript'>
-	function Action(){
-	let defaultMessag = "Help is arriving soon."
-	swal({
-		  text: 'Acknowledge Message',
-		  content: "input",
-		  
-		  button: {
-			text: "Send!",
-			closeModal: false,
-		  },
-		})
-		.then(name => {
-		  if (!name) throw null;
-			return
-		 // return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
-		})
-		.then(results => {
-		  return results.json();
-		})
-		.then(json => {
-		  const movie = json.results[0];
-		 
-		  if (!movie) {
-			return swal("Acknowledge Message failed!");
-		  }
-		 
-		  const name = movie.trackName;
-		  const imageURL = movie.artworkUrl100;
-		 
-		  swal({
-			title: "Top result:",
-			text: name,
-			icon: imageURL,
-		  });
-		})
-		.catch(err => {
-		  if (err) {
-			swal("Oh noes!", "The AJAX request failed!", "error");
-		  } else {
-			swal.stopLoading();
-			swal.close();
-		  }
-		});
-	}
-</script>
+
+
+
+
+
 
 
 

@@ -1,6 +1,36 @@
 <?php
 require("connection.php");
+?>
 
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<body style="font-family:'Roboto', sans-serif">
+
+
+
+
+
+<div class="w3-card-4">
+<div class="w3-container w3-theme w3-card">
+  <h1 style="font-size:30px;font-family:Roboto">Welcome to NDM
+  Department Portal!!</h1>
+<br></div>
+</div>
+
+<button class="btn" style="position: absolute;right: 50px;top: 70px;"><span onclick="location.href = 'teams.php';">Team Members</span></button>
+</html>
+
+
+
+
+
+
+
+<?php
 
 $sql = 'SELECT * 
 		FROM emergency where etype in ("earthquake" ,"landslide","flood")';
@@ -15,16 +45,91 @@ if (!$query) {
 <head>
 	<title>Displaying MySQL Data in HTML Table</title>
 	<style type="text/css">
+		
+		
+		
+		.btn {
+
+
+  display: block;
+  margin: 30px auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  
+  background-color: #164AA7;
+  color: #ecf0f1;
+  
+  transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #4797BC;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 8px 8px;
+}
+
+.btn:before {
+  content: "";
+  
+  position: absolute;
+  top: 50%;
+ 
+  
+  display: block;
+  width: 0;
+  padding-top: 0;
+    
+  border-radius: 100%;
+  
+  background-color: rgba(236, 240, 241, .3);
+  
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 80%;
+  padding-top: 80%;
+  
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		body {
 			font-size: 15px;
 			color: #343d44;
-			font-family: "segoe-ui", "open-sans", tahoma, arial;
+			font-family: "Roboto";
 			padding: 0;
 			margin: 0;
 		}
 		table {
 			margin: auto;
-			font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
+			font-family: "Roboto";
 			font-size: 12px;
 		}
 
@@ -32,7 +137,7 @@ if (!$query) {
 			margin: 25px auto 0;
 			text-align: center;
 			text-transform: uppercase;
-			font-size: 17px;
+			font-size: 20px;
 		}
 
 		table td {
@@ -42,7 +147,7 @@ if (!$query) {
 		/* Table */
 		.data-table {
 			border-collapse: collapse;
-			font-size: 14px;
+			font-size: 15px;
 			min-width: 537px;
 		}
 
@@ -119,10 +224,10 @@ if (!$query) {
 		
 	</style>
 </head>
-<body>
-	<table class="data-table">
-		<caption class="title">The Alerts Info</caption>
-		<thead>
+<body style="font-family:'Roboto', sans-serif">
+	<table class="data-table" style="font-family:'Roboto', sans-serif">
+		<!--<caption class="title">The Alerts Info</caption>-->
+		</br></br></br><thead>
 			<tr>
 				<th>EID</th>
 				<th>Type</th>
@@ -130,7 +235,7 @@ if (!$query) {
 				<th>Longitude</th>
 				<th>Timestamp</th>
 				<th>UserId</th>
-				<th>Status</th>
+				
 				
 				<th>Action</th>
 			</tr>
@@ -150,8 +255,7 @@ if (!$query) {
 					<td>'.$row[2].'</td>
 					<td>'.$row[3].'</td>
 					<td>'.$row[4].'</td>
-					<td>'.$row[5].'</td>
-				
+					
 					<td>'.$row[6].'</td>
 					<td><a href="details.php?id='.$row[5].'"><button>View Details</button></a></td>
 

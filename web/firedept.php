@@ -1,39 +1,105 @@
 <?php
 require("connection.php");
-$conn = mysqli_connect($host, $username, $password, $db);
-
-
-$sql = 'SELECT * 
-		FROM emergency where etype="fire" ';
-		
-$query = mysqli_query($conn, $sql);
-
-if (!$query) {
-	die ('SQL Error: ' . mysqli_error($conn));
-}
 ?>
+
+
 <html>
 <head>
-	<title>Displaying MySQL Data in HTML Table</title>
-	<style type="text/css">
-		body {
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<style>
+
+
+
+.btn {
+
+
+  display: block;
+  margin: 30px auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  
+  background-color: #164AA7;
+  color: #ecf0f1;
+  
+  transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #4797BC;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 8px 8px;
+}
+
+.btn:before {
+  content: "";
+  
+  position: absolute;
+  top: 50%;
+ 
+  
+  display: block;
+  width: 0;
+  padding-top: 0;
+    
+  border-radius: 100%;
+  
+  background-color: rgba(236, 240, 241, .3);
+  
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 80%;
+  padding-top: 80%;
+  
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+	
+	
+	
+	
+	
+	
+	
+	body {
 			font-size: 15px;
 			color: #343d44;
-			font-family: "segoe-ui", "open-sans", tahoma, arial;
+			font-family:"Roboto";
 			padding: 0;
 			margin: 0;
 		}
 		table {
 			margin: auto;
-			font-family: "Lucida Sans Unicode", "Lucida Grande", "Segoe Ui";
-			font-size: 12px;
+			font-family:Roboto, sans-serif;
+			font-size: 20px;
 		}
 
 		h1 {
 			margin: 25px auto 0;
 			text-align: center;
 			text-transform: uppercase;
-			font-size: 17px;
+			font-size: 20px;
 		}
 
 		table td {
@@ -43,7 +109,7 @@ if (!$query) {
 		/* Table */
 		.data-table {
 			border-collapse: collapse;
-			font-size: 14px;
+			font-size: 15px;
 			min-width: 537px;
 		}
 
@@ -108,26 +174,6 @@ if (!$query) {
 		color:#111F11;
 		
 		}
-		.button{
-			border-radius: 5px;
-			 background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    margin: 4px 2px;
-	height: 26dp;
-	 transition: all 0.1s ease-in-out;
-		}
-		
-			button:hover {
-    background-color: #33FF90;
-	
-}
-		
 		
 		#update
 		{
@@ -135,14 +181,72 @@ if (!$query) {
 		background-color: #111111;
 		color:white;
 		}
-		
+	
+	
 
+
+	
+
+
+#map {
+        height: 400px;
+        width: 100%;
+		align:center;
+       }
+
+
+
+</style>
+
+
+
+
+
+<body style="font-family:'Roboto', sans-serif">
+
+
+<div class="container-fluid">
+
+<div class="w3-card-4">
+<div class="w3-container w3-theme w3-card">
+  <h1 style="font-size:30px;font-family:Roboto" align="center">Welcome to Fire Department Portal!!</h1>
+<br></div>
+</div>
+</html>
+
+
+
+
+			
+			<button class="btn" style="position: absolute;right: 50px;top: 70px;"><span onclick="location.href = 'teams.php';">Team Members</span></button>
+				
+		
+            
+
+
+
+<?php	
+$sql = 'SELECT * 
+		FROM emergency where etype="fire" ';
+		
+$query = mysqli_query($conn, $sql);
+
+if (!$query) {
+	die ('SQL Error: ' . mysqli_error($conn));
+}
+?>
+<html>
+<head>
+	<title>Displaying MySQL Data in HTML Table</title>
+	<style type="text/css">
+		
 		
 	</style>
 </head>
-<body>
+<body style="font-family:'Roboto', sans-serif;">
+<br><br><br>
 	<table class="data-table">
-		<caption class="title">THE ALERTS INFORMATION</caption>
+		
 		<thead>
 			<tr>
 				<th>EID</th>
@@ -162,9 +266,9 @@ if (!$query) {
 		//$total 	= 0;
 		while ($row = mysqli_fetch_array($query))
 		{
-			//echo '<form method="POST">';
+			
 			$i=$i+1;
-			//$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
+			
 			echo '<tr>
 					<td>'.$row[0].'</td>
 					<td>'.$row[1].'</td>
@@ -174,21 +278,13 @@ if (!$query) {
 					<td>'.$row[5].'</td>
 				
 					<td>'.$row[6].'</td>
-					<td><a href="details.php?id='.$row[5].'"><button class="button">View Details</button></a></td>
+					<td><a href="details.php?id='.$row[5].'"><button >View Details</button></a></td>
 
 						
 				</tr>';
 				
 				
-			//$total += $row['amount'];
-			//$no++;
 			
-			
-			 /*$.each($("input[name='yn']:checked"), function(){            
-                favorite.push($(this).val());
-            });
-			echo val;
-			*/
 		}
 		
 		
@@ -198,21 +294,10 @@ if (!$query) {
 		
 		
 		</tbody>
-		<!--<tfoot>
-			<tr>
-				<th colspan="4">TOTAL</th>
-				<thth>
-			</tr>
-		</tfoot>-->
+		
 	</table>
 	
-<!--<script>
-function myFunction() {
-    window.location="profile.php";
-}
-</script>
--->
-	
-	
+
+</div>	
 </body>
 </html>
