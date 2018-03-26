@@ -4,129 +4,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
-
-
-<style>
-.btn {
-
-
-  display: block;
-  margin: 30px auto;
-  padding: 0;
-
-  overflow: hidden;
-
-  border-width: 0;
-  outline: none;
-  border-radius: 2px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-  
-  background-color: #164AA7;
-  color: #ecf0f1;
-  
-  transition: background-color .3s;
-}
-
-.btn:hover, .btn:focus {
-  background-color: #4797BC;
-}
-
-.btn > * {
-  position: relative;
-}
-
-.btn span {
-  display: block;
-  padding: 5px 5px;
-}
-
-.btn:before {
-  content: "";
-  
-  position: absolute;
-  top: 50%;
- 
-  
-  display: block;
-  width: 0;
-  padding-top: 0;
-    
-  border-radius: 100%;
-  
-  background-color: rgba(236, 240, 241, .3);
-  
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.btn:active:before {
-  width: 120%;
-  padding-top: 120%;
-  
-  transition: width .2s ease-out, padding-top .2s ease-out;
-}
-	
-	
-	
-	
-	
-	
-	
-	table {
-    width:100%;
-}
-table, th, td {
-    border: 0px solid white;
-    border-collapse: collapse;
-	font-family:"Roboto";
-	
-	
-}
-th, td {
-    padding: 5px;
-    text-align: left;
-	text-align: center;
-	font-size:20px;
-	
-}
-table#t01 tr:nth-child(even) {
-    background-color: #eee;
-}
-table#t01 tr:nth-child(odd) {
-   background-color: #fff;
-}
-table#t01 th {
-	
-    background-color: #164AA7;
-    color: white;
-}
-	
-	
-	
-
-
-	
-
-
-#map {
-        height: 400px;
-        width: 100%;
-		align:center;
-       }
-
-</style>
-
-
-
-
-
-
-
-
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="css/mapstyle.css" type="text/css">
 
 <body>
 <div class="w3-card-4">
@@ -240,8 +119,8 @@ echo "<script>
     
   </tr>
   <tr>
-    <td>Adhar No. :</td>
-    <td>Doe</td>
+    <td>Address :</td>
+    <td>Udyambag, Belagavi</td>
     
   </tr>
   
@@ -255,7 +134,7 @@ echo "<script>
              <div class="btn-group" > 
 			
 			<button class="btn" ><span>Alert Team</span></button>
-			<button class="btn" ><span>Acknowledge</span></button>
+			<button class="btn" onclick="Action()" ><span>Acknowledge</span></button>
 			
 			
 		</div>
@@ -263,8 +142,54 @@ echo "<script>
          </tr>
          
 
-
-
+<script type="text/javascript">
+	function Action(){
+		swal({
+  text: 'Acknowledge message!!',
+  content: "input",
+  button: {
+    text: "send!",
+    closeModal: false,
+  },
+  button: {
+    text: "send!",
+    closeModal: false,
+  },
+})
+.then(name => {
+  if (!name) throw null;
+ 
+  return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
+})
+.then(results => {
+  return results.json();
+})
+.then(json => {
+  const movie = json.results[0];
+ 
+  if (!movie) {
+    return swal("No movie was found!");
+  }
+ 
+  const name = movie.trackName;
+  const imageURL = movie.artworkUrl100;
+ 
+  swal({
+    title: "Top result:",
+    text: name,
+    icon: imageURL,
+  });
+})
+.catch(err => {
+  if (err) {
+    swal("Oh noes!", "The AJAX request failed!", "error");
+  } else {
+    swal.stopLoading();
+    swal.close();
+  }
+});
+	}
+</script>
 
 
 
