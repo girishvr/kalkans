@@ -184,7 +184,9 @@ echo "<script>
         });
         var marker = new google.maps.Marker({
           position: uluru,
+		  animation:google.maps.Animation.BOUNCE,
           map: map
+		  
         });
       }
 	  </script> 
