@@ -25,7 +25,7 @@ SECRET_KEY = 'rhbl*c07m@fc69*3x0r1enlyo+)-b@qy*l-nzc1!2!h*r7lwkn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [u'smartindia-ers.herokuapp.com']
 
 
 # Application definition

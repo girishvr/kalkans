@@ -1,1 +1,1 @@
-web: gunicorn disaster.wsgi --log-file -
+web: gunicorn disaster.wsgi --pythonpath=kalkans --log-file -
