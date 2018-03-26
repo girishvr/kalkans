@@ -57,11 +57,11 @@ if (!$query) {
 		<!--<caption class="title">THE ALERTS INFORMATION</caption>-->
 		</br></br></br></br><thead>
 			<tr>
-				<th width="28%">Name</th>
-				<th width="28%">Location</th>
+				<th>Name</th>
+				<th>Location</th>
 				
-				<th width="28%">Username</th>
-				<th width="50%">Password</th>
+				<th>Username</th>
+				<th>Password</th>
 				<!--<th>UserId</th>
 				<th>Text</th>
 				
@@ -79,10 +79,10 @@ if (!$query) {
 			
 			echo '<tr>
 					
+					<td>'.$row[0].'</td>
 					<td>'.$row[1].'</td>
 					<td>'.$row[2].'</td>
 					<td>'.$row[3].'</td>
-					<td>'.$row[4].'</td>
 					
 
 						

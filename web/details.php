@@ -144,63 +144,21 @@ echo "<script>
 
 <script type="text/javascript">
 	function Action(){
-		swal({
-  text: 'Acknowledge message!!',
+		swal("Acknowledge message", {
   content: "input",
-  button: {
-    text: "send!",
-    closeModal: false,
-  },
-  button: {
-    text: "send!",
-    closeModal: false,
-  },
+ buttons: {
+		cancel: "Cancel",
+		text: "Send",
+
+    },
+  
 })
-.then(name => {
-  if (!name) throw null;
- 
-  return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
-})
-.then(results => {
-  return results.json();
-})
-.then(json => {
-  const movie = json.results[0];
- 
-  if (!movie) {
-    return swal("No movie was found!");
-  }
- 
-  const name = movie.trackName;
-  const imageURL = movie.artworkUrl100;
- 
-  swal({
-    title: "Top result:",
-    text: name,
-    icon: imageURL,
-  });
-})
-.catch(err => {
-  if (err) {
-    swal("Oh noes!", "The AJAX request failed!", "error");
-  } else {
-    swal.stopLoading();
-    swal.close();
-  }
+	 
+.then((value) => {
+  //swal(`You typed: ${value}`);
+  //SEND THE MSG TO USER
 });
 	}
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>

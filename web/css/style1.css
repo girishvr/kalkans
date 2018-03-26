@@ -89,6 +89,7 @@ body {
 
 		table td {
 			transition: all .5s;
+			width:150px;
 		}
 		
 		/* Table */
@@ -102,6 +103,7 @@ body {
 		.data-table td {
 			border: 1px solid #e1edff;
 			padding: 7px 15px;
+			text-align:center;
 		}
 		.data-table caption {
 			margin: 7px;
@@ -136,10 +138,10 @@ body {
 		/* Table Footer */
 		.data-table tfoot th {
 			background-color: #e5f5ff;
-			text-align: right;
+			text-align: center;
 		}
 		.data-table tfoot th:first-child {
-			text-align: left;
+			text-align: center;
 		}
 		.data-table tbody td:empty
 		{
