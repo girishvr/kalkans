@@ -7,7 +7,11 @@ $f=0;
 $uname=$_POST['name'];
 $pass=$_POST['pass'];
 
-if($uname=="medical" && $pass=="123")
+if($uname=="admin" && $pass=="123")
+header('location: admin.php');
+
+
+else if($uname=="medical" && $pass=="123")
 header('location: medicaldept.php');
 
 

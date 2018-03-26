@@ -3,11 +3,11 @@
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid black;
 }
 
 body {
-	background-color: #9CCC65;
+	background-color: #F0F8FF	;
 	/* Remove space around window edge */
 	margin-top: 0;
 	margin-left: 0;
@@ -63,7 +63,7 @@ dialog window, and content.
   e. Color
   */
   -webkit-box-shadow: 0 -2px 25px 0 rgba(0, 0, 0, 0.15), 0 13px 25px 0 rgba(0, 0, 0, 0.3);
-  background-color: #FFFFFF;
+  background-color: #F0F8FF	;
   /* Internal padding */
   padding-top: 0;
   padding-left: 0;
@@ -123,7 +123,7 @@ dialog window, and content.
 
 .dialogContentBody {
   /* Typography */
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: rgba(0,0,0,.5);
