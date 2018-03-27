@@ -26,11 +26,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 public class SendSosActivity extends AppCompatActivity implements LocationListener {
 
@@ -44,6 +46,10 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
     Context ctx;
     String MY_PREFS_NAME = "Name";
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
+
+    private VideoView vid;
+    private ImageView ip, iv;
+    private TextView t;
 
     String name, phone, email, ephone, dob, city;
 
@@ -83,13 +89,10 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
         saf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SendSosActivity.this, SfaetyMeasures.class);
-
+                Intent i = new Intent(SendSosActivity.this,VideoActiviti.class);
                 startActivity(i);
             }
         });
-
-
 
         eme.setOnLongClickListener(new View.OnLongClickListener() {
 

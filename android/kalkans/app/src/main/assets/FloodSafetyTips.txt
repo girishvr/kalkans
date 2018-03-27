@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿Turn Around, Don’t Drown! 
 Avoid walking or driving through flood waters.
 Do not drive over bridges that are over fast-moving floodwaters. Floodwaters can scour foundation material from around the footings and make the bridge unstable.
@@ -5,3 +6,26 @@ Just 6 inches of moving water can knock you down, and one foot of moving water c
 If there is a chance of flash flooding, move immediately to higher ground.
 If floodwaters rise around your car but the water is not moving, abandon the car and move to higher ground. Do not leave the car and enter moving water.
 Avoid camping or parking along streams, rivers, and creeks during heavy rainfall. These areas can flood quickly and with little warning.
+=======
+﻿Tips to come out of distress condition
+
+
+1.Turn Around, Don’t Drown!
+2.Avoid walking or driving through flood waters.
+3.Do not drive over bridges that are over fast-moving floodwaters.
+4.Floodwaters can scour foundation material from around the footings and make the bridge unstable.
+5.Just 6 inches of moving water can knock you down, and one foot of moving water can sweep your vehicle away.
+6.If there is a chance of flash flooding, move immediately to higher ground.
+7.If floodwaters rise around your car but the water is not moving, abandon the car and move to higher ground. Do not leave the car and enter moving water.
+8.Avoid camping or parking along streams, rivers, and creeks during heavy rainfall. These areas can flood quickly and with little warning.
+
+
+hindi
+1.चारों ओर मुड़ें, डूब मत करो!
+2.चलने या बाढ़ के पानी के माध्यम से ड्राइविंग से बचें।
+3.तेजी से बढ़ने वाले बाढ़ के पानी से अधिक पुल के ऊपर नहीं चलें फ्लडवेटर्स नींव सामग्री को चारों ओर से घूम सकते हैं और पुल को अस्थिर बना सकते हैं।
+4.चलती हुई पानी की सिर्फ 6 इंच आप नीचे दस्तक दे सकते हैं, और चलती हुई पानी का एक पैदल अपने वाहन को दूर कर सकता है।
+5.अचानक बाढ़ का एक मौका नहीं है, तो उच्च भूमि पर तुरंत कदम।
+6.यदि आपकी कार के ऊपर बाढ़ का पानी बढ़ता है, लेकिन पानी आगे नहीं बढ़ रहा है, तो कार को त्यागते हुए और अधिक जमीन पर ले जाया जा सकता है। कार छोड़कर चलती पानी न डालें
+7.भारी वर्षा के दौरान नदियों, नदियों और खाइयों के साथ शिविर या पार्किंग से बचें। इन क्षेत्रों में जल्दी और थोड़ी चेतावनी के साथ बाढ़ कर सकते हैं।
+>>>>>>> 476b8632178e31bf014389ca93e757b564645302

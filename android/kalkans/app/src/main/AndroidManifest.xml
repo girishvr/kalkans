@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -32,14 +33,21 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SignAupctivity" />
-        <activity android:name=".WomenSafetyActivity" />
         <activity android:name=".icons_test" />
         <activity android:name=".VideoStream" />
         <activity
             android:name=".SfaetyMeasures"
             android:label="@string/title_activity_sfaety_measures"
             android:theme="@style/AppTheme" />
-        <activity android:name=".SendSosActivity"></activity>
+        <activity android:name=".SendSosActivity" />
+        <activity
+            android:name=".SfaetyActivityy"
+            android:label="@string/title_activity_sfaety_activityy"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".VideoActivity" />
+        <activity android:name=".VideoActiviti" />
+        <activity android:name=".EngTips" />
+        <activity android:name=".HinTips"></activity>
     </application>
 
 </manifest>

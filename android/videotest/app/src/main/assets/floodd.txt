@@ -1,0 +1,1 @@
+﻿It is a mandatory step to build a Bluetooth Mesh network. In the provisioning process, a provisioner securely distributes a network key and a unique address space for a device. Provisioning protocol uses P256 Elliptic Curve Diffie-Hellman Key Exchange to create a temporary key to encrypt network key and other information.

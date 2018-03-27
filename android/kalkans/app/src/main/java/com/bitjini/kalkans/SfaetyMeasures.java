@@ -1,6 +1,11 @@
 package com.bitjini.kalkans;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +22,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import android.widget.VideoView;
 
 
 public class SfaetyMeasures extends AppCompatActivity {
@@ -32,27 +41,29 @@ public class SfaetyMeasures extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-private TextView tv;
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
+    private TextView tv;
+    private VideoView vid;
+    private ImageView ip, iv;
+    private TextView t;
     private ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sfaety_measures);
-
-        TextView t = new TextView(this);
-        Typeface Hindi = Typeface.createFromAsset(getAssets(), "fonts/font.txt");
-        t.setTypeface(Hindi);
-        t.setText("Hindi");
-
-        Typeface fontHindi = Typeface.createFromAsset(getAssets(), "fonts/font.txt");
-        tv.setTypeface(fontHindi);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //saf = (Button) findViewById(R.id.button2);
+//
+//        TextView t = new TextView(this);
+//        Typeface Hindi = Typeface.createFromAsset(getAssets(), "fonts/font.ttf");
+//        t.setTypeface(Hindi);
+//        t.setText("Hindi");
+//
+//        Typeface fontHindi = Typeface.createFromAsset(getAssets(), "fonts/font.ttf");
+//        tv.setTypeface(fontHindi);
+//
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -60,7 +71,6 @@ private TextView tv;
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
 
 
     }
@@ -116,8 +126,8 @@ private TextView tv;
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_sfaety_measures, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            View rootView = inflater.inflate(R.layout.activity_sfaety_measures, container, true);
+            TextView textView = (TextView) rootView.findViewById(R.id.tabItem);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
@@ -147,3 +157,4 @@ private TextView tv;
         }
     }
 }
+

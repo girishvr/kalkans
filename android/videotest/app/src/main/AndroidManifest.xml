@@ -3,6 +3,9 @@
     package="com.example.hp.videotest">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
         android:allowBackup="true"
@@ -18,10 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".tabedActivity"
-            android:label="@string/title_activity_tabed"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

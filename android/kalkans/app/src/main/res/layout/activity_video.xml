@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.bitjini.kalkans.VideoStream">
+
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="281dp"
+        android:layout_x="1dp"
+        android:layout_y="138dp"
+        android:id="@+id/frameLayout">
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <VideoView
+                android:id="@+id/svid"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="46dp" />
+
+
+
+            <ImageView
+                android:id="@+id/simg"
+                android:layout_marginTop="250dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/buttonm"
+                android:layout_centerInParent="true" />
+            <ImageView
+                android:id="@+id/playimg"
+                android:layout_width="100dp"
+                android:layout_height="87dp"
+                android:src="@drawable/playbutton"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="                Safety Tips"
+        android:layout_marginTop="300dp"
+        android:textSize="30dp"
+        android:textColor="#FFEF930A"
+
+        />
+
+    <Button
+        android:id="@+id/English"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="380dp"
+        android:background="@drawable/button_change"
+        android:textSize="20dp"
+        android:text="English tips"
+        android:textColor="@color/darkblue" />
+
+    <Button
+        android:id="@+id/Hindi"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="450dp"
+        android:background="@drawable/button_change"
+        android:text="Hindi Tips"
+        android:textColor="@color/darkblue" />
+
+
+
+</RelativeLayout>
