@@ -21,13 +21,25 @@ require("connection.php");
 	<div class="w3-card-4">
 	<div class="w3-container w3-theme w3-card">
 	<h1 style="font-size:30px;font-family:Roboto" align="center">Welcome to Control Room!!</h1>
+	<!--<button class="btn" style="position: absolute;right: 50px;top: 70px;" ><span  onclick="Logout()" >Logout</span></button>-->
+	
 	<br></div>
 </div>
+
+
 	<script type='text/javascript'>
 	function add(){
 	
-	window.location="dilog/index.html";
+	window.location="dilog/d/index.html";
 	}
+	
+	
+	function Logout(){
+		window.location="index.html";
+	}
+
+	
+	
 </script>
 	
 	<td bgcolor = "#fff" width = "40%">

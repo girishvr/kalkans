@@ -20,12 +20,13 @@
 	
 	
 	<?php
+	session_start();
 	require "connection.php";
 	
 	$rowid = $_GET['id'];
 	
-	
-	
+	$_SESSION["uid"] = $rowid;
+	echo $_SESSION["uid"];
 	
 	
 	
@@ -95,27 +96,27 @@ echo "<script>
   </tr>
   <tr>
     <td>UserId :</td>
-    <td>Smith</td>
+    <td>1</td>
     
   </tr>
   <tr>
     <td>Name :</td>
-    <td>Jackson</td>
+    <td>Megha</td>
     
   </tr>
   <tr>
     <td>DOB :</td>
-    <td>Doe</td>
+    <td>20/07/1996</td>
     
   </tr>
   <tr>
     <td>Gender   :</td>
-    <td>Doe</td>
+    <td>Female</td>
     
   </tr>
   <tr>
     <td>Language  :</td>
-    <td>Doe</td>
+    <td>English</td>
     
   </tr>
   <tr>
@@ -133,7 +134,7 @@ echo "<script>
             <td bgcolor = "#fff" width = "40%">
              <div class="btn-group" > 
 			
-			<button class="btn" ><span>Alert Team</span></button>
+			<button class="btn" onclick="alert1()" ><span>Alert Team</span></button>
 			<button class="btn" onclick="Action()" ><span>Acknowledge</span></button>
 			
 			
@@ -145,20 +146,25 @@ echo "<script>
 <script type="text/javascript">
 	function Action(){
 		swal("Acknowledge message", {
-  content: "input",
- buttons: {
-		cancel: "Cancel",
-		text: "Send",
+		content: "input",
+		buttons: {
+			cancel: "Cancel",
+			text: "Send",
 
-    },
+		},
   
-})
+	})
 	 
 .then((value) => {
   //swal(`You typed: ${value}`);
   //SEND THE MSG TO USER
 });
 	}
+	
+	
+	function alert1(){
+		window.location="way.php";
+}
 </script>
 </body>
 </html>

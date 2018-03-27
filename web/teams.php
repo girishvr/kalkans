@@ -18,8 +18,15 @@
 <div class="w3-container w3-theme w3-card">
 <body>
   <h1 style="font-size:30px;font-family:'Roboto', sans-serif" align="center">Welcome to Fire Department Portal!!</h1>
+  <!--<button class="btn" style="position: absolute;right: 50px;top: 70px;" ><span  onclick="Logout()" >Logout</span></button>-->
+  
 </br></div>
 </div>
+<script type="text/javascript">
+	function Logout(){
+		window.location="index.html";
+	}
+</script>
 
 
              <!--<div class="btn-group" > -->
@@ -32,9 +39,9 @@
 			<script>
 			 function addMember()
 			 {
+				window.location="dilog/prompt.html";
 			
-			
-}
+	}
 			</script>
 			
 			
