@@ -54,7 +54,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class SignAupctivity extends AppCompatActivity{
-    String ServerURL = "http://techtron.esy.es/userdb.php" ;
+    String ServerURL = "http://techtron.esy.es/userdata.php" ;
     SharedPreferences sharedPreferences;
     Editor editor;
     String TempName;
