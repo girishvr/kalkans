@@ -24,6 +24,8 @@ require("connection.php");
 	<div class="w3-card-4">
 	<div class="w3-container w3-theme w3-card">
 	<h1 style="font-size:30px;font-family:Roboto" align="center">Welcome to Control Room!!</h1>
+	
+	<!--<button class="btn" style="position: absolute;right: 50px;top: 20px;" ><span  onclick="Logout()" >Logout</span></button>-->
 	<br></div>
 	</div>
 	
@@ -37,6 +39,13 @@ require("connection.php");
 	function goto(){
 		window.location="showdepartment.php";
 	}
+	
+	
+	
+	function Logout(){
+		window.location="index.html";
+	}
+
 	</script>
 	
 </html>
