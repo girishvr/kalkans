@@ -22,7 +22,7 @@ public class HinTips extends AppCompatActivity {
 
         try {
             reader = new BufferedReader(
-                    new InputStreamReader(getAssets().open("FloodSafetyTips.txt")));
+                    new InputStreamReader(getAssets().open("FloodTipshindi.txt")));
 
             // do reading, usually loop until end of file reading
             String mLine;
