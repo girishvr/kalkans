@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hp.newtab.Tab2">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="English"
+        android:textSize="30dp"
+        />
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="281dp"
+        android:layout_x="1dp"
+        android:layout_y="138dp"
+        android:id="@+id/frameLayout">
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <VideoView
+                android:id="@+id/svid"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+
+
+
+            <ImageView
+                android:id="@+id/simg"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/buttonm"
+                android:layout_centerInParent="true" />
+            <ImageView
+                android:id="@+id/playimg"
+                android:layout_width="100dp"
+                android:layout_height="87dp"
+                android:src="@drawable/playbutton"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+</FrameLayout>
+
+

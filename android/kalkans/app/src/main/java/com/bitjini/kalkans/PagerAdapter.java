@@ -21,10 +21,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         switch (position)
         {
             case 0:
-                Tab1EnglishActivity tab1=new Tab1EnglishActivity();
+                EnglishTab tab1=new EnglishTab();
                 return tab1;
             case 1:
-                Tab2HindiActivity tab2=new Tab2HindiActivity();
+                HindiTab tab2=new HindiTab();
                 return tab2;
 
             default: return null;
