@@ -1,37 +1,55 @@
 <?php
 
-include'connection.php';
-session_start();
-$f=0;
+// include'connection.php';
+// session_start();
+// $f=0;
 
-$uname=$_POST['name'];
-$pass=$_POST['pass'];
-
-if($uname=="admin" && $pass=="123")
-header('location: admin.php');
+// $uname=$_POST['name'];
+// $pass=$_POST['pass'];
 
 
-else if($uname=="medical" && $pass=="123")
-header('location: medicaldept.php');
+
+	$url_get_all_users ='http://smartindia-ers.herokuapp.com/users/';
+	$options_get_users = array(
+		'http' => array(
+		   'header'  => "Content-type: application/json\r\n",  
+		   'method'  => 'GET',
+		),
+	);
+	$context_get_users = stream_context_create($options_get_users);
+	$output_get_all_user = file_get_contents($url_get_all_users, false,$context_get_users);
+
+	// $output_get_all_users = json_decode($output_get_all_user,true);
+
+	echo $output_get_all_user;
 
 
-else if($uname=="fire" && $pass=="123")
-header('location: firedept.php');
 
- else if($uname=="police" && $pass=="123")
-header('location: policedept.php');
-
-else if($uname=="ndm" && $pass=="123")
-header('location: ndmdept.php');
+// if($uname=="admin" && $pass=="123")
+// header('location: admin.php');
 
 
-else
-{ 
-echo "Wrong password. Try again.";
-			header("Refresh: 5; URL=index.html");
-			exit();
+// else if($uname=="medical" && $pass=="123")
+// header('location: medicaldept.php');
+
+
+// else if($uname=="fire" && $pass=="123")
+// header('location: firedept.php');
+
+//  else if($uname=="police" && $pass=="123")
+// header('location: policedept.php');
+
+// else if($uname=="ndm" && $pass=="123")
+// header('location: ndmdept.php');
+
+
+// else
+// { 
+// echo "Wrong password. Try again.";
+// 			header("Refresh: 5; URL=index.html");
+// 			exit();
 			
-}
+// }
 
 
 
