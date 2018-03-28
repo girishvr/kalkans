@@ -5,7 +5,7 @@ from users.views import get_alldata
 
 urlpatterns = [
     url(r'^users/$', views.userList.as_view()),
-    url(r'^get_emergency/$', get_alldata),
+    url(r'^get_emergency/$', views.get_alldata.asview()),
     url(r'^users/(?P<pk>[0-9]+)/$', views.userDetail.as_view()),
 ]
 
