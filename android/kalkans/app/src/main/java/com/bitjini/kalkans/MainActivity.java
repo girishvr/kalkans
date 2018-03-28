@@ -1,6 +1,7 @@
 package com.bitjini.kalkans;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
@@ -73,6 +74,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String currentsos="Flood";
                 editor.putString("Curentsos",currentsos);
                 editor.commit();
+                final int b=SendSosActivity.x;
+                if(b!=0)
+                {
+                    FloodCard.setCardBackgroundColor(Color.GRAY);
+                    //FloodCard = (CardView) findViewById(R.id.Flood_card);
+                }
                 I = new Intent(this, SendSosActivity.class);
                 Intent i = new Intent(MainActivity.this, SendSosActivity.class);
                 i.putExtra("Name", getName());
