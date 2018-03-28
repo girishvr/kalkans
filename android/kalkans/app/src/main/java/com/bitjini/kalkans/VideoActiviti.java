@@ -18,16 +18,17 @@ public class VideoActiviti extends YouTubeBaseActivity {
     YouTubePlayerView youTubePlayerView;
     YouTubePlayer.OnInitializedListener onInitializedListener;
 
-    Button eng,hin;
+    Button safetytip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_activiti);
 
-     hin = (Button) findViewById(R.id.button3);
-       eng = (Button) findViewById(R.id.button4);
+    // hin = (Button) findViewById(R.id.button3);
+        safetytip = (Button) findViewById(R.id.button4);
+    //   safetytip=(Button)findViewById(R.id.saftytips);
 
-      eng.setOnClickListener(new View.OnClickListener() {
+   safetytip.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
                 Intent i = new Intent(VideoActiviti.this,EngTips.class);
@@ -35,13 +36,7 @@ public class VideoActiviti extends YouTubeBaseActivity {
             }
         });
 
-        hin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(VideoActiviti.this,HinTips.class);
-                startActivity(i);
-            }
-        });
+
 
 
 

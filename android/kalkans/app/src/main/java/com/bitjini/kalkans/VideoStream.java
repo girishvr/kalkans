@@ -48,7 +48,7 @@ public class VideoStream extends AppCompatActivity {
         vid.requestFocus();
         ip.setClickable(true);
         ip.setImageResource(R.drawable.play);
-        // ip.setVisibility(ImageView.INVISIBLE);
+        ip.setVisibility(ImageView.INVISIBLE);
         vid.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
             @Override
@@ -81,10 +81,6 @@ public class VideoStream extends AppCompatActivity {
                     ip.setVisibility(ImageView.VISIBLE);
                 }
 
-                //English = (Button) findViewById(R.id.English);
-//                TextView text_view = (TextView) findViewById(R.id.textView1);
-//                Typeface font = Typeface.createFromAsset(getAssets(), "floodd.ttf");
-//                text_view.setTypeface(font);
             }
 //
 //            public void onStop() {
