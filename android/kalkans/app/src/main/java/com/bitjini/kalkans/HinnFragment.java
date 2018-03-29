@@ -10,15 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-//import static com.bitjini.kalkans.VideoActiviti.API_KEY;
-
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -39,11 +33,11 @@ public class HinnFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_hinn, container, false);
 
-
+        //tabLayout.addTab(tabLayout.newTab().setText(R.string.flood2));
         }
         // Inflate the layout for this fragment
         BufferedReader reader = null;
-        {
+    {
             try {
                 reader = new BufferedReader(
                         new InputStreamReader(getContext().getAssets().open("FloodTipshindi.txt")));
@@ -66,7 +60,7 @@ public class HinnFragment extends Fragment {
                     }
                 }
 
-                TextView output= (TextView) textView.findViewById(R.id.flood2);
+                TextView output= (TextView) textView.findViewById(R.id.hintext);
                 output.setText((CharSequence) text);
 
             }

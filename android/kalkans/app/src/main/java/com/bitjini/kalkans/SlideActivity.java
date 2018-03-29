@@ -119,10 +119,12 @@ class PlaceholderFragment extends Fragment {
 
         View rootView = null;
         switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
-            case 1:
+            case 0:
                 rootView = inflater.inflate(R.layout.fragment_eeng, container, false);
+                //rootView.setText("Fragment 1" + mPage);
+
                 break;
-            case 2:
+            case 1:
                 rootView = inflater.inflate(R.layout.fragment_hinn, container, false);
                 break;
 

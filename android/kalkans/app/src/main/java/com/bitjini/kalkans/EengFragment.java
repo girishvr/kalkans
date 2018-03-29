@@ -70,7 +70,7 @@ public class EengFragment extends Fragment {
                 }
             }
 
-            TextView output= (TextView) textView.findViewById(R.id.flood2);
+            TextView output= (TextView) textView.findViewById(R.id.engtext);
             output.setText((CharSequence) text);
 
         }
