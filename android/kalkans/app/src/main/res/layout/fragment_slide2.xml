@@ -1,0 +1,24 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bitjini.kalkans.SlideActivity$PlaceholderFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/flood"
+            android:text="                                  Tips"
+            android:textSize="20dp"
+            android:textColor="#FF0F1010"
+            android:fontFamily="serif"/>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

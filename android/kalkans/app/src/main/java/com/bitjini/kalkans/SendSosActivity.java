@@ -89,7 +89,7 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
         saf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SendSosActivity.this,VideoActiviti.class);
+                Intent i = new Intent(SendSosActivity.this,SlideActivity.class);
                 startActivity(i);
             }
         });

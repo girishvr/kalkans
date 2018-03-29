@@ -15,7 +15,8 @@
         android:layout_marginTop="10dp"
         android:textColor="#152b38"
         android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
 
 
     <android.support.v4.widget.NestedScrollView
@@ -71,7 +72,8 @@
                             android:text="Flood"
                             android:textColor="#152b38"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="serif"/>
 
 
                     </LinearLayout>
@@ -83,7 +85,8 @@
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
                     android:clickable="true"
-                    android:foreground="?android:attr/selectableItemBackground">
+                    android:foreground="?android:attr/selectableItemBackground"
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -106,7 +109,8 @@
                             android:text="Fire"
                             android:textColor="#152b38"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="serif"/>
 
 
                     </LinearLayout>
@@ -151,7 +155,8 @@
                             android:text="Medical Emergency"
                             android:textColor="#152b38"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="serif"/>
 
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -185,6 +190,7 @@
                             android:text="Earthquake"
                             android:textColor="#152b38"
                             android:textSize="17sp"
+                            android:fontFamily="serif"
                             android:textStyle="bold" />
 
 
@@ -229,7 +235,8 @@
                             android:text="Accident"
                             android:textColor="#152b38"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="serif"/>
 
 
                     </LinearLayout>
@@ -264,7 +271,8 @@
                             android:text="Women Safety"
                             android:textColor="#152b38"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="serif"/>
 
 
                     </LinearLayout>
@@ -307,7 +315,8 @@
                             android:text="Terrorist"
                             android:textColor="#152b38"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="serif"/>
 
 
                     </LinearLayout>
@@ -342,7 +351,8 @@
                             android:text="Tsunami"
                             android:textColor="#152b38"
                             android:textSize="17sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="serif"/>
 
 
                     </LinearLayout>

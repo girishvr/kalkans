@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bitjini.kalkans.EengFragment">
+
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube1"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+    </com.google.android.youtube.player.YouTubePlayerView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="350dp"
+            android:id="@+id/flood2"
+            android:text="                                  Tips"
+            android:textSize="20dp"
+            android:textColor="#FF0F1010"
+            android:fontFamily="serif"/>
+    </ScrollView>
+
+</FrameLayout>
