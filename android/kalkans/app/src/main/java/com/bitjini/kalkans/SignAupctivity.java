@@ -63,8 +63,12 @@ public class SignAupctivity extends AppCompatActivity{
     String TempCity;
     String TempEphone;
     String Templang;
+    String TempGender;
+    String TempDOB;
+    String TempLang;
+    String TempAdhaar;
     Button Register;
-    EditText txtUsername, txtPassword, txtEmail, txtPhone, txtEphone, txtCity, txtDob;
+    EditText txtUsername, txtPassword, txtEmail, txtPhone, txtEphone, txtCity, txtDob,txtGender,txtLang,txtAdhaar;
     UserSession session;
     ImageButton capture;
     ImageView photo;
@@ -95,6 +99,9 @@ public class SignAupctivity extends AppCompatActivity{
         Register = (Button) findViewById(R.id.register);
         capture = (ImageButton) findViewById(R.id.capture);
         photo = (ImageView) findViewById(R.id.photo);
+        txtGender = (EditText) findViewById(R.id.gender);
+        txtAdhaar = (EditText)findViewById(R.id.aadhar);
+        txtLang = (EditText)findViewById(R.id.lang);
 
 
         EnableRuntimePermission();
@@ -131,18 +138,24 @@ public class SignAupctivity extends AppCompatActivity{
                 String email = txtEmail.getText().toString();
                 String pass = txtPassword.getText().toString();
                 String phone = txtPhone.getText().toString();
-                String ephone = txtEphone.getText().toString();
+                String em_no = txtEphone.getText().toString();
                 String city = txtCity.getText().toString();
-                String dob = txtDob.getText().toString();
+                String DOB = txtDob.getText().toString();
+                String gender = txtGender.getText().toString();
+                String lang = txtLang.getText().toString();
+                String adhar = txtAdhaar.getText().toString();
 
                 // as now we have information in string. Lets stored them with the help of editor
                 editor.putString("Name", name);
                 editor.putString("Email", email);
                 editor.putString("txtPassword", pass);
                 editor.putString("txtPhone", phone);
-                editor.putString("txtEphone", ephone);
+                editor.putString("txtEphone", em_no);
                 editor.putString("txtCity", city);
-                editor.putString("txtDob", dob);
+                editor.putString("txtDob", DOB);
+                editor.putString("txtGender",gender);
+                editor.putString("txtLang",lang);
+                editor.putString("txtAdhaar",adhar);
                 editor.commit(); // commit the values
 
 
@@ -192,7 +205,7 @@ public class SignAupctivity extends AppCompatActivity{
         if (awesomeValidation.validate()) {
             Toast.makeText(this, "Registration Successfull", Toast.LENGTH_LONG).show();
             GetData();
-            InsertData(TempName, TempPhone,TempEmail,TempCity,TempEphone);
+            InsertData(TempName, TempPhone,TempEmail,TempEphone,TempCity,TempDOB,TempGender,TempLang,TempAdhaar);
 
             Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
             startActivity(ob);
@@ -254,10 +267,13 @@ public class SignAupctivity extends AppCompatActivity{
         TempEphone = txtEphone.getText().toString();
         Templang = txtPassword.getText().toString();
         TempEmail = txtEmail.getText().toString();
+        TempGender = txtGender.getText().toString();
+        TempDOB = txtDob.getText().toString();
+        TempAdhaar = txtAdhaar.getText().toString();
 
     }
 
-    public void InsertData(final String name, final String phone, final String email, final String ephone, final String city) {
+    public void InsertData(final String name, final String phone, final String email, final String em_no, final String city,final String DOB,final String gender,final String lang,final String adhar) {
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
 
@@ -267,17 +283,24 @@ public class SignAupctivity extends AppCompatActivity{
                 String NameHolder = name;
                 String EmailHolder = email;
                 String numberHolder = phone;
-                String nnumberHolder = ephone;
+                String nnumberHolder = em_no;
                 String nnameHolder = city;
-
+                String Gender = gender;
+                String numberdob = DOB;
+                String LANG = lang;
+                String Adhaar = adhar;
 
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
                 nameValuePairs.add(new BasicNameValuePair("name", NameHolder));
                 nameValuePairs.add(new BasicNameValuePair("email", EmailHolder));
                 nameValuePairs.add(new BasicNameValuePair("phone", numberHolder));
-                nameValuePairs.add(new BasicNameValuePair("ephone", nnumberHolder));
+                nameValuePairs.add(new BasicNameValuePair("em_no", nnumberHolder));
                 nameValuePairs.add(new BasicNameValuePair("city", nnameHolder));
+                nameValuePairs.add(new BasicNameValuePair("DOB",numberdob));
+                nameValuePairs.add(new BasicNameValuePair("gender",Gender));
+                nameValuePairs.add(new BasicNameValuePair("lang",LANG));
+                nameValuePairs.add(new BasicNameValuePair("adhar",Adhaar));
 
 
                 try {
@@ -310,7 +333,7 @@ public class SignAupctivity extends AppCompatActivity{
 
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
 
-        sendPostReqAsyncTask.execute(name, email, phone, ephone, city);
+        sendPostReqAsyncTask.execute(name, email, phone, em_no, city,DOB,gender,lang,adhar);
     }
 
 

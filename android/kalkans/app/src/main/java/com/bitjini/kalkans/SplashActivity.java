@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
                 if (settings.getBoolean("my_first_time", true)) {
-                    settings.edit().putBoolean("my_first_time", false).commit();
+                    settings.edit().putBoolean("my_first_time", false).apply();
 
 
 

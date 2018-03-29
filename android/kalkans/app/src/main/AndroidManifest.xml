@@ -47,7 +47,8 @@
         <activity android:name=".VideoActivity" />
         <activity android:name=".VideoActiviti" />
         <activity android:name=".EngTips" />
-        <activity android:name=".HinTips"></activity>
+        <activity android:name=".HinTips">
+        </activity>
     </application>
 
 </manifest>
