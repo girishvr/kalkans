@@ -2,7 +2,9 @@ package com.bitjini.kalkans;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -16,6 +18,7 @@ import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -44,14 +47,18 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
     String phoneNo;
     String message;
     Context ctx;
-    String MY_PREFS_NAME = "Name";
+    String userChoosenTask;
+   // String MY_PREFS_NAME = "Name";
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
 
     private VideoView vid;
     private ImageView ip, iv;
     private TextView t;
+    static int x=0;
 
     String name, phone, email, ephone, dob, city;
+    final String PREFS_NAME = "check";
+    String MY_PREFS_NAME = "Name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +72,7 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
 //
 //
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+       /* locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
 
         provider = locationManager.getBestProvider(criteria, false);
@@ -85,11 +92,13 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
 
         } else {
             Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
-        }
+        }*/
         saf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(SendSosActivity.this,SlideActivity.class);
+
                 startActivity(i);
             }
         });
@@ -98,29 +107,115 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
 
             @Override
             public boolean onLongClick(View view) {
-                //clicked();
-                sending();
+                clicked();
+
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+                if (settings.getBoolean("Sent", true)) {
+                    settings.edit().putBoolean("Sent", false).commit();
+                    x=x+1;
+                    sending();
+
+                }
+                else {
+                    final CharSequence[] items = {"OK","CANCEL","Go through safety tips"};
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SendSosActivity.this);
+                    builder.setTitle("Did help arrive?If not,press 'OK' to resend alert");
+                    builder.setItems(items, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int item) {
+                            boolean result = UtilSignupActivity.checkPermission(SendSosActivity.this);
+                            if (items[item].equals("OK")) {
+                                userChoosenTask = "OK";
+                                if (result)
+                                    sending();
+
+                            } else if (items[item].equals("Cancel")) {
+                                dialog.dismiss();
+                            }
+                            else if(items[item].equals("Go through safety tips")){
+                                Intent i = new Intent(SendSosActivity.this, SlideActivity.class);
+                                startActivity(i);
+                            }
+                        }
+                    });
+                    builder.show();
+                }
                 return false;
             }
         });
     }
-    public void sending()
-    {
-        BackgroundTask backgroundTask = new BackgroundTask(SendSosActivity.this);
-        if(isConnectingToInternet(SendSosActivity.this))
-        {
-            String method = "flood";
-            Toast.makeText(getApplicationContext(),"internet is available",Toast.LENGTH_LONG).show();
-            backgroundTask.execute(method, name, phone, email, lat, lon, ephone, dob, city);
-        }
-        else {
-            sendSMSMessage();
-            Toast.makeText(getApplicationContext(),"internet is not available",Toast.LENGTH_LONG).show();
 
+    public void sending() {
+        BackgroundTask backgroundTask = new BackgroundTask(SendSosActivity.this);
+        if (isConnectingToInternet(SendSosActivity.this)) {
+            String method = "flood";
+            Toast.makeText(getApplicationContext(), "internet is available", Toast.LENGTH_LONG).show();
+            backgroundTask.execute(method, name, phone, email, lat, lon, ephone, dob, city);
+        } else {
+            final CharSequence[] items = {"OK","CANCEL"};
+            AlertDialog.Builder builder = new AlertDialog.Builder(SendSosActivity.this);
+            builder.setTitle("Internet is not available.Would you like to send an SMS?");
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+                    boolean result = UtilSignupActivity.checkPermission(SendSosActivity.this);
+                    if (items[item].equals("OK")) {
+                        userChoosenTask = "OK";
+                        if (result)
+                            sendSMSMessage();
+
+                    } else if (items[item].equals("Cancel")) {
+                        dialog.dismiss();
+                    }
+                }
+            });
+            builder.show();
+            //Context context = null;
+           // check();
         }
     }
+          /*  public void check () {
+        Context context=null;
+               final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.alert_dialog_box);
+                dialog.setTitle("Alert!");
+                Button dialogButton = dialog.findViewById(R.id.ok);
+                Button cancel = dialog.findViewById(R.id.cancel);
+                // set the custom dialog components - text, image and button
+                //TextView text = (TextView) dialog.findViewById(R.id.nonet);
+                //text.setText("Android custom dialog example!");
 
-    /*public void clicked()
+
+                // if button is clicked, close the custom dialog
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sendSMSMessage();
+                        // dialog.dismiss();
+                    }
+                });
+
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+            }
+
+
+
+        //Toast.makeText(getApplicationContext(),"internet is not available",Toast.LENGTH_LONG).show();*/
+
+
+
+
+
+    public void clicked()
 
     {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -145,7 +240,7 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
         }else {
             Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
         }
-    }*/
+    }
 
     public void send(View view){
         //msg = e.getText().toString().trim();
@@ -160,7 +255,7 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
         }
     }
 
-    public static boolean isConnectingToInternet(Context context)
+    public  boolean isConnectingToInternet(Context context)
     {
         ConnectivityManager connectivity =
                 (ConnectivityManager) context.getSystemService(
