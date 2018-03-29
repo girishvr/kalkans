@@ -34,7 +34,39 @@ def JSONResponse(data = None, status = StatusCode.OK):
     else:
         return HttpResponse(status = StatusCode.NOT_FOUND)
 
+@csrf_exempt
+def get_user(request):
 
+    # email = request.GET.get('email', '')
+    # password = request.GET.get('password', '')
+
+    email = request.META.get('HTTP_EMAIL')
+    password = request.META.get('HTTP_PASSWORD')
+    # ids = request.META.get('HTTP_ID')
+
+    success = "Fail"
+    user_details = ""
+    if(user.objects.filter(email=email,pwd=password).exists()):
+        success = "Success"
+        user_details = list(user.objects.filter(email=email,pwd=password).values('pk','created','user_id','name','email','phone','em_no','pwd'))
+
+    # u = user.objects.all()
+    # user_details = serializers.serialize('json',list(u), fields=('created','user_id','name','email','phone','em_no','adhar', 'city', 'gender','DOB', 'language','image','pwd'))
+
+    details=[] 
+    details.append({
+         'user_details':user_details,
+        })
+
+    response=[]
+    response.append({
+    'requested':email+password,    
+    'status':success,    
+    'details':details,
+        })    
+    import sys
+    from django.http import JsonResponse
+    return JsonResponse(response[0],safe=False)
 
 
 @csrf_exempt
