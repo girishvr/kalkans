@@ -38,12 +38,16 @@
         <activity android:name=".SendSosActivity" />
         <activity android:name=".VideoActiviti" />
         <activity android:name=".EngTips" />
+
         <activity android:name=".HinTips" />
         <activity
             android:name=".SlideActivity"
             android:label="@string/title_activity_slide"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".VideoswitchActivity"></activity>
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".EengFragment"/>
+        <activity android:name=".HinnFragment"/>
     </application>
+
+
 
 </manifest>

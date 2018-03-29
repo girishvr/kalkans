@@ -40,7 +40,7 @@ public class HinnFragment extends Fragment {
     {
             try {
                 reader = new BufferedReader(
-                        new InputStreamReader(getContext().getAssets().open("FloodTipshindi.txt")));
+                        new InputStreamReader(getActivity().getAssets().open("FloodTipshindi.txt")));
 
                 // do reading, usually loop until end of file reading
                 String mLine;

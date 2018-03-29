@@ -50,7 +50,7 @@ public class EengFragment extends Fragment {
     {
         try {
             reader = new BufferedReader(
-                    new InputStreamReader(getContext().getAssets().open("FloodSafetyTips.txt")));
+                    new InputStreamReader(getActivity().getAssets().open("FloodSafetyTips.txt")));
 
             // do reading, usually loop until end of file reading
             String mLine;
