@@ -125,6 +125,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/adhar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -160,6 +161,27 @@
                     android:inputType="phone"
                     android:textColor="@color/darkblue"
                     android:textColorHint="@color/white" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Gender(F/M)">
+
+
+                <EditText
+                    android:id="@+id/gender"
+                    android:layout_width="300dp"
+                    android:layout_height="025dp"
+                    android:layout_marginLeft="38dp"
+                    android:background="@drawable/edittext_change"
+                    android:hint="Gender(F/M)"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/darkblue"
+                    android:textColorHint="@color/white" />
+
+
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -202,6 +224,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/DOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

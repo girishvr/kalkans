@@ -24,6 +24,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,7 @@ import android.widget.Toast;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 
+import org.apache.commons.codec.StringEncoder;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -43,10 +45,16 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,7 +62,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class SignAupctivity extends AppCompatActivity{
-    String ServerURL = "http://techtron.esy.es/userdata.php" ;
+    String ServerURL = "https://smartindia-ers.herokuapp.com/users/" ;
     SharedPreferences sharedPreferences;
     Editor editor;
     String TempName;
@@ -63,12 +71,9 @@ public class SignAupctivity extends AppCompatActivity{
     String TempCity;
     String TempEphone;
     String Templang;
-    String TempGender;
-    String TempDOB;
-    String TempLang;
-    String TempAdhaar;
+    String TempDOB,Tempgender;
     Button Register;
-    EditText txtUsername, txtPassword, txtEmail, txtPhone, txtEphone, txtCity, txtDob,txtGender,txtLang,txtAdhaar;
+    EditText txtUsername,txtPassword, txtEmail, txtPhone, txtEphone, txtCity, txtDob,txtlang,txtgender,txtadhar;
     UserSession session;
     ImageButton capture;
     ImageView photo;
@@ -93,16 +98,16 @@ public class SignAupctivity extends AppCompatActivity{
         txtPassword = (EditText) findViewById(R.id.Pass);
         txtEmail = (EditText) findViewById(R.id.Email);
         txtPhone = (EditText) findViewById(R.id.pno);
+        txtlang =(EditText) findViewById(R.id.lang);
         txtEphone = (EditText) findViewById(R.id.eno);
         txtCity = (EditText) findViewById(R.id.city);
         txtDob = (EditText) findViewById(R.id.dob);
+        txtgender = (EditText) findViewById(R.id.gender);
+
+        //txtadhar=(EditText) findViewsById(R.id.aadhar);
         Register = (Button) findViewById(R.id.register);
         capture = (ImageButton) findViewById(R.id.capture);
         photo = (ImageView) findViewById(R.id.photo);
-        txtGender = (EditText) findViewById(R.id.gender);
-        txtAdhaar = (EditText)findViewById(R.id.aadhar);
-        txtLang = (EditText)findViewById(R.id.lang);
-
 
         EnableRuntimePermission();
 
@@ -141,10 +146,9 @@ public class SignAupctivity extends AppCompatActivity{
                 String em_no = txtEphone.getText().toString();
                 String city = txtCity.getText().toString();
                 String DOB = txtDob.getText().toString();
-                String gender = txtGender.getText().toString();
-                String lang = txtLang.getText().toString();
-                String adhar = txtAdhaar.getText().toString();
-
+                String lang = txtlang.getText().toString();
+               // String adhar=txtadhar.getText().toString();
+                String gender = txtgender.getText().toString();
                 // as now we have information in string. Lets stored them with the help of editor
                 editor.putString("Name", name);
                 editor.putString("Email", email);
@@ -153,9 +157,9 @@ public class SignAupctivity extends AppCompatActivity{
                 editor.putString("txtEphone", em_no);
                 editor.putString("txtCity", city);
                 editor.putString("txtDob", DOB);
-                editor.putString("txtGender",gender);
-                editor.putString("txtLang",lang);
-                editor.putString("txtAdhaar",adhar);
+                editor.putString("txtlang",lang);
+                editor.putString("txtgender",gender);
+                //editor.putString("txtadhar",adhar);
                 editor.commit(); // commit the values
 
 
@@ -205,7 +209,8 @@ public class SignAupctivity extends AppCompatActivity{
         if (awesomeValidation.validate()) {
             Toast.makeText(this, "Registration Successfull", Toast.LENGTH_LONG).show();
             GetData();
-            InsertData(TempName, TempPhone,TempEmail,TempEphone,TempCity,TempDOB,TempGender,TempLang,TempAdhaar);
+
+            InsertData(TempName, TempPhone,TempEmail,TempEphone,TempCity,TempDOB,Templang,Tempgender);
 
             Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
             startActivity(ob);
@@ -263,17 +268,17 @@ public class SignAupctivity extends AppCompatActivity{
         TempCity = txtCity.getText().toString();
         TempName = txtUsername.getText().toString();
         TempPhone = txtPhone.getText().toString();
-        TempCity = txtCity.getText().toString();
+      //  TempAdhar=txtadhar.getText().toString();
+        TempDOB=txtDob.getText().toString();
         TempEphone = txtEphone.getText().toString();
         Templang = txtPassword.getText().toString();
         TempEmail = txtEmail.getText().toString();
-        TempGender = txtGender.getText().toString();
-        TempDOB = txtDob.getText().toString();
-        TempAdhaar = txtAdhaar.getText().toString();
+        Tempgender=txtgender.getText().toString();
+
 
     }
 
-    public void InsertData(final String name, final String phone, final String email, final String em_no, final String city,final String DOB,final String gender,final String lang,final String adhar) {
+    public void InsertData(final String name, final String phone, final String email, final String em_no, final String city,final  String DOB,final String lang,final String gender) {
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
 
@@ -283,47 +288,81 @@ public class SignAupctivity extends AppCompatActivity{
                 String NameHolder = name;
                 String EmailHolder = email;
                 String numberHolder = phone;
-                String nnumberHolder = em_no;
+               String nnumberHolder = em_no;
                 String nnameHolder = city;
-                String Gender = gender;
-                String numberdob = DOB;
-                String LANG = lang;
-                String Adhaar = adhar;
-
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-
-                nameValuePairs.add(new BasicNameValuePair("name", NameHolder));
-                nameValuePairs.add(new BasicNameValuePair("email", EmailHolder));
-                nameValuePairs.add(new BasicNameValuePair("phone", numberHolder));
-                nameValuePairs.add(new BasicNameValuePair("em_no", nnumberHolder));
-                nameValuePairs.add(new BasicNameValuePair("city", nnameHolder));
-                nameValuePairs.add(new BasicNameValuePair("DOB",numberdob));
-                nameValuePairs.add(new BasicNameValuePair("gender",Gender));
-                nameValuePairs.add(new BasicNameValuePair("lang",LANG));
-                nameValuePairs.add(new BasicNameValuePair("adhar",Adhaar));
+                String nnnumberHolder = DOB;
+                String nnnameHolder=lang;
+                String nnnnameHolder=gender;
+                //String nnnaameHolder=adhar;
 
 
+
+//                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+//
+//                nameValuePairs.add(new BasicNameValuePair("name", NameHolder));
+//                nameValuePairs.add(new BasicNameValuePair("email", EmailHolder));
+////                nameValuePairs.add(new BasicNameValuePair("phone", 9483));
+////                nameValuePairs.add(new BasicNameValuePair("em_no", nnumberHolder));
+//                nameValuePairs.add(new BasicNameValuePair("city", nnameHolder));
+//                nameValuePairs.add(new BasicNameValuePair("DOB",nnnumberHolder));
+//                nameValuePairs.add(new BasicNameValuePair("language",nnnameHolder));
+//                nameValuePairs.add(new BasicNameValuePair("gender",nnnnameHolder));
+//                nameValuePairs.add(new BasicNameValuePair("adhar","123"));
+                JSONObject jObjectData = new JSONObject();
+
+                try {
+
+                    jObjectData.put("name", NameHolder);
+                    jObjectData.put("email", EmailHolder);
+                    jObjectData.put("phone", 8899882);
+                    jObjectData.put("em_no", 77886644);
+                    jObjectData.put("city", nnameHolder);
+                    jObjectData.put("DOB", nnnameHolder);
+                    jObjectData.put("gender", "F");
+                    jObjectData.put("adhar", "121212323434");
+                    jObjectData.put("language", "E");
+                } catch (JSONException e) {
+                    Log.e("MYAPP", "unexpected JSON exception", e);
+                    // Do something to recover ... or kill the app.
+                }
                 try {
                     HttpClient httpClient = new DefaultHttpClient();
 
                     HttpPost httpPost = new HttpPost(ServerURL);
+                    httpPost.addHeader("Content-type","application/json");
 
-                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    String json = jObjectData.toString();
+                    StringEntity se = new StringEntity(json);
+
+                    httpPost.setEntity(se);
 
                     HttpResponse httpResponse = httpClient.execute(httpPost);
 
                     HttpEntity httpEntity = httpResponse.getEntity();
 
+//                    if (httpEntity != null) {
+//                        InputStream instream = httpEntity.getContent();
+//                        String result = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+////                        String result = RestClient.convertStreamToString(instream);
+//                        Log.i("Read from server", result);
+//                    }
+                        Log.d(EntityUtils.toString(httpEntity),"http entity");
+                        Log.d(Integer.toString(httpResponse.getStatusLine().getStatusCode()),"http  response");
+
 
                 } catch (ClientProtocolException e) {
+                    Toast.makeText(SignAupctivity.this, "data submitting error", Toast.LENGTH_LONG).show();
+
                 } catch (IOException e) {
+                    Toast.makeText(SignAupctivity.this, "data submitting error ", Toast.LENGTH_LONG).show();
+
                 }
                 return "Data Inserted Successfully";
             }
 
             @Override
             protected void onPostExecute(String result) {
-                Toast.makeText(SignAupctivity.this, "data submitted Successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(SignAupctivity.this, result, Toast.LENGTH_LONG).show();
 
                 super.onPostExecute(result);
 
@@ -333,7 +372,9 @@ public class SignAupctivity extends AppCompatActivity{
 
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
 
-        sendPostReqAsyncTask.execute(name, email, phone, em_no, city,DOB,gender,lang,adhar);
+
+        sendPostReqAsyncTask.execute(name, email, phone, em_no, city, DOB,lang,gender);
+
     }
 
 
