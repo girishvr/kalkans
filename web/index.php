@@ -49,82 +49,26 @@ session_cache_limiter("private_no_expire");
 
 
 <script language="javascript" type="text/javascript">
-function getUsers(){
-	
-	$.post('check.php',function(responseText){
-		console.log(responseText);
-		myObj = JSON.parse(responseText);
-		console.log(myObj);
-        txt += "<table border='1'>"
-        for (x in myObj) {
-			console.log(JSON.stringify(myObj));
-			//var data=JSON.stringify(myObj);
-            txt += "<tr><td>" + myObj[x].name+ "</td><td>" + myObj[x].phone + "</td></tr>";
-			 
-       
-        txt += "</table>" 
-		
-       document.write(txt);
-		
-		console.log(myObj);
-	}
-});
-}
-   /*var obj, dbParam, xmlhttp, myObj,x, txt = "";
-	obj ={ "table":"jsontables", "limit":20 };
-	dbParam = JSON.stringify(obj);
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        myObj = JSON.parse(this.responseText);
-        txt += "<table border='1'>"
-        for (x in myObj) {
-			console.log(JSON.stringify(myObj));
-			//var data=JSON.stringify(myObj);
-            txt += "<tr><td>" + myObj[x].name+ "</td><td>" + myObj[x].phone + "</td></tr>";
-			 
-       
-        txt += "</table>" 
-		
-       document.write(txt);
-		
-		console.log(myObj);
-		}
-};
-	}
-xmlhttp.open("POST", "check.php", true);
-xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xmlhttp.send("x=" + dbParam);
-*/
+    function getUsers(){
+    	
+      	$.post('check.php',function(responseText){
+          
+          var txt = "";      		
+      		myObj = JSON.parse(responseText);          
+          txt += "<table border='1'>"
 
+              for (x in myObj) {
+                var data=JSON.stringify(myObj);
+                txt += "<tr><td>" + myObj[x].name+ "</td><td>" + myObj[x].phone + "</td></tr>";
+                txt += "</table>" 
+                document.write(txt);
+      	}
 
-			
-
-
-
-       // URL = "http://smartindia-ers.herokuapp.com/users/1/";
-
-       // var xmlhttp = new XMLHttpRequest();
-
-       // xmlhttp.responseType = 'text';
-       // xmlhttp.open("GET", URL, true);
-       // xmlhttp.setRequestHeader("Content-Type", "application/json");
-       
-       // // xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-       // alert(xmlhttp.requestText);
-       // // alert("xmlhttp.responseXML");
-
-       // xmlhttp.addEventListener("onreadystatechange", callbackFunction, false);
-       // xmlhttp.send();
+      });
+    }
    
 
-   /*function callbackFunction(xmlhttp) 
-   {
-       alert("xmlhttp.responseXML");
-       console.log(xmlhttp.response);
-         console.log(xmlhttp.responseText);
-   }*/
-</script>
+ </script>
 
 
 </body>
