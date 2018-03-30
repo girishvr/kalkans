@@ -35,7 +35,7 @@ session_cache_limiter("private_no_expire");
 
       <div class="button login">
 		
-         <button type="submit" onclick="javascript:getUsers()"><span>LOGIN</span></button>
+         <button type="submit" onclick="javascript:login()"><span>LOGIN</span></button>
       </div>
 
       <!--<a href="" class="pass-forgot">Forgot your password?</a>-->
@@ -49,20 +49,32 @@ session_cache_limiter("private_no_expire");
 
 
 <script language="javascript" type="text/javascript">
-    function getUsers(){
-    	
-      	$.post('check.php',function(responseText){
+    function login(){
+		var username, password;
+		username=document.getElementById("name").value;
+    	password=document.getElementById("pass").value;
+      	$.post('login.php',{uname:username,pwd:password},function(responseText){
           
-          var txt = "";      		
-      		myObj = JSON.parse(responseText);          
-          txt += "<table border='1'>"
+			console.log(responseText);
+      		myObj = JSON.parse(responseText);
+			var data=JSON.stringify(myObj);
+			console.log(myObj);
+			console.log(data);
+			var status=data.status;
+			console.log(status);
+			//document.write(status);
+			//if success
+				if(status=="success"){
+					window.location="admin.php";
+				}
+				else{
+					alert("try again");
+				}
+			//load next page
+			//else 
+				//show alert try again
 
-              for (x in myObj) {
-                var data=JSON.stringify(myObj);
-                txt += "<tr><td>" + myObj[x].name+ "</td><td>" + myObj[x].phone + "</td></tr>";
-                txt += "</table>" 
-                document.write(txt);
-      	}
+              
 
       });
     }
