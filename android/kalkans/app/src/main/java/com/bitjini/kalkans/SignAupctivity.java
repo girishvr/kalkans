@@ -270,29 +270,6 @@ public class SignAupctivity extends AppCompatActivity{
             @Override
             protected String doInBackground(String... params) {
 
-               /** String NameHolder = name;
-                String EmailHolder = email;
-                String numberHolder = phone;
-               String nnumberHolder = em_no;
-                String nnameHolder = city;
-                String nnnumberHolder = DOB;
-                String nnnameHolder=lang;
-                String nnnnameHolder=gender;*/
-                //String nnnaameHolder=adhar;
-
-
-
-//                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-//
-//                nameValuePairs.add(new BasicNameValuePair("name", NameHolder));
-//                nameValuePairs.add(new BasicNameValuePair("email", EmailHolder));
-////                nameValuePairs.add(new BasicNameValuePair("phone", 9483));
-////                nameValuePairs.add(new BasicNameValuePair("em_no", nnumberHolder));
-//                nameValuePairs.add(new BasicNameValuePair("city", nnameHolder));
-//                nameValuePairs.add(new BasicNameValuePair("DOB",nnnumberHolder));
-//                nameValuePairs.add(new BasicNameValuePair("language",nnnameHolder));
-//                nameValuePairs.add(new BasicNameValuePair("gender",nnnnameHolder));
-//                nameValuePairs.add(new BasicNameValuePair("adhar","123"));
                 JSONObject jObjectData = new JSONObject();
 
                 try {
@@ -326,19 +303,11 @@ public class SignAupctivity extends AppCompatActivity{
                     HttpResponse httpResponse = httpClient.execute(httpPost);
 
                     HttpEntity httpEntity = httpResponse.getEntity();
-
-//                    if (httpEntity != null) {
-//                        InputStream instream = httpEntity.getContent();
-//                        String result = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
-////                        String result = RestClient.convertStreamToString(instream);
-//                        Log.i("Read from server", result);
-//                    }
                         Log.d(EntityUtils.toString(httpEntity),"http entity");
                         Log.d(Integer.toString(httpResponse.getStatusLine().getStatusCode()),"http  response");
 
 
                 } catch (ClientProtocolException e) {
-                    Toast.makeText(SignAupctivity.this, "data submitting error", Toast.LENGTH_LONG).show();
 
                 } catch (IOException e) {
                     Toast.makeText(SignAupctivity.this, "data submitting error ", Toast.LENGTH_LONG).show();

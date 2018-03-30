@@ -15,6 +15,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -22,6 +23,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -37,8 +39,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class SendSosActivity extends AppCompatActivity implements LocationListener {
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.IOException;
+
+public class SendSosActivity extends AppCompatActivity implements LocationListener {
+    String ServerURL = "http://smartindia-ers.herokuapp.com/calamitys/" ;
     LocationManager locationManager;
     String provider;
     String lat, lon;
@@ -147,11 +162,13 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
     }
 
     public void sending() {
-        BackgroundTask backgroundTask = new BackgroundTask(SendSosActivity.this);
+       // BackgroundTask backgroundTask = new BackgroundTask(SendSosActivity.this);
         if (isConnectingToInternet(SendSosActivity.this)) {
             String method = "flood";
             Toast.makeText(getApplicationContext(), "internet is available", Toast.LENGTH_LONG).show();
-            backgroundTask.execute(method, name, phone, email, lat, lon, ephone, dob, city);
+            //backgroundTask.execute(method, name, phone, email, lat, lon, ephone, dob, city);
+            sendMessageInternet(lat,lon);
+
         } else {
             final CharSequence[] items = {"OK","CANCEL"};
             AlertDialog.Builder builder = new AlertDialog.Builder(SendSosActivity.this);
@@ -231,9 +248,9 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
             Location location = locationManager.getLastKnownLocation(provider);
             locationManager.requestLocationUpdates(provider, 1000, 1, this);
 
-            if (location != null) {
+            if (location != null)
                 onLocationChanged(location);
-            }
+
             else
                 Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location was not retrieved.", Toast.LENGTH_SHORT).show();
 
@@ -246,9 +263,8 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
         //msg = e.getText().toString().trim();
 
         String method = "flood";
-        BackgroundTask backgroundTask = new BackgroundTask(SendSosActivity.this);
         if (isConnectingToInternet(SendSosActivity.this)) {
-            backgroundTask.execute(method, name, phone, email, lat, lon, ephone, dob, city);
+            sendMessageInternet(lat,lon);
         }
         else{
             sendSMSMessage();
@@ -273,15 +289,86 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
         return false;
     }
 
+public void sendMessageInternet(final String lat,final String lon)
+{
+    class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            SharedPreferences sharedpreferences = getSharedPreferences("Reg",0);
+            //String name = sharedpreferences.getString("Name","not found");
+            // String phone = sharedpreferences.getString("txtPhone","not found");
+            String currentsos=sharedpreferences.getString("Curentsos","not found");
+
+            JSONObject jObjectData = new JSONObject();
+
+            try {
+
+               jObjectData.put("etype", currentsos);
+                jObjectData.put("user_id", "1");
+                 jObjectData.put("status","SOS");
+                jObjectData.put("text","  ");
+                jObjectData.put("lat", lat);
+                jObjectData.put("lon", lon);
+                jObjectData.put("timestamp","10:20");
+
+
+            } catch (JSONException e) {
+                Log.e("MYAPP", "unexpected JSON exception", e);
+                // Do something to recover ... or kill the app.
+            }
+            try {
+                HttpClient httpClient = new DefaultHttpClient();
+
+                HttpPost httpPost = new HttpPost(ServerURL);
+                httpPost.addHeader("Content-type", "application/json");
+
+                String json = jObjectData.toString();
+                StringEntity se = new StringEntity(json);
+
+                httpPost.setEntity(se);
+
+                HttpResponse httpResponse = httpClient.execute(httpPost);
+
+                HttpEntity httpEntity = httpResponse.getEntity();
+                Log.d(EntityUtils.toString(httpEntity), "http entity");
+                Log.d(Integer.toString(httpResponse.getStatusLine().getStatusCode()), "http  response");
+
+
+            } catch (ClientProtocolException e) {
+                Toast.makeText(SendSosActivity.this, "data submitting error", Toast.LENGTH_LONG).show();
+
+            } catch (IOException e) {
+                Toast.makeText(SendSosActivity.this, "data submitting error", Toast.LENGTH_LONG).show();
+
+            }
+            return "Data Inserted Successfully";
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            Toast.makeText(SendSosActivity.this, result, Toast.LENGTH_LONG).show();
+
+            super.onPostExecute(result);
+        }
+
+        public void execute( String etype,String userid,String status,String text,String lat,String lon,String timestamp) {
+        }
+    }
+
+    SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+
+    sendPostReqAsyncTask.execute(lat,lon);
+}
+
 
     public void sendSMSMessage()
     {
         SharedPreferences sharedpreferences = getSharedPreferences("Reg",0);
         String name = sharedpreferences.getString("Name","not found");
-        String phone = sharedpreferences.getString("txtPhone","not found");
+       // String phone = sharedpreferences.getString("txtPhone","not found");
         String currentsos=sharedpreferences.getString("Curentsos","not found");
         phoneNo = "9108516990";
-        message = currentsos+" "+name+" "+phone+" "+lat+" " +lon;
+        message = currentsos+" "+name+"  "+lat+" " +lon;
 
         try {
             SmsManager sms = SmsManager.getDefault();
@@ -313,8 +400,8 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
     @Override
     public void onLocationChanged(Location location) {
 
-        t1.setText("Latitude : "+location.getLatitude());
-        t2.setText("Longitude : "+location.getLongitude());
+//        t1.setText("Latitude : "+location.getLatitude());
+    //    t2.setText("Longitude : "+location.getLongitude());
         Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location Sent.", Toast.LENGTH_SHORT).show();
 
         lat = Double.toString(location.getLatitude());
