@@ -1,7 +1,7 @@
 from calamitys.models import calamity
 from calamitys.serializers import calamitySerializer
 from rest_framework import generics
-
+from django.db.models import Count
 
 class calamityList(generics.ListCreateAPIView):
     queryset = calamity.objects.all()
@@ -17,9 +17,18 @@ from math import sin, cos, sqrt, atan2
 
 R = 6373.0
 
-lat1 = department.objects.filter(lat)
-lon1 = department.objects.filter(lat)
-lat2 = 52.406374
+lat1 = calamity.objects.values('id').annotate(calamity_count=Count('lat')).order_by('-calamity_count')[:1]
+
+
+lon1 = calamity.objects.values('id').annotate(calamity_count=Count('lon')).order_by('-calamity_count')[:1]
+
+print "lat1"
+print "lon1"
+
+#Employer.objects.values('id').annotate(jobtitle_count=Count('jobtitle')).order_by('-jobtitle_count')[:5]
+
+
+'''lat2 = 52.406374
 lon2 = 16.9251681
 
 dlon = lon2 - lon1
@@ -31,3 +40,4 @@ distance = R * c
 print "Result", distance
 print "Should be", 278.546
 
+'''
