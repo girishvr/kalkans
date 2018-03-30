@@ -56,15 +56,16 @@ session_cache_limiter("private_no_expire");
       	$.post('login.php',{uname:username,pwd:password},function(responseText){
           
 			console.log(responseText);
-      		myObj = JSON.parse(responseText);
+      myObj = JSON.parse(responseText);
 			var data=JSON.stringify(myObj);
 			console.log(myObj);
 			console.log(data);
 			var status=data.status;
 			console.log(status);
+
 			//document.write(status);
 			//if success
-				if(status=="success"){
+			if(status=="Success"){
 					window.location="admin.php";
 				}
 				else{

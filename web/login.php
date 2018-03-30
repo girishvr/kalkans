@@ -11,8 +11,8 @@ $pass=$_POST['pwd'];
 	$options_login = array(
 		'http' => array(
 		   'header'  =>array( "Content-type: application/json",
-								'uname:'$value,
-								'password:'$pass
+								'uname:'.$value,
+								'password:'.$pass
 							),
 		   'method'  => 'GET',
 		   

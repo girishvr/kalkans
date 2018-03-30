@@ -8,7 +8,7 @@ session_cache_limiter("private_no_expire");
    <!--<link rel="stylesheet" type="text/css" href="login.css">-->
    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="web/bower_components/bootstrap-table/src/bootstrap-table.js"></script> 
+  <script type="text/javascript" src="web/bower_components/bootstrap-table/src/bootstrap-table.js"></script> 
 	<meta charset="utf-8">
   
   
