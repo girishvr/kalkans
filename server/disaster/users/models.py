@@ -14,9 +14,9 @@ class user(models.Model):
 
     user_id  = models.AutoField(primary_key = True)
     name     = models.CharField(max_length=40, unique=False, blank=False, default='')
-    email    = models.CharField(max_length=40, unique=False, blank=False, default='')
-    phone    = models.IntegerField(max_length=10, unique=False, blank=False, default='')
-    em_no    = models.IntegerField(max_length=10, unique=False, blank=True, default='')
+    email    = models.CharField(max_length=40, unique=True, blank=False)
+    phone    = models.CharField(max_length=10, unique=False, blank=False, default='')
+    em_no    = models.CharField(max_length=10, unique=False, blank=True, default='')
     adhar    = models.CharField(max_length=30, unique=False, blank=True, default='')
     city     = models.CharField(max_length=100, unique=False, blank=False, default='')
     gender   = models.CharField(max_length=100, unique=False, blank=False, default='M',choices=GENDERS)

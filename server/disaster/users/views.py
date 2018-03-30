@@ -48,7 +48,7 @@ def get_user(request):
     user_details = ""
     if(user.objects.filter(email=email,pwd=password).exists()):
         success = "Success"
-        user_details = list(user.objects.filter(email=email,pwd=password).values('pk','created','user_id','name','email','phone','em_no','pwd'))
+        user_details = list(user.objects.filter(email=email,pwd=password).values('pk','created','user_id','name','email','phone','em_no'))
 
     # u = user.objects.all()
     # user_details = serializers.serialize('json',list(u), fields=('created','user_id','name','email','phone','em_no','adhar', 'city', 'gender','DOB', 'language','image','pwd'))
@@ -60,7 +60,7 @@ def get_user(request):
 
     response=[]
     response.append({
-    'requested':email+password,    
+    #'requested':email+password,    
     'status':success,    
     'details':details,
         })    
@@ -95,3 +95,7 @@ def get_alldata(request):
     import sys
     from django.http import JsonResponse
     return JsonResponse(response[0],safe=False)
+
+
+
+    
