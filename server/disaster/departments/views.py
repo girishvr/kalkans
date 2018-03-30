@@ -17,7 +17,6 @@ class departmentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = department.objects.all()
     serializer_class = departmentSerializer
 
-
 @csrf_exempt
 def get_admin(request):
 
@@ -51,4 +50,3 @@ def get_admin(request):
     import sys
     from django.http import JsonResponse
     return JsonResponse(response[0],safe=False)
-

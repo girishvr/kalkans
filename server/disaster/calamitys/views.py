@@ -11,4 +11,3 @@ class calamityList(generics.ListCreateAPIView):
 class calamityDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = calamity.objects.all()
     serializer_class = calamitySerializer
-

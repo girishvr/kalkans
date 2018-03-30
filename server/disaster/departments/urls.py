@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^departments/$', views.departmentList.as_view()),
     url(r'^departments/(?P<pk>[0-9]+)/$', views.departmentDetail.as_view()),
     url(r'^dept_login/$', get_admin),
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
