@@ -1,7 +1,0 @@
-dj-database-url
-Django
-gunicorn
-psycopg2
-whitenoise
-pygments
-djangorestframework
