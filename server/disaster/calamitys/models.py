@@ -15,7 +15,7 @@ class calamity(models.Model):
     lon = models.CharField(max_length=100, blank=False, default='')
     user_id = models.CharField(max_length=100, blank=False, default='')
     status = models.CharField(max_length=100, blank=True, default='')
-    text = models.TextField(blank=True, default='')
+    #text = models.TextField(blank=True, default='')
 
 
 
