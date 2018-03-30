@@ -5,7 +5,7 @@ from calamitys.models import calamity
 class calamitySerializer(serializers.ModelSerializer):
     class Meta:
         model = calamity
-        fields = ('eid', 'etype', 'lat', 'lon', 'user_id', 'status', 'text')
+        fields = ('timestamp','eid', 'etype', 'lat', 'lon', 'user_id', 'status', 'text')
 
 
     def create(self, validated_data):
@@ -18,6 +18,7 @@ class calamitySerializer(serializers.ModelSerializer):
         """
         Update and return an existing `Snippet` instance, given the validated data.
         """
+        instance.timestamp = validated_data.get('timestamp', instance.timestamp)
         instance.eid = validated_data.get('eid', instance.eid)
         instance.etype = validated_data.get('etype', instance.etype)
         instance.lat = validated_data.get('lat', instance.lat)

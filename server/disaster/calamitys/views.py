@@ -13,22 +13,23 @@ class calamityDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = calamitySerializer
 
 
-from math import sin, cos, sqrt, atan2
+'''from math import sin, cos, sqrt, atan2
 
 R = 6373.0
 
-lat1 = calamity.objects.values('eid').annotate(calamity_count=Count('lat')).order_by('-calamity_count')[:1]
-
-
-lon1 = calamity.objects.values('eid').annotate(calamity_count=Count('lon')).order_by('-calamity_count')[:1]
-
-print "lat1"
-print "lon1"
+#lat1 = calamity.objects.values('eid').annotate(calamity_count=Count('lat')).order_by('-calamity_count')[:1]
+#lat1 = calamity.objects.filter(name='eid').first()
+#lat1 = calamity.objects.get(eid=-1)
+#lat1 = calamity.objects.earliest('eid')
+#lon1 = calamity.objects.values('eid').annotate(calamity_count=Count('lon')).order_by('-calamity_count')[:1]
+#lat1 = calamity.objects.latest('eid').first()
+#print lat1
+#print lon1
 
 #Employer.objects.values('id').annotate(jobtitle_count=Count('jobtitle')).order_by('-jobtitle_count')[:5]
 
 
-'''lat2 = 52.406374
+lat2 = 52.406374
 lon2 = 16.9251681
 
 dlon = lon2 - lon1
@@ -39,5 +40,4 @@ distance = R * c
 
 print "Result", distance
 print "Should be", 278.546
-
 '''
