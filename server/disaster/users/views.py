@@ -35,7 +35,7 @@ def JSONResponse(data = None, status = StatusCode.OK):
         return HttpResponse(status = StatusCode.NOT_FOUND)
 
 @csrf_exempt
-def get_user(request):
+def login_user(request):
 
     # email = request.GET.get('email', '')
     # password = request.GET.get('password', '')
@@ -48,7 +48,7 @@ def get_user(request):
     user_details = ""
     if(user.objects.filter(email=email,pwd=password).exists()):
         success = "Success"
-        user_details = list(user.objects.filter(email=email,pwd=password).values('pk','created','user_id','name','email','phone','em_no'))
+        user_details = list(user.objects.filter(email=email,pwd=password).values('pk','created','user_id','name','email','phone','em_no','image'))
 
     # u = user.objects.all()
     # user_details = serializers.serialize('json',list(u), fields=('created','user_id','name','email','phone','em_no','adhar', 'city', 'gender','DOB', 'language','image','pwd'))
@@ -60,7 +60,6 @@ def get_user(request):
 
     response=[]
     response.append({
-    #'requested':email+password,    
     'status':success,    
     'details':details,
         })    
