@@ -93,14 +93,6 @@ session_cache_limiter("private_no_expire");
 		<li><a href="index.html">Logout</a></li>
         
       </ul><br>
-      <!--<div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>-->
     </div>
 
     <div class="col-sm-9">
@@ -123,36 +115,29 @@ session_cache_limiter("private_no_expire");
 			</tr>
 		</thead>
 		<tbody align="center">
-<script language="javascript" type="text/javascript">
-    //function getUsers(){
+    <script language="javascript" type="text/javascript">
     	
       	$.post('emergency.php',function(responseText){
           
-		  
-		  
-          //var txt = "";      		
       		myObj = JSON.parse(responseText);          
           //txt += "<table border='1'>"
 				console.log(responseText);
 				$('#table').bootstrapTable({
 					data:myObj
 				});
+
+
+        $('#table').on("click-row.bs.table", function (editable, columns, row){
+          
+          // var col = ($(this).index());
+          console.log(columns);
+          // console.log(row);
+
+
+        });
+
 			
-		});
-           /*   for (x in myObj) {
-                var data=JSON.stringify(myObj);
-                txt += "<tr align='center'><td>" + myObj[x].etype+ "</td>"
-						"<td>"+ myObj[x].lat + "</td>" 
-						"<td>"+ myObj[x].lon +"</td>"
-						"<td>" +myObj[x].user_id+ "</td><td>"
-				+"<button onclick='view()' >View Details</button></td></tr> ";
-                
-      	}*/
-		//txt += "</table>" 
-                //document.write(txt);
-      
-    //}
-   
+		});   
 
  </script>
 <script src="bootstrap-table-zh-CN.js"></script>
