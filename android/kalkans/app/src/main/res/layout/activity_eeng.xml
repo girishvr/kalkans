@@ -13,7 +13,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="350dp"
             android:id="@+id/engtext"
-
             android:textSize="20dp"
             android:textColor="#FF0F1010"
             android:fontFamily="serif"/>
