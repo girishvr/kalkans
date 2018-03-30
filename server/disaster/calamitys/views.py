@@ -17,10 +17,10 @@ from math import sin, cos, sqrt, atan2
 
 R = 6373.0
 
-lat1 = calamity.objects.values('id').annotate(calamity_count=Count('lat')).order_by('-calamity_count')[:1]
+lat1 = calamity.objects.values('eid').annotate(calamity_count=Count('lat')).order_by('-calamity_count')[:1]
 
 
-lon1 = calamity.objects.values('id').annotate(calamity_count=Count('lon')).order_by('-calamity_count')[:1]
+lon1 = calamity.objects.values('eid').annotate(calamity_count=Count('lon')).order_by('-calamity_count')[:1]
 
 print "lat1"
 print "lon1"

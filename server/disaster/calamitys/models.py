@@ -7,10 +7,10 @@ from users.models import user
 
 class calamity(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    eid = models.CharField(max_length=100, blank=True, default='')
+    eid = models.AutoField(primary_key = True)
     etype = models.CharField(max_length=100, blank=True, default='')
-    lat = models.CharField(max_length=100, blank=True, default='')
-    lon = models.CharField(max_length=100, blank=True, default='')
+    lat = models.CharField(max_length=100, blank=False, default='')
+    lon = models.CharField(max_length=100, blank=False, default='')
     user_id = models.ForeignKey('users.user', on_delete=models.CASCADE)
     status = models.CharField(max_length=100, blank=True, default='')
     text = models.TextField(blank=True, default='')
