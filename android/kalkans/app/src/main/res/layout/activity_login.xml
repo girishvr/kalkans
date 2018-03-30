@@ -13,6 +13,7 @@
         android:layout_height="fill_parent"
         android:layout_marginTop="120dp"
         android:background="#ffff"
+        android:fontFamily="serif"
         android:orientation="vertical">
 
         <EditText
@@ -25,6 +26,7 @@
             android:background="@drawable/edittext_change"
             android:ems="10"
             android:hint="Username"
+            android:fontFamily="serif"
             android:inputType="textPersonName"
             android:textColor="@color/darkblue"
             android:textColorHint="@color/colorPrimaryDark" />
@@ -32,6 +34,7 @@
 
         <EditText
             android:id="@+id/Password"
+            android:fontFamily="serif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/username"
@@ -46,6 +49,7 @@
 
         <Button
             android:id="@+id/login"
+            android:fontFamily="serif"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -59,6 +63,7 @@
 
         <TextView
             android:id="@+id/textView4"
+            android:fontFamily="serif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/login"
@@ -71,6 +76,7 @@
         <Button
             android:id="@+id/SignUp"
             android:layout_width="250dp"
+            android:fontFamily="serif"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView4"
             android:layout_centerHorizontal="true"

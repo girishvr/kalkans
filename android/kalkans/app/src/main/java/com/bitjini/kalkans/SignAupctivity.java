@@ -91,7 +91,6 @@ public class SignAupctivity extends AppCompatActivity{
         capture = (ImageButton) findViewById(R.id.capture);
         photo = (ImageView) findViewById(R.id.photo);
 
-
         EnableRuntimePermission();
 
         awesomeValidation.addValidation(this, R.id.Name, "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
@@ -132,7 +131,6 @@ public class SignAupctivity extends AppCompatActivity{
                 String lang = txtlang.getText().toString();
                 String adhar=txtadhar.getText().toString();
                 String gender = txtgender.getText().toString();
-
                 // as now we have information in string. Lets stored them with the help of editor
                 editor.putString("Name", name);
                 editor.putString("Email", email);
@@ -194,6 +192,8 @@ public class SignAupctivity extends AppCompatActivity{
             Toast.makeText(this, "Registration Successfull", Toast.LENGTH_LONG).show();
             GetData();
             InsertData(TempName, TempPhone,TempEmail,TempEphone,TempCity,TempDOB,Templang,Tempgender,Tempadhar,Temppwd);
+
+
 
             Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
             startActivity(ob);
@@ -312,7 +312,6 @@ public class SignAupctivity extends AppCompatActivity{
                     Log.e("MYAPP", "unexpected JSON exception", e);
                     // Do something to recover ... or kill the app.
                 }
-
                 try {
                     HttpClient httpClient = new DefaultHttpClient();
 
