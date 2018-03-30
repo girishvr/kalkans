@@ -92,7 +92,7 @@
                 android:hint="Enter Password">
 
                 <EditText
-                    android:id="@+id/Pass"
+                    android:id="@+id/pwd"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="38dp"
@@ -125,7 +125,6 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/adhar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -191,7 +190,7 @@
                 android:hint="Enter aadhar number">
 
                 <EditText
-                    android:id="@+id/aadhar"
+                    android:id="@+id/adhar"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="38dp"
@@ -204,7 +203,6 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/DOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -287,6 +285,25 @@
                 android:text="Sign Up" />
         </LinearLayout>
     </ScrollView>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:hint="Enter Date of birth">
+
+        <EditText
+            android:id="@+id/dob"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:background="@drawable/edittext_change"
+            android:ems="10"
+            android:hint="Enter date of birth"
+            android:inputType="date"
+            android:textColor="@color/darkblue"
+            android:textColorHint="@color/white" />
+    </android.support.design.widget.TextInputLayout>
 </LinearLayout>
 
 
