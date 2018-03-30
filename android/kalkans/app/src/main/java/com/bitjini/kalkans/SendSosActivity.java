@@ -96,7 +96,9 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
         saf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SendSosActivity.this, VideoActiviti.class);
+
+                Intent i = new Intent(SendSosActivity.this,SlideActivity.class);
+
                 startActivity(i);
             }
         });
@@ -132,7 +134,7 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
                                 dialog.dismiss();
                             }
                             else if(items[item].equals("Go through safety tips")){
-                                Intent i = new Intent(SendSosActivity.this, SfaetyActivityy.class);
+                                Intent i = new Intent(SendSosActivity.this, SlideActivity.class);
                                 startActivity(i);
                             }
                         }

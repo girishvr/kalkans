@@ -1,40 +1,36 @@
-package com.bitjini.kalkans;
-
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-
-/**
- * Created by Hp on 3/24/2018.
- */
-
-public class PagerAdapter extends FragmentStatePagerAdapter {
-    int nNoOfTabs;
-    public PagerAdapter(FragmentManager fm ,int NumberOfTabs) {
-        super(fm);
-        this.nNoOfTabs=NumberOfTabs;
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-        switch (position)
-        {
-            case 0:
-                EnglishTab tab1=new EnglishTab();
-                return tab1;
-            case 1:
-                HindiTab tab2=new HindiTab();
-                return tab2;
-
-            default: return null;
-        }
-
-    }
-
-    @Override
-    public int getCount() {
-        return nNoOfTabs;
-    }
-}
-
+//package com.bitjini.kalkans;
+//
+//
+//import android.app.Fragment;
+//import android.app.FragmentManager;
+//import android.support.v4.app.FragmentPagerAdapter;
+//
+//public class PageAdapter extends FragmentPagerAdapter {
+//
+//    private int numOfTabs;
+//
+//  //  PageAdapter(FragmentManager fm, int numOfTabs) {
+//        //super(fm);
+//        this.numOfTabs = numOfTabs;
+//    }
+//
+//
+//
+//    @Override
+//    public Fragment getItem(int position) {
+//        switch (position) {
+//            case 0:
+//                return new EngFragment();
+//            case 1:
+//                return new HinFragment();
+//
+//            default:
+//                return null;
+//        }
+//    }
+//
+//    @Override
+//    public int getCount() {
+//        return numOfTabs;
+//    }
+//}

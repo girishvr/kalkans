@@ -35,20 +35,19 @@
         <activity android:name=".SignAupctivity" />
         <activity android:name=".icons_test" />
         <activity android:name=".VideoStream" />
-        <activity
-            android:name=".SfaetyMeasures"
-            android:label="@string/title_activity_sfaety_measures"
-            android:theme="@style/AppTheme" />
         <activity android:name=".SendSosActivity" />
-        <activity
-            android:name=".SfaetyActivityy"
-            android:label="@string/title_activity_sfaety_activityy"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".VideoActivity" />
         <activity android:name=".VideoActiviti" />
         <activity android:name=".EngTips" />
-        <activity android:name=".HinTips">
-        </activity>
+
+        <activity android:name=".HinTips" />
+        <activity
+            android:name=".SlideActivity"
+            android:label="@string/title_activity_slide"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".EengFragment"/>
+        <activity android:name=".HinnFragment"/>
     </application>
+
+
 
 </manifest>

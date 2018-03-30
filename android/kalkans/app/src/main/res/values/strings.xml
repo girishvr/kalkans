@@ -31,4 +31,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_sfaety_activityy">SfaetyActivityy</string>
     <string name="title_activity_sfaety_measuree">SfaetyMeasuree</string>
+    <string name="title_activity_safetytabbed">SafetytabbedActivity</string>
+    <string name="title_activity_slide">SlideActivity</string>
 </resources>

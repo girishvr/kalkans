@@ -13,12 +13,12 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 public class VideoActiviti extends YouTubeBaseActivity {
 
+    Button safetytip;
     public static final String API_KEY = "AIzaSyAcdrNGE6tqB70RfYOsnu1KMxQ9nwgDkOM";
 
     YouTubePlayerView youTubePlayerView;
     YouTubePlayer.OnInitializedListener onInitializedListener;
 
-    Button safetytip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,20 +31,15 @@ public class VideoActiviti extends YouTubeBaseActivity {
    safetytip.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-                Intent i = new Intent(VideoActiviti.this,EngTips.class);
+                Intent i = new Intent(VideoActiviti.this,SlideActivity.class);
                 startActivity(i);
             }
         });
-
-
-
-
-
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube1);
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("94V828qSPqE");
+                youTubePlayer.loadVideo("RQxrWDBzJO4");
             }
 
             @Override

@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button buttonLogin;
 
-    EditText txtUsername, txtPassword;
+    EditText txtEmail, txtPassword;
 
     // User Session Manager Class
     UserSession session;
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         session = new UserSession(getApplicationContext());
 
         // get Email, Password input text
-        txtUsername = (EditText) findViewById(R.id.username);
+        txtEmail = (EditText) findViewById(R.id.username);
         txtPassword = (EditText) findViewById(R.id.Password);
 
         Toast.makeText(getApplicationContext(), "User Login Status: " + session.isUserLoggedIn(), Toast.LENGTH_LONG).show();
@@ -86,102 +86,66 @@ public class LoginActivity extends AppCompatActivity {
 
                 putName();
                 // Get username, password from EditText
-                String username = txtUsername.getText().toString();
+                String email = txtEmail.getText().toString();
                 String password = txtPassword.getText().toString();
 
                 // Validate if username, password is filled
-                if (username.trim().length() > 0 && password.trim().length() > 0) {
-                    String uName = null;
-                    String uPassword = null;
+//                if (username.trim().length() > 0 && password.trim().length() > 0) {
+//                    String uName = null;
+//                    String uPassword = null;
+//
+//                    if (sharedPreferences.contains("Name")) {
+//                        uName = sharedPreferences.getString("Name", "");
+//
+//                    }
+//
+//                    if (sharedPreferences.contains("txtPassword")) {
+//                        uPassword = sharedPreferences.getString("txtPassword", "");
+//
+//                    }
+//
+//                    // Object uName = null;
+//                    // Object uEmail = null;
+//                    if (username.equals(uName) && password.equals(uPassword)) {
+//
+//                        oneTime = true;
+//                        session.createUserLoginSession(uName, uPassword);
+//
+//                        // Starting MainActivity
+//                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//                        // Add new Flag to start new Activity
+//                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        startActivity(i);
+//
+//
+//                        finish();
+//
+//                    } else {
+//
+//                        // username / password doesn't match&
+//                        Toast.makeText(getApplicationContext(),
+//                                "Username/Password is incorrect",
+//                                Toast.LENGTH_LONG).show();
+//
+//                    }
+//                } else {
+//
+//                    // user didn't entered username or password
+//                    Toast.makeText(getApplicationContext(), "Please enter username and password", Toast.LENGTH_LONG).show();
+//
+//                }
 
-                    if (sharedPreferences.contains("Name")) {
-                        uName = sharedPreferences.getString("Name", "");
-
-                    }
-
-                    if (sharedPreferences.contains("txtPassword")) {
-                        uPassword = sharedPreferences.getString("txtPassword", "");
-
-                    }
-
-                    // Object uName = null;
-                    // Object uEmail = null;
-                    if (username.equals(uName) && password.equals(uPassword)) {
-
-                        oneTime = true;
-                        session.createUserLoginSession(uName, uPassword);
-
-                        // Starting MainActivity
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                        // Add new Flag to start new Activity
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(i);
-
-
-                        finish();
-
-                    } else {
-
-                        // username / password doesn't match&
-                        Toast.makeText(getApplicationContext(),
-                                "Username/Password is incorrect",
-                                Toast.LENGTH_LONG).show();
-
-                    }
-                } else {
-
-                    // user didn't entered username or password
-                    Toast.makeText(getApplicationContext(), "Please enter username and password", Toast.LENGTH_LONG).show();
-
-                }
+                new JsonTask().execute("https://smartindia-ers.herokuapp.com/loginuser/",email,password);
 
             }
         });
-        new JsonTask().execute("https://smartindia-ers.herokuapp.com/loginuser/");
+       // new JsonTask().execute("https://smartindia-ers.herokuapp.com/loginuser/");
 
     }
 
 
-//    public static JSONObject getJSONObjectFromURL(String urlString) throws IOException, JSONException {
-//        try {
-//            HttpURLConnection urlConnection = null;
-//            URL url = new URL(urlString);
-//            urlConnection = (HttpURLConnection) url.openConnection();
-//            urlConnection.setRequestMethod("GET");
-//            urlConnection.setReadTimeout(10000 /* milliseconds */);
-//            urlConnection.setConnectTimeout(15000 /* milliseconds */);
-//            urlConnection.setDoOutput(true);
-//            urlConnection.connect();
-//
-//            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-//            StringBuilder sb = new StringBuilder();
-//
-//            String line;
-//            while ((line = br.readLine()) != null) {
-//                sb.append(line + "\n");
-//            }
-//            br.close();
-//
-//            String jsonString = sb.toString();
-//            System.out.println("JSON: " + jsonString);
-//
-//            return new JSONObject(jsonString);
-//            // JSONObject jsonObject = getJSONObjectFromURL(urlString);
-//
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//        //JSONObject jsonObject = getJSONObjectFromURL(urlString);
-//        return new JSONObject(jsonString);
-//    }
 
     private class JsonTask extends AsyncTask<String, String, String> {
 
@@ -201,12 +165,22 @@ public class LoginActivity extends AppCompatActivity {
             BufferedReader reader = null;
 
             try {
+
+
+
+                Log.d("username",params[1]);
+                Log.d("password",params[2]);
                 URL url = new URL(params[0]);
                 connection = (HttpURLConnection) url.openConnection();
+
+                connection.setRequestProperty("Content-type", "application/json");
+                connection.setRequestProperty("email", params[1]);
+                connection.setRequestProperty("password", params[2]);
+               // String contentType = connection.getHeaderField("user_id");
                 connection.connect();
-
-
                 InputStream stream = connection.getInputStream();
+
+               // Log.d("contentType",contentType);
 
                 reader = new BufferedReader(new InputStreamReader(stream));
 
@@ -214,10 +188,17 @@ public class LoginActivity extends AppCompatActivity {
                 String line = "";
 
                 while ((line = reader.readLine()) != null) {
-                    buffer.append(line+"\n");
+                    buffer.append(line + "\n");
                     Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
 
-                }
+                   // if(status == "Success"){
+                    //load next page also save response in shared pref
+                    //else
+                    //show alert try again
+
+                     }
+                
+
 
                 return buffer.toString();
 
@@ -258,7 +239,7 @@ public class LoginActivity extends AppCompatActivity {
 
     void putName() {
         SharedPreferences.Editor editor = getSharedPreferences(PREFER_NAME, MODE_PRIVATE).edit();
-        editor.putString("Name", txtUsername.getText().toString());
+        editor.putString("Name", txtEmail.getText().toString());
         editor.apply();
     }
 

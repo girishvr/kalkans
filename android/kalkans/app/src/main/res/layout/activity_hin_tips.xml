@@ -17,7 +17,8 @@
         android:layout_height="match_parent"
         android:id="@+id/floodh"
         android:textSize="20dp"
-        android:textColor="#FF0F1010"/>
+        android:textColor="#FF0F1010"
+        android:fontFamily="serif"/>
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
