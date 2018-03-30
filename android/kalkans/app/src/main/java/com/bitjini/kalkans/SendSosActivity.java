@@ -39,6 +39,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -50,7 +52,9 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import java.io.IOException;
+import java.util.Map;
 
 public class SendSosActivity extends AppCompatActivity implements LocationListener {
     String ServerURL = "http://smartindia-ers.herokuapp.com/calamitys/" ;
@@ -299,6 +303,19 @@ public void sendMessageInternet(final String lat,final String lon)
             //String name = sharedpreferences.getString("Name","not found");
             // String phone = sharedpreferences.getString("txtPhone","not found");
             String currentsos=sharedpreferences.getString("Curentsos","not found");
+            String userObject = sharedpreferences.getString("UserObject","not found");
+
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                Map<String,Object> userobject = mapper.readValue(userObject, Map.class);
+                Object userdetail = userobject.get("details");
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
 
             JSONObject jObjectData = new JSONObject();
 
