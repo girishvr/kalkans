@@ -129,8 +129,13 @@ session_cache_limiter("private_no_expire");
 
         $('#table').on("click-row.bs.table", function (editable, columns, row){
           
+			//window.location="details.php";
           // var col = ($(this).index());
           console.log(columns);
+		  console.log(columns.user_id);
+		  //sessionStorage.setItem(columns.user_id);
+			window.location="details.php";
+                //display(one);
           // console.log(row);
 
 
