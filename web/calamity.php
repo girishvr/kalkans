@@ -8,35 +8,38 @@ session_cache_limiter("private_no_expire");
    <!--<link rel="stylesheet" type="text/css" href="login.css">-->
    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="web/bower_components/bootstrap-table/src/bootstrap-table.js"></script> 
-	<meta charset="utf-8">
+  <script type="text/javascript" src="bower_components/bootstrap-table/src/bootstrap-table.js"></script> 
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <script src="bootstrap-table.js"></script>
+
+  <meta charset="utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-table.css">
 
-<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
 
-<link rel="stylesheet" href="css/style2.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  
-  
-  
-  
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/style2.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+
+  <!-- Latest compiled and minified Locales -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+  
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 1500px}
@@ -155,7 +158,7 @@ session_cache_limiter("private_no_expire");
    
 
  </script>
-
+<script src="bootstrap-table-zh-CN.js"></script>
 
 </body>
 </html>
