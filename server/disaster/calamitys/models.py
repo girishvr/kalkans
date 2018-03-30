@@ -11,7 +11,7 @@ class calamity(models.Model):
     etype = models.CharField(max_length=100, blank=True, default='')
     lat = models.CharField(max_length=100, blank=False, default='')
     lon = models.CharField(max_length=100, blank=False, default='')
-    user_id = models.ForeignKey('users.user', on_delete=models.CASCADE)
+    user_id = models.CharField(max_length=100, blank=False, default='')
     status = models.CharField(max_length=100, blank=True, default='')
     text = models.TextField(blank=True, default='')
 
