@@ -12,7 +12,7 @@ session_cache_limiter("private_no_expire");
 
 </head>
 <body>
-
+<p id="demo"></p>
 <!-- <form action="check.php" method="POST"> -->
 <div class="materialContainer">
 
@@ -48,41 +48,58 @@ session_cache_limiter("private_no_expire");
 
 
 
-<script language="javascript">
+<script language="javascript" type="text/javascript">
+function getUsers(){
+	
+	$.post('check.php',function(responseText){
+		console.log(responseText);
+		myObj = JSON.parse(responseText);
+		console.log(myObj);
+        txt += "<table border='1'>"
+        for (x in myObj) {
+			console.log(JSON.stringify(myObj));
+			//var data=JSON.stringify(myObj);
+            txt += "<tr><td>" + myObj[x].name+ "</td><td>" + myObj[x].phone + "</td></tr>";
+			 
+       
+        txt += "</table>" 
+		
+       document.write(txt);
+		
+		console.log(myObj);
+	}
+});
+}
+   /*var obj, dbParam, xmlhttp, myObj,x, txt = "";
+	obj ={ "table":"jsontables", "limit":20 };
+	dbParam = JSON.stringify(obj);
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        txt += "<table border='1'>"
+        for (x in myObj) {
+			console.log(JSON.stringify(myObj));
+			//var data=JSON.stringify(myObj);
+            txt += "<tr><td>" + myObj[x].name+ "</td><td>" + myObj[x].phone + "</td></tr>";
+			 
+       
+        txt += "</table>" 
+		
+       document.write(txt);
+		
+		console.log(myObj);
+		}
+};
+	}
+xmlhttp.open("POST", "check.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+*/
 
-   function getUsers()
-   {
 
+			
 
-
-     
-       console.log("Api Call");
-
-         $.post('check.php', { value: "" }, function(data){
-
-            console.log(data);
-            // console.log(data[1]);
-            // console.log(data[2]);
-
-            mdata = JSON.parse(data);
-            console.log(mdata)
-
-            var jsonObj = $.parseJSON('[' + data + ']');
-
-            console.log(jsonObj);
-
-            for (i in jsonObj)
-            {
-               alert(jsonObj[i]["name"]);
-            }
-
-            // $.each(data, function(key, val){
-            //     alert ("Response, " + val + "!" + key);
-            //     console.log("Api Call Response");
-            // });
-
- 
-        });
 
 
        // URL = "http://smartindia-ers.herokuapp.com/users/1/";
@@ -99,14 +116,14 @@ session_cache_limiter("private_no_expire");
 
        // xmlhttp.addEventListener("onreadystatechange", callbackFunction, false);
        // xmlhttp.send();
-   }
+   
 
-   function callbackFunction(xmlhttp) 
+   /*function callbackFunction(xmlhttp) 
    {
        alert("xmlhttp.responseXML");
        console.log(xmlhttp.response);
          console.log(xmlhttp.responseText);
-   }
+   }*/
 </script>
 
 
