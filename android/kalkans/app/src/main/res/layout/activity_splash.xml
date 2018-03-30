@@ -4,27 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/yellow"
+    android:background="#FF080808"
     tools:context="com.bitjini.kalkans.SplashActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="84dp"
-        android:text="HELPJINI"
-        android:textColor="#ffff"
-        android:fontFamily="serif"
-        android:textSize="60sp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        app:srcCompat="@drawable/logo1" />
+        android:layout_marginBottom="81dp"
+        android:src="@drawable/preview" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:fontFamily="serif"
+        android:text=" HELPJINI"
+        android:textColor="#E67E22"
+        android:textSize="80dp" />
+
+
 </RelativeLayout>

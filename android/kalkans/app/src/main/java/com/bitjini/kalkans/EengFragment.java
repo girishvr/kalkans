@@ -26,18 +26,11 @@ public class EengFragment extends Fragment {
 
     private TextView textView;
     private StringBuilder text = new StringBuilder();
-
     public EengFragment() {
         // Required empty public constructor
     }
 
-    //private TextView textView;
-   // private StringBuilder text = new StringBuilder();
-    //Button safetytip;
-    //public static final String API_KEY = "AIzaSyAcdrNGE6tqB70RfYOsnu1KMxQ9nwgDkOM";
 
-   // YouTubePlayerView youTubePlayerView;
-   // YouTubePlayer.OnInitializedListener onInitializedListener;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,7 +43,7 @@ public class EengFragment extends Fragment {
     {
         try {
             reader = new BufferedReader(
-                    new InputStreamReader(getActivity().getAssets().open("FloodSafetyTips.txt")));
+                    new InputStreamReader(getContext().getAssets().open("FloodSafetyTips.txt")));
 
             // do reading, usually loop until end of file reading
             String mLine;
@@ -61,6 +54,7 @@ public class EengFragment extends Fragment {
         } catch (IOException e) {
             Toast.makeText(getActivity().getApplicationContext(),"Error reading file!", Toast.LENGTH_LONG).show();
             e.printStackTrace();
+
         } finally {
             if (reader != null) {
                 try {
@@ -70,8 +64,8 @@ public class EengFragment extends Fragment {
                 }
             }
 
-            TextView output= (TextView) textView.findViewById(R.id.engtext);
-            output.setText((CharSequence) text);
+            TextView output=  textView.findViewById(R.id.engtext);
+            output.setText(text);
 
         }
     }

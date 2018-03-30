@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+android:layout_height="match_parent"
+   tools:context="com.example.hp.downloadandplay.MainActivity">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Video Download App"
+    android:textStyle="bold"
+    android:textSize="34dp"
+    android:id="@+id/textView"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="57dp" />
+
+<VideoView
+    android:layout_width="300dp"
+    android:layout_height="250dp"
+    android:id="@+id/videoView"
+    android:background="#FFFFFF"
+    android:contentDescription="Downloaded Video Will be played here"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true" />
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Download And Play Video"
+    android:onClick="downloadVideo"
+    android:id="@+id/button"
+    android:layout_below="@+id/videoView"
+    android:layout_alignRight="@+id/videoView"
+    android:layout_alignEnd="@+id/videoView"
+    android:layout_alignLeft="@+id/videoView"
+    android:layout_alignStart="@+id/videoView" />
+
+<ProgressBar
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/progressBar"
+    android:layout_below="@+id/button"
+    android:layout_centerHorizontal="true" />
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/errorMsg"
+    android:gravity="center"
+    android:layout_alignParentBottom="true"
+    android:layout_alignLeft="@+id/button"
+    android:layout_alignStart="@+id/button" />
+
+</RelativeLayout>

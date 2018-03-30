@@ -60,8 +60,8 @@ public class HinnFragment extends Fragment {
                     }
                 }
 
-                TextView output= (TextView) textView.findViewById(R.id.hintext);
-                output.setText((CharSequence) text);
+                TextView output=  textView.findViewById(R.id.hintext);
+                output.setText(text);
 
             }
         }
