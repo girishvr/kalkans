@@ -139,7 +139,7 @@
                     android:background="@drawable/edittext_change"
                     android:ems="10"
                     android:hint="Enter Phone Number"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:textColor="@color/darkblue"
                     android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
@@ -158,7 +158,7 @@
                     android:background="@drawable/edittext_change"
                     android:ems="10"
                     android:hint="Enter emergency number"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:textColor="@color/darkblue"
                     android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
@@ -168,18 +168,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:hint="Gender(F/M)">
-
-
-                <EditText
-                    android:id="@+id/gender"
-                    android:layout_width="300dp"
-                    android:layout_height="025dp"
-                    android:layout_marginLeft="38dp"
-                    android:background="@drawable/edittext_change"
-                    android:hint="Gender(F/M)"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white" />
 
 
             </android.support.design.widget.TextInputLayout>

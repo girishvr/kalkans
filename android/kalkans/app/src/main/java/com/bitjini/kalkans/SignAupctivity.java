@@ -288,14 +288,12 @@ public class SignAupctivity extends AppCompatActivity{
                 String NameHolder = name;
                 String EmailHolder = email;
                 String numberHolder = phone;
-               String nnumberHolder = em_no;
+                String nnumberHolder = em_no;
                 String nnameHolder = city;
                 String nnnumberHolder = DOB;
                 String nnnameHolder=lang;
                 String nnnnameHolder=gender;
-                //String nnnaameHolder=adhar;
-
-
+               // String nnnaameHolder=adhar;
 
 //                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 //
@@ -314,13 +312,13 @@ public class SignAupctivity extends AppCompatActivity{
 
                     jObjectData.put("name", NameHolder);
                     jObjectData.put("email", EmailHolder);
-                    jObjectData.put("phone", 8899882);
-                    jObjectData.put("em_no", 77886644);
+                    jObjectData.put("phone", numberHolder);
+                    jObjectData.put("em_no", nnumberHolder);
                     jObjectData.put("city", nnameHolder);
-                    jObjectData.put("DOB", nnnameHolder);
-                    jObjectData.put("gender", "F");
+                    jObjectData.put("DOB", nnnumberHolder);
+                    jObjectData.put("gender", nnnnameHolder);
                     jObjectData.put("adhar", "121212323434");
-                    jObjectData.put("language", "E");
+                    jObjectData.put("language", nnnameHolder);
                 } catch (JSONException e) {
                     Log.e("MYAPP", "unexpected JSON exception", e);
                     // Do something to recover ... or kill the app.

@@ -1,10 +1,13 @@
 package com.bitjini.kalkans;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,12 +16,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity{
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class LoginActivity extends AppCompatActivity {
+
+    JSONObject jsonObject = null;
 //public static android.content.SharedPreferences SharedPreferences = null;
 
     private static final String PREFER_NAME = "Reg";
-    public static boolean oneTime=false;
+    public static boolean oneTime = false;
+    ProgressDialog pd;
 
     Button buttonLogin;
 
@@ -34,12 +50,12 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button switchButton = (Button)findViewById(R.id.SignUp);
-        switchButton.setOnClickListener (new View.OnClickListener() {
+        Button switchButton = (Button) findViewById(R.id.SignUp);
+        switchButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this, SignAupctivity.class);
+                Intent intent = new Intent(LoginActivity.this, SignAupctivity.class);
                 startActivity(intent);
 
             }
@@ -74,31 +90,29 @@ public class LoginActivity extends AppCompatActivity{
                 String password = txtPassword.getText().toString();
 
                 // Validate if username, password is filled
-                if(username.trim().length() > 0 && password.trim().length() > 0){
+                if (username.trim().length() > 0 && password.trim().length() > 0) {
                     String uName = null;
-                    String uPassword =null;
+                    String uPassword = null;
 
-                    if (sharedPreferences.contains("Name"))
-                    {
+                    if (sharedPreferences.contains("Name")) {
                         uName = sharedPreferences.getString("Name", "");
 
                     }
 
-                    if (sharedPreferences.contains("txtPassword"))
-                    {
+                    if (sharedPreferences.contains("txtPassword")) {
                         uPassword = sharedPreferences.getString("txtPassword", "");
 
                     }
 
                     // Object uName = null;
                     // Object uEmail = null;
-                    if(username.equals(uName) && password.equals(uPassword)){
+                    if (username.equals(uName) && password.equals(uPassword)) {
 
                         oneTime = true;
-                        session.createUserLoginSession(uName,uPassword);
+                        session.createUserLoginSession(uName, uPassword);
 
                         // Starting MainActivity
-                        Intent i = new  Intent(getApplicationContext(),MainActivity.class);
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                         // Add new Flag to start new Activity
@@ -108,7 +122,7 @@ public class LoginActivity extends AppCompatActivity{
 
                         finish();
 
-                    }else{
+                    } else {
 
                         // username / password doesn't match&
                         Toast.makeText(getApplicationContext(),
@@ -116,7 +130,7 @@ public class LoginActivity extends AppCompatActivity{
                                 Toast.LENGTH_LONG).show();
 
                     }
-                }else{
+                } else {
 
                     // user didn't entered username or password
                     Toast.makeText(getApplicationContext(), "Please enter username and password", Toast.LENGTH_LONG).show();
@@ -125,13 +139,128 @@ public class LoginActivity extends AppCompatActivity{
 
             }
         });
+        new JsonTask().execute("https://smartindia-ers.herokuapp.com/loginuser/");
+
     }
 
-    void putName()
-    {
-        SharedPreferences.Editor editor=getSharedPreferences(PREFER_NAME,MODE_PRIVATE).edit();
-        editor.putString("Name",txtUsername.getText().toString());
+
+//    public static JSONObject getJSONObjectFromURL(String urlString) throws IOException, JSONException {
+//        try {
+//            HttpURLConnection urlConnection = null;
+//            URL url = new URL(urlString);
+//            urlConnection = (HttpURLConnection) url.openConnection();
+//            urlConnection.setRequestMethod("GET");
+//            urlConnection.setReadTimeout(10000 /* milliseconds */);
+//            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+//            urlConnection.setDoOutput(true);
+//            urlConnection.connect();
+//
+//            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+//            StringBuilder sb = new StringBuilder();
+//
+//            String line;
+//            while ((line = br.readLine()) != null) {
+//                sb.append(line + "\n");
+//            }
+//            br.close();
+//
+//            String jsonString = sb.toString();
+//            System.out.println("JSON: " + jsonString);
+//
+//            return new JSONObject(jsonString);
+//            // JSONObject jsonObject = getJSONObjectFromURL(urlString);
+//
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        //JSONObject jsonObject = getJSONObjectFromURL(urlString);
+//        return new JSONObject(jsonString);
+//    }
+
+    private class JsonTask extends AsyncTask<String, String, String> {
+
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            pd = new ProgressDialog(LoginActivity.this);
+            pd.setMessage("Please wait");
+            pd.setCancelable(false);
+            pd.show();
+        }
+
+        protected String doInBackground(String... params) {
+
+
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
+
+            try {
+                URL url = new URL(params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+
+
+                InputStream stream = connection.getInputStream();
+
+                reader = new BufferedReader(new InputStreamReader(stream));
+
+                StringBuffer buffer = new StringBuffer();
+                String line = "";
+
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line+"\n");
+                    Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
+
+                }
+
+                return buffer.toString();
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if (pd.isShowing()){
+                pd.dismiss();
+            }
+            //txtJson.setText(result);
+        }
+    }
+
+
+
+
+
+
+    void putName() {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFER_NAME, MODE_PRIVATE).edit();
+        editor.putString("Name", txtUsername.getText().toString());
         editor.apply();
     }
 
 }
+
