@@ -274,6 +274,7 @@ public class SignAupctivity extends AppCompatActivity{
 
                 try {
 
+
                     jObjectData.put("name", name);
                     jObjectData.put("email", email);
                     jObjectData.put("phone",phone);
@@ -284,6 +285,7 @@ public class SignAupctivity extends AppCompatActivity{
                     jObjectData.put("adhar", adhar);
                     jObjectData.put("language",lang);
                     jObjectData.put("pwd",pwd);
+
 
                 } catch (JSONException e) {
                     Log.e("MYAPP", "unexpected JSON exception", e);
