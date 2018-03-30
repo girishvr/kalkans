@@ -4,6 +4,7 @@ from calamitys import views
 
 urlpatterns = [
     url(r'^calamitys/$', views.calamityList.as_view()),
+    url(r'^getcalamitys/$', views.getCalamitys.as_view()),
     url(r'^calamitys/(?P<pk>[0-9]+)/$', views.calamityDetail.as_view()),
 ]
 
