@@ -197,10 +197,14 @@ public class LoginActivity extends AppCompatActivity {
                     //show alert try again
 
                      }
-                
-
-
+                SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences("Reg",0);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+               // String userObject = sharedpreferences.getString(buffer.toString(),"null");
+                String userObject = buffer.toString();
+                editor.putString("UserObject",userObject);
+                editor.commit();
                 return buffer.toString();
+
 
 
             } catch (MalformedURLException e) {
