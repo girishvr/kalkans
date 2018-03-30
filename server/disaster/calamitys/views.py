@@ -39,7 +39,7 @@ def getCalamitys(request):
 	departmentType = request.META.get('HTTP_DEPTTYPE')
 
 	emergencyList = ""
-	response=[]
+	results=[]
 	success = "Fail"
 
 
@@ -49,29 +49,29 @@ def getCalamitys(request):
 		if departmentType == 'Fire_dept':
 			for items in emergencyList:
 				if items.etype == 'Fire':
-					response.append({items})
+					results.append({items})
 
 		if departmentType == 'Police_dept':
 			for items in emergencyList:
-				if items.etype == 'Fire' || items.etype == 'Accident' || items.etype == 'MedicalEmergency' || items.etype == 'Terrorist' || items.etype == 'WomenSafety':
-					response.append({items})
+				if items.etype == 'Fire' or items.etype == 'Accident' or items.etype == 'MedicalEmergency' or items.etype == 'Terrorist' or items.etype == 'WomenSafety':
+					results.append({items})
 
 		if departmentType == 'Ambulance':
 			for items in emergencyList:
-				if items.etype == 'Fire' || items.etype == 'Accident' || items.etype == 'MedicalEmergency':
-					response.append({items})
+				if items.etype == 'Fire' or items.etype == 'Accident' or items.etype == 'MedicalEmergency':
+					results.append({items})
 
-		else departmentType == "NDM":
+		elif departmentType == 'NDM':
 			for items in emergencyList:
-				if items.etype == 'Flood' || items.etype == 'Tsunami' || items.etype == 'Earthquake':
-					response.append({items})
+				if items.etype == 'Flood' or items.etype == 'Tsunami' or items.etype == 'Earthquake':
+					results.append({items})
 
 
 
-	details=[] 
-	details.append({
+	response=[] 
+	response.append({
 	 'success':success,
-	 'result':response
+	 'result':results
 	})
 
 
