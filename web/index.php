@@ -59,14 +59,17 @@ session_cache_limiter("private_no_expire");
       myObj = JSON.parse(responseText);
 			var data=JSON.stringify(myObj);
 			console.log(myObj);
-			console.log(data);
-			var status=data.status;
+			//console.log(data);
+			var status=myObj.status;
+			//var userDetails=myObj.details.user_details[dept_name];
+			
 			console.log(status);
-
 			//document.write(status);
+			
 			//if success
-			if(status=="Success"){
-					window.location="admin.php";
+				if(status=="Success"){
+					
+					window.location="calamity.php";    
 				}
 				else{
 					alert("try again");
