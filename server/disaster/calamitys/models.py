@@ -7,6 +7,8 @@ from users.models import user
 
 class calamity(models.Model):
     created = models.DateTimeField(auto_now_add=True)
+
+    timestamp = models.CharField(unique=False, max_length=100, default='')
     eid = models.AutoField(primary_key = True)
     etype = models.CharField(max_length=100, blank=True, default='')
     lat = models.CharField(max_length=100, blank=False, default='')
@@ -16,6 +18,6 @@ class calamity(models.Model):
     text = models.TextField(blank=True, default='')
 
 
-
     class Meta:
         ordering = ('created',)
+

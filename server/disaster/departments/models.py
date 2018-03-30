@@ -11,6 +11,7 @@ from pygments import highlight
 class department(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
+    
     dept_id = models.AutoField(primary_key=True)
     dept_name = models.CharField(unique=False, max_length=40)
     location = models.CharField(unique=False,max_length=40,default=False)
