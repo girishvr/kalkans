@@ -98,12 +98,14 @@ session_cache_limiter("private_no_expire");
   <script language="javascript" type="text/javascript">
     	
       	$.post('profileapi.php',function(responseText){
-			console.log(responseText);
-      		var myObj = JSON.parse(responseText);          
+      		var myObj = JSON.parse(responseText);  
+      		var tableDatadata = [myObj];  
+      		      			console.log(tableDatadata);
+
           //txt += "<table border='1'>"
 				console.log(myObj);
 				$('#table').bootstrapTable({
-					data:myObj
+					data:tableDatadata
 				});
 
 		});
