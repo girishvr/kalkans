@@ -6,11 +6,11 @@ session_cache_limiter("private_no_expire");
 ?>
 <head><title> calamity details</title>
    <!--<link rel="stylesheet" type="text/css" href="login.css">-->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   
   <meta charset="utf-8">
-
+  <meta http-equiv="refresh" content="5"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -126,6 +126,18 @@ session_cache_limiter("private_no_expire");
 				$('#table').bootstrapTable({
 					data:tableData
 				});
+
+        console.log("calamity_count " + localStorage.calamity_count);
+        console.log("length" + tableData.length);
+
+        if (localStorage.calamity_count != 0){
+          if (tableData.length > localStorage.calamity_count){
+            //play sound
+            var audio = new Audio('sound/audio_file.mp3');
+            audio.play();
+          }
+          localStorage.calamity_count = tableData.length;
+        }
 
 		});
         $('#table').on("click-row.bs.table", function (editable, columns, row){

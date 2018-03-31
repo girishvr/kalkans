@@ -79,7 +79,7 @@ session_cache_limiter("private_no_expire");
 			//else 
 				//show alert try again
 
-              
+      localStorage.calamity_count = 0;  
 
       });
     }
