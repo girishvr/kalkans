@@ -119,14 +119,12 @@ session_cache_limiter("private_no_expire");
     	
       	$.post('emergency.php',function(responseText){
 			//console.log(responseText);
-      		myObj = JSON.parse(responseText);  
-
-			
-			
+      	myObj = JSON.parse(responseText);  
           //txt += "<table border='1'>"
 				console.log(myObj);
+        var tableData = myObj.result//[myObj]
 				$('#table').bootstrapTable({
-					data:myObj
+					data:tableData
 				});
 
 		});
