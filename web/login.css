@@ -145,7 +145,7 @@
 }
 
 .input .spin {
-   background: #ED2553;
+   background: #3498DB3;
    z-index: 4;
    width: 0;
 }
@@ -168,14 +168,14 @@
 }
 
 .button.login {
-   width: 60%;
+   width: 40%;
    left: 20%;
 }
 
 .button.login button,
 .button button {
    width: 100%;
-   line-height: 64px;
+   line-height: 38px;
    left: 0%;
    background-color: transparent;
    border: 3px solid rgba(0, 0, 0, 0.1);
@@ -230,8 +230,8 @@
 }
 
 .button.login button:hover {
-   color: #ED2553;
-   border-color: #ED2553;
+   color: #3498DB;
+   border-color: #3498DB;
 }
 
 .button {
@@ -363,7 +363,7 @@
 }
 
 body {
-   background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
+  background-image:url(download.jpg);
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
