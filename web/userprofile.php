@@ -57,7 +57,7 @@ session_cache_limiter("private_no_expire");
         var uluru = {lat: mark1, lng:mark2};
 		
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 5,
+          zoom: 10,
           center: uluru
         });
         var marker = new google.maps.Marker({

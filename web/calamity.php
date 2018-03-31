@@ -111,7 +111,7 @@ session_cache_limiter("private_no_expire");
 				<th data-field="user_id">UserId</th>
 				<th data-field="text">Message</th>
 				
-				<th>View</th>
+				<!--<th>View</th>-->
 			</tr>
 		</thead>
 		<tbody align="center">

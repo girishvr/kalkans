@@ -13,7 +13,7 @@
 	$options_get_emergency = array(
 		'http' => array(
 		   'header'  => array("Content-type: application/json",
-							'dept_name:'.$value;
+							'dept_name:'.$value
 						),
 		   'method'  => 'GET',
 		),
