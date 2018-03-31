@@ -11,14 +11,14 @@
 // Ambulance
 // NDM
 
-	$value="Fire_dept";
+	$value="NDM";
 
 	$url_get_emergency ='http://smartindia-ers.herokuapp.com/getcalamitys';
 	$options_get_emergency = array(
 		'http' => array(
 		   'header'  => array("Content-type: application/json",
 							'DEPTTYPE:'.$value
-						),
+							),
 		   'method'  => 'GET',
 		),
 	);

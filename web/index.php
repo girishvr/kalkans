@@ -51,9 +51,9 @@ session_cache_limiter("private_no_expire");
 <script language="javascript" type="text/javascript">
     function login(){
 		var username, password;
-		  username=document.getElementById("name").value;
+		username=document.getElementById("name").value;
     	password=document.getElementById("pass").value;
-    	$.post('login.php',{uname:username,pwd:password},function(responseText){
+      	$.post('login.php',{uname:username,pwd:password},function(responseText){
           
 			console.log(responseText);
       myObj = JSON.parse(responseText);
@@ -64,6 +64,7 @@ session_cache_limiter("private_no_expire");
 			//var userDetails=myObj.details.user_details[dept_name];
 			
 			console.log(status);
+			//console.log(details.user_details.uname);
 			//document.write(status);
 			
 			//if success

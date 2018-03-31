@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        min-height: 900px;
+        float: left;
+        width: 65%;
+       }
+
+
+    </style>
+  </head>
+  <body>
+    <div>
+  
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMoFWu2K0pg05rtpMCyXOfx2eo-AgRZCE&callback=initMap">
+    </script>
+</div>
+
+
+<div style="float: left; width: 35%;">
+  <p>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspemergency type
+  </p>
+
+  <br><br><br><br><br><br>
+  <p>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspimage
+  </p>
+<br><br><br><br>
+  <div>
+    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspweb developer content goes here</p>
+  </div>
+</div>
+
+
+
+  </body>
+</html>

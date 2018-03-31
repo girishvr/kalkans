@@ -4,11 +4,12 @@
 // session_start();
 // $f=0;
 
-$value=$_POST['value'];
+// $value=$_POST['value'];
 // $pass=$_POST['pass'];
 
 
-	$url_get_all_users ='http://smartindia-ers.herokuapp.com/users/'.$value;
+
+	$url_get_all_users ='http://smartindia-ers.herokuapp.com/users/1';
 	$options_get_users = array(
 		'http' => array(
 		   'header'  => "Content-type: application/json\r\n",  

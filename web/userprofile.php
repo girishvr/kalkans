@@ -52,12 +52,12 @@ session_cache_limiter("private_no_expire");
 
 <br><div id="map" ></div>
 <script>
-		var mark1=17.6343263, mark2=78.7354377;
+		var mark1=17.6033483333333, mark2=78.48538333333;
       function initMap() {
         var uluru = {lat: mark1, lng:mark2};
 		
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 5,
+          zoom: 10,
           center: uluru
         });
         var marker = new google.maps.Marker({
@@ -96,15 +96,14 @@ session_cache_limiter("private_no_expire");
 
   
   <script language="javascript" type="text/javascript">
-		
-		var userd = localStorage.user_id;
-
-      	$.post('profileapi.php',{value:userd},function(responseText){
+    	
+      	$.post('profileapi.php',function(responseText){
       		var myObj = JSON.parse(responseText);  
       		var tableDatadata = [myObj];  
   			
   			console.log(tableDatadata);
 
+  			var userd = localStorage.user_id;
 
 			console.log(myObj);
 			$('#table').bootstrapTable({
