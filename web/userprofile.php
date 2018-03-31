@@ -52,7 +52,7 @@ session_cache_limiter("private_no_expire");
 
 <br><div id="map" ></div>
 <script>
-		var mark1=17.6033483333333, mark2=78.48538333333;
+		var mark1=17.60334833333333, mark2=78.4853833333333;
       function initMap() {
         var uluru = {lat: mark1, lng:mark2};
 		
@@ -74,7 +74,7 @@ session_cache_limiter("private_no_expire");
     </script>
 	
 
-
+</br></br>
 <div class="container-fluid">
   <div class="row content">
 <table class="data-table" id="table">
@@ -96,14 +96,15 @@ session_cache_limiter("private_no_expire");
 
   
   <script language="javascript" type="text/javascript">
-    	
-      	$.post('profileapi.php',function(responseText){
+		
+		var userd = localStorage.user_id;
+
+      	$.post('profileapi.php',{value:userd},function(responseText){
       		var myObj = JSON.parse(responseText);  
       		var tableDatadata = [myObj];  
   			
   			console.log(tableDatadata);
 
-  			var userd = localStorage.user_id;
 
 			console.log(myObj);
 			$('#table').bootstrapTable({
