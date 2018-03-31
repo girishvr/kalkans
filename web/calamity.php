@@ -107,7 +107,7 @@ session_cache_limiter("private_no_expire");
 				<th data-field="etype">Type</th>
 				<th data-field="lat">Lattitude</th>
 				<th data-field="lon">Longitude</th>
-				<th >Timestamp</th>
+				<th data-field="timestamp">Timestamp</th>
 				<th data-field="user_id">UserId</th>
 				<th data-field="text">Message</th>
 				
@@ -119,14 +119,12 @@ session_cache_limiter("private_no_expire");
     	
       	$.post('emergency.php',function(responseText){
 			//console.log(responseText);
-      		myObj = JSON.parse(responseText);  
-
-			
-			
+      	myObj = JSON.parse(responseText);  
           //txt += "<table border='1'>"
 				console.log(myObj);
+        var tableData = myObj.result//[myObj]
 				$('#table').bootstrapTable({
-					data:myObj
+					data:tableData
 				});
 
 		});
