@@ -6,7 +6,7 @@ session_cache_limiter("private_no_expire");
 ?>
 <head><title> calamity details</title>
    <!--<link rel="stylesheet" type="text/css" href="login.css">-->
-   <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   
   <meta charset="utf-8">
@@ -106,7 +106,7 @@ session_cache_limiter("private_no_expire");
 				<th data-field="eid">EID</th>
 				<th data-field="etype">Type</th>
 				<th data-field="lat">Lattitude</th>
-				<th data-field="lon">Lattitude</th>
+				<th data-field="lon">Longitude</th>
 				<th >Timestamp</th>
 				<th data-field="user_id">UserId</th>
 				<th data-field="text">Message</th>
@@ -118,34 +118,46 @@ session_cache_limiter("private_no_expire");
     <script language="javascript" type="text/javascript">
     	
       	$.post('emergency.php',function(responseText){
-          
-      		myObj = JSON.parse(responseText);          
+			//console.log(responseText);
+      		myObj = JSON.parse(responseText);  
+
+			
+			
           //txt += "<table border='1'>"
-				console.log(responseText);
+				console.log(myObj);
 				$('#table').bootstrapTable({
 					data:myObj
 				});
 
-
+		});
         $('#table').on("click-row.bs.table", function (editable, columns, row){
           
 			//window.location="details.php";
           // var col = ($(this).index());
           console.log(columns);
 		  console.log(columns.user_id);
-		  //sessionStorage.setItem(columns.user_id);
-			window.location="details.php";
-                //display(one);
-          // console.log(row);
-
-
+		  console.log(columns.etype);
+		  
+		  
+		  window.location="userprofile.php";
+		  //session 
+			
+			/* $_SESSION['web_user_token']=$arr2['details']['user_details']['access_token'];
+			console.log($_SESSION['web_user_token']);
+		  			window.location="userprofile.php";*/
+					
+					
+			
+                
         });
+	
+        
 
 			
-		});   
+		 
 
  </script>
-<script src="bootstrap-table-zh-CN.js"></script>
+<!--<script src="bootstrap-table-zh-CN.js"></script>-->
 
 </body>
 </html>
