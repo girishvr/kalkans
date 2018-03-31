@@ -81,11 +81,12 @@
                     android:layout_height="025dp"
                     android:layout_marginLeft="38dp"
                     android:background="@drawable/edittext_change"
+                    android:fontFamily="serif"
                     android:hint="Enter name"
                     android:inputType="textPersonName"
+                    android:text="vidya"
                     android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white"
-                    android:fontFamily="serif"/>
+                    android:textColorHint="@color/white" />
 
 
             </android.support.design.widget.TextInputLayout>
@@ -104,11 +105,12 @@
                     android:layout_marginLeft="38dp"
                     android:background="@drawable/edittext_change"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Enter Password"
                     android:inputType="textPersonName"
+                    android:text="vidya"
                     android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white"
-                    android:fontFamily="serif"/>
+                    android:textColorHint="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -126,11 +128,12 @@
                     android:layout_marginLeft="38dp"
                     android:background="@drawable/edittext_change"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Enter email"
                     android:inputType="textEmailAddress"
+                    android:text="vi@gmail.com"
                     android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white"
-                    android:fontFamily="serif"/>
+                    android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -147,11 +150,12 @@
                     android:layout_marginLeft="38dp"
                     android:background="@drawable/edittext_change"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Enter Phone Number"
                     android:inputType="number"
+                    android:text="9481005251"
                     android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white"
-                    android:fontFamily="serif"/>
+                    android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -168,11 +172,12 @@
                     android:layout_marginLeft="38dp"
                     android:background="@drawable/edittext_change"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Enter emergency number"
                     android:inputType="number"
+                    android:text="9448223485"
                     android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white"
-                    android:fontFamily="serif"/>
+                    android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -202,6 +207,7 @@
                     android:ems="10"
                     android:hint="Gender (F/M)"
                     android:inputType="textPersonName"
+                    android:text="F"
                     android:textColor="@color/darkblue"
                     android:textColorHint="@color/white" />
 
@@ -221,11 +227,12 @@
                     android:layout_marginLeft="38dp"
                     android:background="@drawable/edittext_change"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Enter aadhar number"
                     android:inputType="number"
+                    android:text="124578963"
                     android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white"
-                    android:fontFamily="serif"/>
+                    android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -242,11 +249,12 @@
                     android:layout_marginLeft="38dp"
                     android:background="@drawable/edittext_change"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Enter city"
                     android:inputType="textPersonName"
+                    android:text="bgm"
                     android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white"
-                    android:fontFamily="serif"/>
+                    android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -263,11 +271,12 @@
                     android:layout_marginLeft="38dp"
                     android:background="@drawable/edittext_change"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Enter date of birth"
                     android:inputType="date"
+                    android:text="20/03/1997"
                     android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white"
-                    android:fontFamily="serif"/>
+                    android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -284,11 +293,12 @@
                     android:layout_marginLeft="38dp"
                     android:background="@drawable/edittext_change"
                     android:ems="10"
+                    android:fontFamily="serif"
                     android:hint="Enter language"
                     android:inputType="textPersonName"
+                    android:text="english"
                     android:textColor="@color/darkblue"
-                    android:textColorHint="@color/white"
-                    android:fontFamily="serif"/>
+                    android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
 

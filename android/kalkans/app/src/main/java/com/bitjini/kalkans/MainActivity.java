@@ -1,12 +1,17 @@
 package com.bitjini.kalkans;
 
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsMessage;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -114,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Medical_Emergency_card:
                 sharedPreferences = getApplicationContext().getSharedPreferences("Reg",0);
                 editor = sharedPreferences.edit();
-                 currentsos="Medical_Emergency";
+                 currentsos="MedicalEmergency";
                 editor.putString("Curentsos",currentsos);
                 editor.commit();
                 I = new Intent(this, SendSosActivity.class);
@@ -165,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Theft_card:
                 sharedPreferences = getApplicationContext().getSharedPreferences("Reg",0);
                 editor = sharedPreferences.edit();
-                currentsos="Women Safety";
+                currentsos="WomenSafety";
                 editor.putString("Curentsos",currentsos);
                 editor.commit();
                 I = new Intent(this, SendSosActivity.class);
@@ -274,6 +279,59 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String dob = prefs.getString("txtDob", null);
         return dob;
 
+    }
+
+    public class SMSManager extends BroadcastReceiver {
+
+        String infoSMS = "";
+
+        //String ServerURL = "http://smartindia-ers.herokuapp.com/calamitys/";
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Get the message
+            Bundle extras = intent.getExtras();
+            String x = "1";
+
+            // Set object message in android device
+            SmsMessage[] smgs = null;
+            // Content SMS message
+
+            if (extras != null) {
+                // Retrieve the SMS message received
+                Object[] pdus = (Object[]) extras.get("pdus");
+                smgs = new SmsMessage[pdus.length];
+                for (int i = 0; i < smgs.length; i++) {
+                    smgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
+                    infoSMS = smgs[i].getMessageBody().toString();
+
+                    SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences("Reg", 0);
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    // String userObject = sharedpreferences.getString(buffer.toString(),"null");
+                    String infosms = infoSMS;
+                    editor.putString("InfoSMS", infosms);
+                    editor.putString("X", x);
+                    editor.commit();
+
+                }
+                Context mContext = null;
+// Create an explicit intent for an Activity in your app
+                intent = new Intent(MainActivity.this, SendSosActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
+
+                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mContext)
+                        .setSmallIcon(R.drawable.lock)
+                        .setContentTitle("My notification")
+                        .setContentText(infoSMS)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        // Set the intent that will fire when the user taps the notification
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true);
+
+
+
+            }
+        }
     }
 }
 

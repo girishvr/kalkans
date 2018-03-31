@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -38,16 +40,17 @@
         <activity android:name=".SendSosActivity" />
         <activity android:name=".VideoActiviti" />
         <activity android:name=".EngTips" />
-
         <activity android:name=".HinTips" />
         <activity
             android:name=".SlideActivity"
             android:label="@string/title_activity_slide"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".EengFragment"/>
-        <activity android:name=".HinnFragment"/>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".EengFragment" />
+        <activity android:name=".HinnFragment" />
+        <activity android:name=".NotificationActivity" />
+        <activity android:name=".MeshActivity" />
+        <activity android:name=".DeviceListActivity" />
+        <activity android:name="com.example.hp.emergency.device_name"></activity>
     </application>
-
-
 
 </manifest>

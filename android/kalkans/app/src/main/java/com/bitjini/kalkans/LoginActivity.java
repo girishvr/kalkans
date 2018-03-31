@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,7 +32,9 @@ public class LoginActivity extends AppCompatActivity {
 
     JSONObject jsonObject = null;
 //public static android.content.SharedPreferences SharedPreferences = null;
-
+String MY_PREFS_NAME = "Name";
+   // SharedPreferences sharedPreferences;
+    //SharedPreferences.Editor editor;
     private static final String PREFER_NAME = "Reg";
     public static boolean oneTime = false;
     ProgressDialog pd;
@@ -86,12 +89,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 putName();
                 // Get username, password from EditText
-                String email = txtEmail.getText().toString();
+                String username = txtEmail.getText().toString();
                 String password = txtPassword.getText().toString();
 
                 // Validate if username, password is filled
-//                if (username.trim().length() > 0 && password.trim().length() > 0) {
-//                    String uName = null;
+//               if (username.trim().length() > 0 && password.trim().length() > 0) {
+//                  String uName = null;
 //                    String uPassword = null;
 //
 //                    if (sharedPreferences.contains("Name")) {
@@ -115,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
 //                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
 //                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //
-//                        // Add new Flag to start new Activity
+//                       // Add new Flag to start new Activity
 //                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                        startActivity(i);
 //
@@ -126,18 +129,18 @@ public class LoginActivity extends AppCompatActivity {
 //
 //                        // username / password doesn't match&
 //                        Toast.makeText(getApplicationContext(),
-//                                "Username/Password is incorrect",
-//                                Toast.LENGTH_LONG).show();
+//                               "Username/Password is incorrect",
+//                Toast.LENGTH_LONG).show();
 //
-//                    }
-//                } else {
+//                   }
+//               } else {
 //
-//                    // user didn't entered username or password
-//                    Toast.makeText(getApplicationContext(), "Please enter username and password", Toast.LENGTH_LONG).show();
+//                  // user didn't entered username or password
+//                  Toast.makeText(getApplicationContext(), "Please enter username and password", Toast.LENGTH_LONG).show();
 //
-//                }
-
-                new JsonTask().execute("https://smartindia-ers.herokuapp.com/loginuser/",email,password);
+//             }
+//
+                new JsonTask().execute("https://smartindia-ers.herokuapp.com/loginuser/",username,password);
 
             }
         });
@@ -201,10 +204,50 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                // String userObject = sharedpreferences.getString(buffer.toString(),"null");
                 String userObject = buffer.toString();
-                editor.putString("UserObject",userObject);
+                editor.putString("userObject",userObject);
                 editor.commit();
-                return buffer.toString();
+//                Toast.makeText(LoginActivity.this, buffer.toString(), Toast.LENGTH_LONG).show();
+                String x = buffer.toString();
 
+                String userID = "1";
+
+                try {
+                    JSONObject object = new JSONObject(x);
+                    JSONArray detailsArray = object.getJSONArray("details");
+                    JSONObject userObj = detailsArray.getJSONObject(0);
+
+                    JSONArray userDetail = userObj.getJSONArray("user_details");
+                    Log.d("userDetail====",userDetail.toString());
+
+                    JSONObject usrObjct = userDetail.getJSONObject(0);
+                    Log.d("usrObjct====",usrObjct.toString());
+
+                    userID = usrObjct.getString("user_id");
+
+
+                    Log.d("ID====",userID);
+
+                }catch (Throwable t){
+                    Log.e("Error Parsing Json","Could not parse" +x);
+                }
+                sharedPreferences = getApplicationContext().getSharedPreferences("Reg",0);
+                editor = sharedPreferences.edit();
+                editor.putString("userID",userID);
+                editor.commit();
+
+
+                Log.d("userobject",x);
+
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//                       Add new Flag to start new Activity
+                       i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(i);
+
+
+
+                return buffer.toString();
 
 
             } catch (MalformedURLException e) {
@@ -224,6 +267,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
             return null;
+
+
         }
 
         @Override

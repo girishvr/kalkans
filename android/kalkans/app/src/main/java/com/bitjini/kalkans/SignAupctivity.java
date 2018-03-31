@@ -29,22 +29,28 @@ import com.basgeekball.awesomevalidation.ValidationStyle;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
-public class SignAupctivity extends AppCompatActivity{
-    String ServerURL = "https://smartindia-ers.herokuapp.com/users/" ;
+public class SignAupctivity extends AppCompatActivity {
+    String ServerURL = "https://smartindia-ers.herokuapp.com/users/";
+    //String ServerURLL="https://techtron.esy.es/userdata.php";
     SharedPreferences sharedPreferences;
     Editor editor;
     String TempName;
@@ -53,10 +59,10 @@ public class SignAupctivity extends AppCompatActivity{
     String TempCity;
     String TempEphone;
     String Templang;
-    String Tempadhar,Temppwd;
-    String TempDOB,Tempgender;
+    String Tempadhar, Temppwd;
+    String TempDOB, Tempgender;
     Button Register;
-    EditText txtUsername,txtPassword, txtEmail, txtPhone, txtEphone, txtCity, txtDob,txtlang,txtgender,txtadhar;
+    EditText txtUsername, txtPassword, txtEmail, txtPhone, txtEphone, txtCity, txtDob, txtlang, txtgender, txtadhar;
     UserSession session;
     ImageButton capture;
     ImageView photo;
@@ -81,12 +87,12 @@ public class SignAupctivity extends AppCompatActivity{
         txtPassword = (EditText) findViewById(R.id.pwd);
         txtEmail = (EditText) findViewById(R.id.Email);
         txtPhone = (EditText) findViewById(R.id.pno);
-        txtlang =(EditText) findViewById(R.id.lang);
+        txtlang = (EditText) findViewById(R.id.lang);
         txtEphone = (EditText) findViewById(R.id.eno);
         txtCity = (EditText) findViewById(R.id.city);
         txtDob = (EditText) findViewById(R.id.dob);
         txtgender = (EditText) findViewById(R.id.gender);
-        txtadhar=(EditText) findViewById(R.id.adhar);
+        txtadhar = (EditText) findViewById(R.id.adhar);
         Register = (Button) findViewById(R.id.register);
         capture = (ImageButton) findViewById(R.id.capture);
         photo = (ImageView) findViewById(R.id.photo);
@@ -128,8 +134,8 @@ public class SignAupctivity extends AppCompatActivity{
                 String em_no = txtEphone.getText().toString();
                 String city = txtCity.getText().toString();
                 String DOB = txtDob.getText().toString();
-                String lang = txtlang.getText().toString();
-                String adhar=txtadhar.getText().toString();
+                String language = txtlang.getText().toString();
+                String adhar = txtadhar.getText().toString();
                 String gender = txtgender.getText().toString();
                 // as now we have information in string. Lets stored them with the help of editor
                 editor.putString("Name", name);
@@ -139,12 +145,10 @@ public class SignAupctivity extends AppCompatActivity{
                 editor.putString("txtEphone", em_no);
                 editor.putString("txtCity", city);
                 editor.putString("txtDob", DOB);
-                editor.putString("txtlang",lang);
-                editor.putString("txtgender",gender);
-                editor.putString("txtadhar",adhar);
+                editor.putString("txtlang", language);
+                editor.putString("txtgender", gender);
+                editor.putString("txtadhar", adhar);
                 editor.commit(); // commit the values
-
-
 
 
                 if (v == Register) {
@@ -157,23 +161,23 @@ public class SignAupctivity extends AppCompatActivity{
     }
 
     private void findViewsById() {
-        txtDob= (EditText) findViewById(R.id.dob);
+        txtDob = (EditText) findViewById(R.id.dob);
         txtDob.setInputType(InputType.TYPE_NULL);
     }
 
     private void setDateTimeField() {
 
 
-            Calendar newCalendar = Calendar.getInstance();
-            fromDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        Calendar newCalendar = Calendar.getInstance();
+        fromDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    Calendar newDate = Calendar.getInstance();
-                    newDate.set(year, monthOfYear, dayOfMonth);
-                    txtDob.setText(dateFormatter.format(newDate.getTime()));
-                }
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                txtDob.setText(dateFormatter.format(newDate.getTime()));
+            }
 
-            }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
         txtDob.setOnClickListener(new View.OnClickListener() {
 
@@ -186,14 +190,12 @@ public class SignAupctivity extends AppCompatActivity{
     }
 
 
-
     private void submitForm() {
         if (awesomeValidation.validate()) {
             Toast.makeText(this, "Registration Successfull", Toast.LENGTH_LONG).show();
             GetData();
-            InsertData(TempName, TempPhone,TempEmail,TempEphone,TempCity,TempDOB,Templang,Tempgender,Tempadhar,Temppwd);
-
-
+           InsertData(TempName, TempPhone, TempEmail, TempEphone, TempCity, TempDOB, Templang, Tempgender, Tempadhar, Temppwd);
+          //  InsertData1(TempName, TempPhone, TempEmail, TempEphone, TempCity, TempDOB, Templang, Tempgender, Tempadhar, Temppwd);
 
             Intent ob = new Intent(SignAupctivity.this, LoginActivity.class);
             startActivity(ob);
@@ -241,8 +243,7 @@ public class SignAupctivity extends AppCompatActivity{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             onSelectFromGalleryResult(data);
-        }
-       else if (requestCode == 7 && resultCode == RESULT_OK) {
+        } else if (requestCode == 7 && resultCode == RESULT_OK) {
             onCaptureImageResult(data);
         }
     }
@@ -251,19 +252,18 @@ public class SignAupctivity extends AppCompatActivity{
         TempCity = txtCity.getText().toString();
         TempName = txtUsername.getText().toString();
         TempPhone = txtPhone.getText().toString();
-        Tempadhar=txtadhar.getText().toString();
-        Temppwd=txtPassword.getText().toString();
-        TempDOB=txtDob.getText().toString();
+        Tempadhar = txtadhar.getText().toString();
+        Temppwd = txtPassword.getText().toString();
+        TempDOB = txtDob.getText().toString();
         TempEphone = txtEphone.getText().toString();
-        Templang = txtPassword.getText().toString();
+        Templang = txtlang.getText().toString();
         TempEmail = txtEmail.getText().toString();
-        Tempgender=txtgender.getText().toString();
+        Tempgender = txtgender.getText().toString();
         //phoneVal = Integer.parseInt(String.valueOf(TempPhone));
 
+    }
 
-            }
-
-    public void InsertData(final String name, final String phone, final String email, final String em_no, final String city, final  String DOB, final String lang, final String gender,final String adhar,final  String pwd) {
+    public void InsertData(final String name, final String phone, final String email, final String em_no, final String city, final  String DOB, final String language, final String gender,final String adhar,final  String pwd) {
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
 
@@ -283,7 +283,7 @@ public class SignAupctivity extends AppCompatActivity{
                     jObjectData.put("DOB", DOB);
                     jObjectData.put("gender", gender);
                     jObjectData.put("adhar", adhar);
-                    jObjectData.put("language",lang);
+                    jObjectData.put("language",language);
                     jObjectData.put("pwd",pwd);
 
 
@@ -312,7 +312,7 @@ public class SignAupctivity extends AppCompatActivity{
                 } catch (ClientProtocolException e) {
 
                 } catch (IOException e) {
-                    Toast.makeText(SignAupctivity.this, "data submitting error ", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(SignAupctivity.this, "data submitting error ", Toast.LENGTH_LONG).show();
 
                 }
                 return "Data Inserted Successfully";
@@ -333,8 +333,55 @@ public class SignAupctivity extends AppCompatActivity{
 
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
 
-        sendPostReqAsyncTask.execute(name, email, phone, em_no, city, DOB,lang,gender,adhar,pwd);
+        sendPostReqAsyncTask.execute(name, email, phone, em_no, city, DOB,language,gender,adhar,pwd);
     }
+
+   /* public void InsertData1(final String name, final String email, final String phone, final String em_no, final String city, final  String DOB, final String language, final String gender,final String adhar,final  String pwd) {
+        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+
+            @Override
+            protected String doInBackground(String... params) {
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("name", name));
+                nameValuePairs.add(new BasicNameValuePair("email", email));
+                nameValuePairs.add(new BasicNameValuePair("phone", phone));
+                nameValuePairs.add(new BasicNameValuePair("em_no", em_no));
+                nameValuePairs.add(new BasicNameValuePair("city", city));
+                nameValuePairs.add(new BasicNameValuePair("DOB", DOB));
+                nameValuePairs.add(new BasicNameValuePair("language", language));
+                nameValuePairs.add(new BasicNameValuePair("adhar", adhar));
+                nameValuePairs.add(new BasicNameValuePair("gender", gender));
+                nameValuePairs.add(new BasicNameValuePair("pwd", pwd));
+                try {
+                    HttpClient httpClient = new DefaultHttpClient();
+                    HttpPost httpPost = new HttpPost(ServerURLL);
+                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    HttpResponse httpResponse = httpClient.execute(httpPost);
+                    HttpEntity httpEntity = httpResponse.getEntity();
+                } catch (ClientProtocolException e) {
+                    Toast.makeText(SignAupctivity.this, "data ", Toast.LENGTH_LONG).show();
+                } catch (IOException e) {
+                    Toast.makeText(SignAupctivity.this, "data ", Toast.LENGTH_LONG).show();
+                }
+                return "Data Inserted Successfully";
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                Toast.makeText(SignAupctivity.this, "data submitted Successfully", Toast.LENGTH_LONG).show();
+                super.onPostExecute(result);
+            }
+        }
+        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+        sendPostReqAsyncTask.execute(name,email,phone,em_no,city,DOB,language,gender,adhar,pwd);
+    }
+*/
+
+
+
+
+
+
 
 
     private void onCaptureImageResult(Intent data){

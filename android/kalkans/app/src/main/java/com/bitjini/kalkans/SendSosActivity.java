@@ -39,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.http.HttpEntity;
@@ -54,6 +55,7 @@ import org.json.JSONObject;
 
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class SendSosActivity extends AppCompatActivity implements LocationListener {
@@ -174,24 +176,24 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
             sendMessageInternet(lat,lon);
 
         } else {
-            final CharSequence[] items = {"OK","CANCEL"};
-            AlertDialog.Builder builder = new AlertDialog.Builder(SendSosActivity.this);
-            builder.setTitle("Internet is not available.Would you like to send an SMS?");
-            builder.setItems(items, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int item) {
-                    boolean result = UtilSignupActivity.checkPermission(SendSosActivity.this);
-                    if (items[item].equals("OK")) {
-                        userChoosenTask = "OK";
-                        if (result)
+           // final CharSequence[] items = {"OK","CANCEL"};
+           // AlertDialog.Builder builder = new AlertDialog.Builder(SendSosActivity.this);
+           // builder.setTitle("Internet is not available.Would you like to send an SMS?");
+           // builder.setItems(items, new DialogInterface.OnClickListener() {
+             //   @Override
+               // public void onClick(DialogInterface dialog, int item) {
+                 //   boolean result = UtilSignupActivity.checkPermission(SendSosActivity.this);
+                   // if (items[item].equals("OK")) {
+                     //   userChoosenTask = "OK";
+                       // if (result)
                             sendSMSMessage();
 
-                    } else if (items[item].equals("Cancel")) {
-                        dialog.dismiss();
-                    }
-                }
-            });
-            builder.show();
+                   // } else if (items[item].equals("Cancel")) {
+                    //    dialog.dismiss();
+                    //}
+                //}
+            //});
+           // builder.show();
             //Context context = null;
            // check();
         }
@@ -252,14 +254,17 @@ public class SendSosActivity extends AppCompatActivity implements LocationListen
             Location location = locationManager.getLastKnownLocation(provider);
             locationManager.requestLocationUpdates(provider, 1000, 1, this);
 
-            if (location != null)
+            if (location != null) {
                 onLocationChanged(location);
+                Toast.makeText(getBaseContext(), "Emergency Message Sent! \n.", Toast.LENGTH_SHORT).show();
+            }
 
             else
-                Toast.makeText(getBaseContext(), "Emergency Call Made! \n Location was not retrieved.", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getBaseContext(), " \n Location was not retrieved.", Toast.LENGTH_SHORT).show();
 
         }else {
-            Toast.makeText(getBaseContext(), "Emergency Call Made! \n Switch on your GPS.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "\n Switch on your GPS.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -300,34 +305,20 @@ public void sendMessageInternet(final String lat,final String lon)
         @Override
         protected String doInBackground(String... params) {
             SharedPreferences sharedpreferences = getSharedPreferences("Reg",0);
-            //String name = sharedpreferences.getString("Name","not found");
-            // String phone = sharedpreferences.getString("txtPhone","not found");
             String currentsos=sharedpreferences.getString("Curentsos","not found");
-            String userObject = sharedpreferences.getString("UserObject","not found");
-
-            ObjectMapper mapper = new ObjectMapper();
-            try {
-                Map<String,Object> userobject = mapper.readValue(userObject, Map.class);
-                Object userdetail = userobject.get("details");
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
+            String user_id=sharedpreferences.getString("userID","not found");
 
             JSONObject jObjectData = new JSONObject();
 
             try {
 
-               jObjectData.put("etype", currentsos);
-                jObjectData.put("user_id", "1");
-                 jObjectData.put("status","SOS");
+                jObjectData.put("etype", currentsos);
+                jObjectData.put("user_id", user_id);
+                jObjectData.put("status","Requested");
                 jObjectData.put("text","  ");
                 jObjectData.put("lat", lat);
                 jObjectData.put("lon", lon);
-                jObjectData.put("timestamp","10:20");
+                jObjectData.put("timestamp","3:20");
 
 
             } catch (JSONException e) {
@@ -353,10 +344,10 @@ public void sendMessageInternet(final String lat,final String lon)
 
 
             } catch (ClientProtocolException e) {
-                Toast.makeText(SendSosActivity.this, "data submitting error", Toast.LENGTH_LONG).show();
+              //  Toast.makeText(SendSosActivity.this, "data submitting error", Toast.LENGTH_LONG).show();
 
             } catch (IOException e) {
-                Toast.makeText(SendSosActivity.this, "data submitting error", Toast.LENGTH_LONG).show();
+//                Toast.makeText(SendSosActivity.this, "data submitting error", Toast.LENGTH_LONG).show();
 
             }
             return "Data Inserted Successfully";
@@ -381,17 +372,22 @@ public void sendMessageInternet(final String lat,final String lon)
     public void sendSMSMessage()
     {
         SharedPreferences sharedpreferences = getSharedPreferences("Reg",0);
-        String name = sharedpreferences.getString("Name","not found");
+       // String name = sharedpreferences.getString("Name","not found");
        // String phone = sharedpreferences.getString("txtPhone","not found");
         String currentsos=sharedpreferences.getString("Curentsos","not found");
-        phoneNo = "9108516990";
-        message = currentsos+" "+name+"  "+lat+" " +lon;
+        String userID=sharedpreferences.getString("userID","not found");
+        phoneNo = "9483500778";
+        message = currentsos+" : "+lat+" : " +lon+" : "+userID;
 
         try {
             SmsManager sms = SmsManager.getDefault();
             sms.sendTextMessage(phoneNo, null, message, null, null);  // adding number and text
         } catch (Exception e) {
-            Toast.makeText(this, "Sms not Send", Toast.LENGTH_SHORT).show();
+
+
+            Toast.makeText(this, "Sms not Send..click on bluetooth button", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(SendSosActivity.this, MeshActivity.class);
+            startActivity(i);
             e.printStackTrace();
         }
     }
