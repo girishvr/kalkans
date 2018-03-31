@@ -96,14 +96,15 @@ session_cache_limiter("private_no_expire");
 
   
   <script language="javascript" type="text/javascript">
-    	
-      	$.post('profileapi.php',function(responseText){
+		
+		var userd = localStorage.user_id;
+
+      	$.post('profileapi.php',{value:userd},function(responseText){
       		var myObj = JSON.parse(responseText);  
       		var tableDatadata = [myObj];  
   			
   			console.log(tableDatadata);
 
-  			var userd = localStorage.user_id;
 
 			console.log(myObj);
 			$('#table').bootstrapTable({
