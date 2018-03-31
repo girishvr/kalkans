@@ -130,13 +130,14 @@ session_cache_limiter("private_no_expire");
         console.log("calamity_count " + localStorage.calamity_count);
         console.log("length" + tableData.length);
 
-        if (tableData.length > localStorage.calamity_count){
+        if (localStorage.calamity_count != 0){
+          if (tableData.length > localStorage.calamity_count){
+            //play sound
+            var audio = new Audio('sound/audio_file.mp3');
+            audio.play();
+          }
           localStorage.calamity_count = tableData.length;
-          //play sound
-          var audio = new Audio('sound/audio_file.mp3');
-          audio.play();
         }
-
 
 		});
         $('#table').on("click-row.bs.table", function (editable, columns, row){
