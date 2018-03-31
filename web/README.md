@@ -1,2 +1,0 @@
-# kalkans
-Disaster Management System
