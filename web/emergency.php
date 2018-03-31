@@ -7,21 +7,23 @@
 // $value=$_POST['value'];
 // $pass=$_POST['pass'];
 
+	$value="Police_dept";
 
-
-	$url_get_all_users ='http://smartindia-ers.herokuapp.com/calamitys/';
-	$options_get_users = array(
+	$url_get_emergency ='http://smartindia-ers.herokuapp.com/getcalamitys';
+	$options_get_emergency = array(
 		'http' => array(
-		   'header'  => "Content-type: application/json\r\n",  
+		   'header'  => array("Content-type: application/json",
+							'dept_name:'.$value;
+						),
 		   'method'  => 'GET',
 		),
 	);
-	$context_get_users = stream_context_create($options_get_users);
-	$output_get_all_user = file_get_contents($url_get_all_users, false,$context_get_users);
+	$context_get_emergency = stream_context_create($options_get_emergency);
+	$output_get_emergency = file_get_contents($url_get_emergency, false,$context_get_emergency);
 
-	 // $output_get_all_users = json_decode($output_get_all_user,true);
+	 //$output_get_emergencys = json_decode($output_get_emergency,true);
 	//echo json_encode($output_get_all_user);
-	echo $output_get_all_user;
+	echo $output_get_emergency;
 
 
 
