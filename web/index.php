@@ -64,6 +64,7 @@ session_cache_limiter("private_no_expire");
 			//var userDetails=myObj.details.user_details[dept_name];
 			
 			console.log(status);
+			//console.log(details.user_details.uname);
 			//document.write(status);
 			
 			//if success
