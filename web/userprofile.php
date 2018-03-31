@@ -52,7 +52,7 @@ session_cache_limiter("private_no_expire");
 
 <br><div id="map" ></div>
 <script>
-		var mark1=17.6343263, mark2=78.7354377;
+		var mark1=17.6033483333333, mark2=78.48538333333;
       function initMap() {
         var uluru = {lat: mark1, lng:mark2};
 		
@@ -100,30 +100,18 @@ session_cache_limiter("private_no_expire");
       	$.post('profileapi.php',function(responseText){
       		var myObj = JSON.parse(responseText);  
       		var tableDatadata = [myObj];  
-      		      			console.log(tableDatadata);
+  			
+  			console.log(tableDatadata);
 
-          //txt += "<table border='1'>"
-				console.log(myObj);
-				$('#table').bootstrapTable({
-					data:tableDatadata
-				});
+  			var userd = localStorage.user_id;
+
+			console.log(myObj);
+			$('#table').bootstrapTable({
+				data:tableDatadata
+			});
 
 		});
-       /* $('#table').on("click-row.bs.table", function (editable, columns, row){
-          
-			//window.location="details.php";
-          // var col = ($(this).index());
-          console.log(columns);
-		  console.log(columns.user_id);
-		  console.log(columns.etype);
-		  //sessionStorage.setItem(columns.user_id);
-			window.location="userprofsile.php";
-                //display(one);
-          // console.log(row);
-			//Session["user_id"] = columns.user_id;
-			//console.log(Session["user_id"]);
-        });*/
-	
+       
         
 
 			

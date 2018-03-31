@@ -121,7 +121,7 @@ session_cache_limiter("private_no_expire");
 			//console.log(responseText);
       	myObj = JSON.parse(responseText);  
           //txt += "<table border='1'>"
-				console.log(myObj);
+		console.log(myObj);
         var tableData = myObj.result//[myObj]
 				$('#table').bootstrapTable({
 					data:tableData
@@ -131,12 +131,11 @@ session_cache_limiter("private_no_expire");
         $('#table').on("click-row.bs.table", function (editable, columns, row){
           
 		      console.log(columns);
-          localStorage.user_id = columns.user_id;
-          console.log(localStorage.user_id);
+              localStorage.user_id = columns.user_id;
+              console.log(localStorage.user_id);
     		  console.log(columns.etype);
+			  window.location="userprofile.php";
 		  
-		      window.location="userprofile.php";
-		  //session 
 
       });
 	
