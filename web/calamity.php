@@ -132,25 +132,12 @@ session_cache_limiter("private_no_expire");
 		});
         $('#table').on("click-row.bs.table", function (editable, columns, row){
           
-			//window.location="details.php";
-          // var col = ($(this).index());
-          console.log(columns);
-          // console.log(row);
-          if (typeof(Storage) !== "undefined") {
-          // Code for localStorage/sessionStorage.
-          localStorage.setItem("calamity_object", columns);
-          // $_SESSION['calamity_object']=;
-
-          } else {
-              // Sorry! No Web Storage support..
-              alert("Sorry! No Web Storage support..");
-          }
-          
-		  console.log(columns.user_id);
-		  console.log(columns.etype);
+		      console.log(columns);
+          localStorage.user_id = columns.user_id;
+          console.log(localStorage.user_id);
+    		  console.log(columns.etype);
 		  
-		  
-		  window.location="userprofile.php";
+		      window.location="userprofile.php";
 		  //session 
 
       });
