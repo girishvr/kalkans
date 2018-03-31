@@ -132,6 +132,16 @@ session_cache_limiter("private_no_expire");
           // var col = ($(this).index());
           console.log(columns);
           // console.log(row);
+          if (typeof(Storage) !== "undefined") {
+          // Code for localStorage/sessionStorage.
+          localStorage.setItem("calamity_object", columns);
+          // $_SESSION['calamity_object']=;
+
+          } else {
+              // Sorry! No Web Storage support..
+              alert("Sorry! No Web Storage support..");
+          }
+          
 
 
         });
