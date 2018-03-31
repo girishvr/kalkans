@@ -45,11 +45,8 @@ def getCalamitys(request):
 
 	if(calamity.objects.filter(status="Requested").exists()):
 		emergencyList = list(calamity.objects.filter(status="Requested").values('timestamp','eid','etype','lat','lon','user_id','status'))
+		success = "Success"
     
-		# for items in emergencyList:
-		# 	print(items['etype'])
-		# 	results.append(items)
-
 		if departmentType == 'Fire_dept':
 			for items in emergencyList:
 				if items['etype'] == 'Fire':
