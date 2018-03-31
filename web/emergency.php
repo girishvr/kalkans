@@ -6,15 +6,19 @@
 
 // $value=$_POST['value'];
 // $pass=$_POST['pass'];
+// Fire_dept
+// Police_dept
+// Ambulance
+// NDM
 
-	$value="Police_dept";
+	$value="NDM";
 
 	$url_get_emergency ='http://smartindia-ers.herokuapp.com/getcalamitys';
 	$options_get_emergency = array(
 		'http' => array(
 		   'header'  => array("Content-type: application/json",
-							'dept_name:'.$value
-						),
+							'DEPTTYPE:'.$value
+							),
 		   'method'  => 'GET',
 		),
 	);

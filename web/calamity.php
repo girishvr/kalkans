@@ -74,7 +74,7 @@ session_cache_limiter("private_no_expire");
 
 <div class="w3-card-4" >
 <div class="w3-container w3-theme w3-card" >
-  <h1 style="font-size:30px;font-family:Roboto">Welcome to Fire Department Portal!!</h1> 
+  <h1 style="font-size:30px;font-family:Roboto">Welcome to  NDM Department Portal!!</h1> 
   
 
 <br></div>
@@ -107,7 +107,7 @@ session_cache_limiter("private_no_expire");
 				<th data-field="etype">Type</th>
 				<th data-field="lat">Lattitude</th>
 				<th data-field="lon">Longitude</th>
-				<th >Timestamp</th>
+				<th data-field="timestamp">Timestamp</th>
 				<th data-field="user_id">UserId</th>
 				<th data-field="text">Message</th>
 				
@@ -119,38 +119,23 @@ session_cache_limiter("private_no_expire");
     	
       	$.post('emergency.php',function(responseText){
 			//console.log(responseText);
-      		myObj = JSON.parse(responseText);  
-
-			
-			
+      	myObj = JSON.parse(responseText);  
           //txt += "<table border='1'>"
 				console.log(myObj);
+        var tableData = myObj.result//[myObj]
 				$('#table').bootstrapTable({
-					data:myObj
+					data:tableData
 				});
 
 		});
         $('#table').on("click-row.bs.table", function (editable, columns, row){
           
-			//window.location="details.php";
-          // var col = ($(this).index());
-          console.log(columns);
-          // console.log(row);
-          if (typeof(Storage) !== "undefined") {
-          // Code for localStorage/sessionStorage.
-          localStorage.setItem("calamity_object", columns);
-          // $_SESSION['calamity_object']=;
-
-          } else {
-              // Sorry! No Web Storage support..
-              alert("Sorry! No Web Storage support..");
-          }
-          
-		  console.log(columns.user_id);
-		  console.log(columns.etype);
+		      console.log(columns);
+          localStorage.user_id = columns.user_id;
+          console.log(localStorage.user_id);
+    		  console.log(columns.etype);
 		  
-		  
-		  window.location="userprofile.php";
+		      window.location="userprofile.php";
 		  //session 
 
       });
