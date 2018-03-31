@@ -51,9 +51,9 @@ session_cache_limiter("private_no_expire");
 <script language="javascript" type="text/javascript">
     function login(){
 		var username, password;
-		username=document.getElementById("name").value;
+		  username=document.getElementById("name").value;
     	password=document.getElementById("pass").value;
-      	$.post('login.php',{uname:username,pwd:password},function(responseText){
+    	$.post('login.php',{uname:username,pwd:password},function(responseText){
           
 			console.log(responseText);
       myObj = JSON.parse(responseText);
