@@ -46,25 +46,29 @@ def getCalamitys(request):
 	if(calamity.objects.filter(status="Requested").exists()):
 		emergencyList = list(calamity.objects.filter(status="Requested").values('timestamp','eid','etype','lat','lon','user_id','status'))
     
+		# for items in emergencyList:
+		# 	print(items['etype'])
+		# 	results.append(items)
+
 		if departmentType == 'Fire_dept':
 			for items in emergencyList:
-				if items.etype == 'Fire':
-					results.append({items})
+				if items['etype'] == 'Fire':
+					results.append(items)
 
 		if departmentType == 'Police_dept':
 			for items in emergencyList:
-				if items.etype == 'Fire' or items.etype == 'Accident' or items.etype == 'MedicalEmergency' or items.etype == 'Terrorist' or items.etype == 'WomenSafety':
-					results.append({items})
+				if items['etype'] == 'Fire' or items['etype'] == 'Accident' or items['etype'] == 'MedicalEmergency' or items['etype'] == 'Terrorist' or items['etype'] == 'WomenSafety':
+					results.append(items)
 
 		if departmentType == 'Ambulance':
 			for items in emergencyList:
-				if items.etype == 'Fire' or items.etype == 'Accident' or items.etype == 'MedicalEmergency':
-					results.append({items})
+				if items['etype'] == 'Fire' or items['etype'] == 'Accident' or items['etype'] == 'MedicalEmergency':
+					results.append(items)
 
 		elif departmentType == 'NDM':
 			for items in emergencyList:
-				if items.etype == 'Flood' or items.etype == 'Tsunami' or items.etype == 'Earthquake':
-					results.append({items})
+				if items['etype'] == 'Flood' or items['etype'] == 'Tsunami' or items['etype'] == 'Earthquake':
+					results.append(items)
 
 
 
